@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 236461650}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80ba64b3df2df554185191ecab6315dd, type: 3}
+  m_Script: {fileID: 11500000, guid: b69070e218f47fb469108e5482e79d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   camXspeed: 5
@@ -343,7 +343,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1539272923}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a38c977b0aac8d946bee5923ab0e2c28, type: 3}
+  m_Script: {fileID: 11500000, guid: 96d695119025c3846bd75f1e552743b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1539272925
@@ -378,7 +378,7 @@ MonoBehaviour:
   voiceDetectionThreshold: 0.01
   voiceDetectionDelayMs: 500
   unityMicrophoneDevice: 
-  photonMicrophoneDeviceId: 0
+  photonMicrophoneDeviceId: -1
   interestGroup: 0
   debugEchoMode: 0
   reliableMode: 0
@@ -474,6 +474,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1539272923}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 850cddd6d24b9ea4f8068eaddf49d065, type: 3}
+  m_Script: {fileID: 11500000, guid: 02001233bdbe38e43a8027217db17415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
