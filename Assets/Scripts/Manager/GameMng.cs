@@ -10,7 +10,7 @@ public class GameMng : MonoBehaviour
     {
         get
         {
-            if(_Instance.Equals(null))
+            if (_Instance.Equals(null))
             {
                 Debug.Log("Instance is null");
             }
