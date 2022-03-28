@@ -126,7 +126,8 @@ namespace Photon.Voice.Unity.Editor
             this.serializedObject.UpdateIfRequiredOrScript();
             //serializedObject.Update();
             WebRtcAudioDsp webRtcAudioDsp = this.recorder.GetComponent<WebRtcAudioDsp>();
-            bool webRtcAudioDspAttached = webRtcAudioDsp && webRtcAudioDsp != null && webRtcAudioDsp.enabled;
+            bool webRtcAudioDspAttached = webRtcAudioDsp && webRtcAudioDsp != null;
+            bool webRtcAudioDspAvailable = webRtcAudioDspAttached && webRtcAudioDsp.enabled;
             AudioChangesHandler audioChangesHandler = this.recorder.GetComponent<AudioChangesHandler>();
             bool audioChangesHandlerAttached = !ReferenceEquals(null, audioChangesHandler) && audioChangesHandler;
             if (PhotonVoiceEditorUtils.IsInTheSceneInPlayMode(this.recorder.gameObject))
@@ -205,22 +206,8 @@ namespace Photon.Voice.Unity.Editor
 
                 EditorGUILayout.LabelField("Codec Parameters", EditorStyles.boldLabel);
                 OpusCodec.FrameDuration frameDuration = (OpusCodec.FrameDuration)EditorGUILayout.EnumPopup(new GUIContent("Frame Duration", "Outgoing audio stream encoder delay."), this.recorder.FrameDuration);
-                SamplingRate samplingRate = (SamplingRate)EditorGUILayout.EnumPopup(new GUIContent("Sampling Rate", "Outgoing audio stream sampling rate."), this.recorder.SamplingRate);
-                if (webRtcAudioDspAttached)
+                if (webRtcAudioDspAvailable)
                 {
-                    int samplingRateInt = (int) samplingRate;
-                    if (Array.IndexOf(WebRTCAudioProcessor.SupportedSamplingRates, samplingRateInt) < 0)
-                    {
-                        if (this.recorder.SamplingRate == SamplingRate.Sampling48000)
-                        {
-                            Debug.LogWarningFormat("Sampling rate requested ({0}Hz) is not supported by WebRTC Audio DSP. Ignoring change.", samplingRateInt);
-                        }
-                        else
-                        {
-                            Debug.LogWarningFormat("Sampling rate requested ({0}Hz) is not supported by WebRTC Audio DSP, switching to the closest supported value: {1}Hz.", samplingRateInt, "48k");
-                        }
-                        samplingRate = SamplingRate.Sampling48000;
-                    }
                     switch (frameDuration)
                     {
                         case OpusCodec.FrameDuration.Frame2dot5ms:
@@ -231,9 +218,39 @@ namespace Photon.Voice.Unity.Editor
                             }
                             else
                             {
-                                Debug.LogWarningFormat("Frame duration requested ({0}ms) is not supported by WebRTC Audio DSP (it needs to be N x 10ms), switching to the closest supported value: {1}ms.", (int)frameDuration / 1000, 10);
+                                Debug.LogWarningFormat("Frame duration requested ({0}ms) is not supported by WebRTC Audio DSP (it needs to be N x 10ms), switching to the closest supported value: 10ms.", (int)frameDuration / 1000);
                             }
                             frameDuration = OpusCodec.FrameDuration.Frame10ms;
+                            break;
+                    }
+                }
+                SamplingRate samplingRate = (SamplingRate)EditorGUILayout.EnumPopup(new GUIContent("Sampling Rate", "Outgoing audio stream sampling rate."), this.recorder.SamplingRate);
+                if (webRtcAudioDspAvailable)
+                {
+                    int samplingRateInt = (int) samplingRate;
+                    switch (samplingRate)
+                    {
+                        case SamplingRate.Sampling12000:
+                            if (this.recorder.SamplingRate == SamplingRate.Sampling16000)
+                            {
+                                Debug.LogWarningFormat("Sampling rate requested ({0}Hz) is not supported by WebRTC Audio DSP. Ignoring change.", samplingRateInt);
+                            }
+                            else
+                            {
+                                Debug.LogWarningFormat("Sampling rate requested ({0}Hz) is not supported by WebRTC Audio DSP, switching to the closest supported value: {1}Hz.", samplingRateInt, "16k");
+                            }
+                            samplingRate = SamplingRate.Sampling16000;
+                            break;
+                        case SamplingRate.Sampling24000:
+                            if (this.recorder.SamplingRate == SamplingRate.Sampling48000)
+                            {
+                                Debug.LogWarningFormat("Sampling rate requested ({0}Hz) is not supported by WebRTC Audio DSP. Ignoring change.", samplingRateInt);
+                            }
+                            else
+                            {
+                                Debug.LogWarningFormat("Sampling rate requested ({0}Hz) is not supported by WebRTC Audio DSP, switching to the closest supported value: {1}Hz.", samplingRateInt, "48k");
+                            }
+                            samplingRate = SamplingRate.Sampling48000;
                             break;
                     }
                 }
@@ -368,7 +385,7 @@ namespace Photon.Voice.Unity.Editor
                         throw new ArgumentOutOfRangeException();
                 }
                 EditorGUILayout.LabelField("Voice Activity Detection (VAD)", EditorStyles.boldLabel);
-                if (webRtcAudioDspAttached)
+                if (webRtcAudioDspAvailable)
                 {
                     if (webRtcAudioDsp.VAD)
                     {
@@ -382,7 +399,7 @@ namespace Photon.Voice.Unity.Editor
                 this.recorder.VoiceDetection = EditorGUILayout.Toggle(new GUIContent("Detect", "If true, voice detection enabled."), this.recorder.VoiceDetection);
                 if (this.recorder.VoiceDetection)
                 {
-                    if (webRtcAudioDspAttached && !webRtcAudioDsp.VAD && GUILayout.Button("Use WebRtcAudioDsp.VAD instead"))
+                    if (webRtcAudioDspAvailable && !webRtcAudioDsp.VAD && GUILayout.Button("Use WebRtcAudioDsp.VAD instead"))
                     {
                         this.recorder.VoiceDetection = false;
                         webRtcAudioDsp.VAD = true;
@@ -470,30 +487,37 @@ namespace Photon.Voice.Unity.Editor
                 EditorGUILayout.LabelField("Codec Parameters", EditorStyles.boldLabel);
                 EditorGUILayout.PropertyField(this.frameDurationSp,
                     new GUIContent("Frame Duration", "Outgoing audio stream encoder delay."));
+                if (webRtcAudioDspAvailable)
+                {
+                    OpusCodec.FrameDuration frameDuration = (OpusCodec.FrameDuration)Enum.GetValues(typeof(OpusCodec.FrameDuration)).GetValue(this.frameDurationSp.enumValueIndex);
+                    switch (frameDuration)
+                    {
+                        case OpusCodec.FrameDuration.Frame2dot5ms:
+                        case OpusCodec.FrameDuration.Frame5ms:
+                            string warningMessage = string.Format("Frame duration requested ({0}ms) is not supported by WebRTC Audio DSP (it needs to be N x 10ms), switching to the closest supported value: 10ms.", (int)frameDuration / 1000);
+                            EditorGUILayout.HelpBox(warningMessage, MessageType.Warning);
+                            break;
+                    }
+                }
                 EditorGUILayout.PropertyField(this.samplingRateSp,
                     new GUIContent("Sampling Rate", "Outgoing audio stream sampling rate."));
+                if (webRtcAudioDspAvailable)
+                {
+                    SamplingRate samplingRate = (SamplingRate)Enum.GetValues(typeof(SamplingRate)).GetValue(this.samplingRateSp.enumValueIndex);
+                    switch (samplingRate)
+                    {
+                        case SamplingRate.Sampling12000:
+                            string warningMessage = "Sampling rate requested (12kHz) is not supported by WebRTC Audio DSP. When recording starts, this will be automatically switched to the closest supported value: 16kHz.";
+                            EditorGUILayout.HelpBox(warningMessage, MessageType.Warning);
+                            break;
+                        case SamplingRate.Sampling24000:
+                            warningMessage = "Sampling rate requested (24kHz) is not supported by WebRTC Audio DSP. When recording starts, this will be automatically switched to the closest supported value: 48kHz.";
+                            EditorGUILayout.HelpBox(warningMessage, MessageType.Warning);
+                            break;
+                    }
+                }
                 EditorGUILayout.PropertyField(this.bitrateSp,
                     new GUIContent("Bitrate", "Outgoing audio stream bitrate."));
-                //if (webRtcAudioDspAttached)
-                //{
-                //    SamplingRate samplingRate = (SamplingRate)Enum.GetValues(typeof(SamplingRate)).GetValue(this.samplingRateSp.enumValueIndex);
-                //    if (Array.IndexOf(WebRTCAudioProcessor.SupportedSamplingRates, samplingRate) < 0)
-                //    {
-                //        Debug.LogWarningFormat("Sampling rate requested ({0}Hz) is not supported by WebRTC Audio DSP, switching to the closest supported value: {1}ms.", samplingRate, "48k");
-                //        this.samplingRateSp.enumValueIndex = 4;
-                //    }
-                //    OpusCodec.FrameDuration frameDuration = (OpusCodec.FrameDuration)Enum.GetValues(typeof(OpusCodec.FrameDuration)).GetValue(this.frameDurationSp.enumValueIndex);
-                //    switch (frameDuration)
-                //    {
-                //        case OpusCodec.FrameDuration.Frame2dot5ms:
-                //        case OpusCodec.FrameDuration.Frame5ms:
-                //            Debug.LogWarningFormat("Frame duration requested ({0}ms) is not supported by WebRTC Audio DSP (it needs to be N x 10ms), switching to the closest supported value: {1}Hz.", (int)frameDuration / 1000, 10);
-                //            this.frameDurationSp.enumValueIndex = 2;
-
-                //            break;
-                //    }
-                //}
-
                 EditorGUILayout.LabelField("Audio Source Settings", EditorStyles.boldLabel);
                 EditorGUILayout.PropertyField(this.sourceTypeSp,
                     new GUIContent("Input Source Type", "Input audio data source type"));
@@ -517,6 +541,7 @@ namespace Photon.Voice.Unity.Editor
                                     }
                                     else
                                     {
+                                        EditorGUILayout.HelpBox("Devices list and current selection is valid in Unity Editor only. In build, you need to set it via code preferably at runtime.", MessageType.Info);
                                         EditorGUILayout.BeginHorizontal();
                                         if (this.photonDeviceIndex >= this.photonDeviceNames.Length)
                                         {
@@ -607,22 +632,22 @@ namespace Photon.Voice.Unity.Editor
                         throw new ArgumentOutOfRangeException();
                 }
                 EditorGUILayout.LabelField("Voice Activity Detection (VAD)", EditorStyles.boldLabel);
-                if (webRtcAudioDspAttached)
+                if (webRtcAudioDspAvailable)
                 {
                     if (webRtcAudioDsp.VAD)
                     {
-                        EditorGUILayout.HelpBox("WebRtcAudioDsp.VAD is already enabled no need to use the built-in Recorder VAD", MessageType.Info);
+                        EditorGUILayout.HelpBox("WebRtcAudioDsp.VAD is already enabled no need to use the built-in Recorder VAD.", MessageType.Info);
                     }
                     else
                     {
-                        EditorGUILayout.HelpBox("It's recommended to use VAD from WebRtcAudioDsp instead of built-in Recorder VAD", MessageType.Info);
+                        EditorGUILayout.HelpBox("It's recommended to use VAD from WebRtcAudioDsp instead of built-in Recorder VAD.", MessageType.Info);
                     }
                 }
                 EditorGUILayout.PropertyField(this.voiceDetectionSp,
                     new GUIContent("Detect", "If true, voice detection enabled."));
                 if (this.voiceDetectionSp.boolValue)
                 {
-                    if (webRtcAudioDspAttached && !webRtcAudioDsp.VAD && GUILayout.Button("Use WebRtcAudioDsp.VAD instead"))
+                    if (webRtcAudioDspAvailable && !webRtcAudioDsp.VAD && GUILayout.Button("Use WebRtcAudioDsp.VAD instead"))
                     {
                         this.recorder.VoiceDetection = false;
                         webRtcAudioDsp.VAD = true;
@@ -636,9 +661,16 @@ namespace Photon.Voice.Unity.Editor
             }
 
             #if WEBRTC_AUDIO_DSP_SUPPORTED_PLATFORMS
-            if (!webRtcAudioDspAttached)
+            if (!webRtcAudioDspAvailable)
             {
-                if (GUILayout.Button("Add WebRtcAudioDsp component"))
+                if (webRtcAudioDspAttached)
+                {
+                    if (GUILayout.Button("Enabled WebRtcAudioDsp component"))
+                    {
+                        webRtcAudioDsp.enabled = true;
+                    }
+                }
+                else if (GUILayout.Button("Add WebRtcAudioDsp component"))
                 {
                     this.recorder.gameObject.AddComponent<WebRtcAudioDsp>();
                 }
