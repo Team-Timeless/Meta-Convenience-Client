@@ -1126,7 +1126,7 @@ namespace Photon.Voice.Unity
                         #elif PHOTON_MICROPHONE_WSA
                         this.PhotonMicrophoneDeviceIdString = value.IDString;
                         #else
-                        this.PhotonMicrophoneDeviceId = value.IDInt;
+                        this.PhotonMicrophoneDeviceId = value.IsDefault ? -1 : value.IDInt;
                         #endif
                         break;
                     }
@@ -1144,11 +1144,19 @@ namespace Photon.Voice.Unity
         /// <param name="connection">The VoiceConnection to be used with this Recorder.</param>
         public void Init(VoiceConnection connection)
         {
-            if (connection == null)
+            if (ReferenceEquals(null, connection))
             {
                 if (this.Logger.IsErrorEnabled)
                 {
                     this.Logger.LogError("voiceConnection is null.");
+                }
+                return;
+            }
+            if (!connection)
+            {
+                if (this.Logger.IsErrorEnabled)
+                {
+                    this.Logger.LogError("voiceConnection is destroyed.");
                 }
                 return;
             }
@@ -1633,7 +1641,7 @@ namespace Photon.Voice.Unity
                     break;
                 case InputSourceType.AudioClip:
                 {
-                    if (this.AudioClip == null)
+                    if (ReferenceEquals(null, this.AudioClip))
                     {
                         if (this.Logger.IsErrorEnabled)
                         {
@@ -1692,7 +1700,7 @@ namespace Photon.Voice.Unity
             }
             AudioSampleType audioSampleType = AudioSampleType.Source;
             WebRtcAudioDsp dsp = this.GetComponent<WebRtcAudioDsp>();
-            if (dsp != null && dsp.enabled)
+            if (!ReferenceEquals(null, dsp) && dsp && dsp.enabled)
             {
                 audioSampleType = AudioSampleType.Short;
                 if (this.Logger.IsInfoEnabled)
@@ -1700,20 +1708,22 @@ namespace Photon.Voice.Unity
                     this.Logger.LogInfo("Type Conversion set to Short. Audio samples will be converted if source samples types differ.");
                 }
                 samplingRateInt = (int) effectiveSamplingRate;
-                if (Array.IndexOf(WebRTCAudioProcessor.SupportedSamplingRates, samplingRateInt) < 0)
+                switch (effectiveSamplingRate)
                 {
-                    switch (effectiveSamplingRate)
-                    {
-                        case SamplingRate.Sampling12000:
-                        case SamplingRate.Sampling24000:
-                            effectiveSamplingRate = SamplingRate.Sampling48000;
-                            break;
-                    }
-                    if (this.Logger.IsWarningEnabled)
-                    {
-                        this.Logger.LogWarning("Sampling rate requested ({0}Hz) is not supported by WebRTC Audio DSP, switching to the closest supported value: {1}Hz.", samplingRateInt, (int)effectiveSamplingRate);
-                    }
-                    this.SamplingRate = SamplingRate.Sampling48000;
+                    case SamplingRate.Sampling12000:
+                        if (this.Logger.IsWarningEnabled)
+                        {
+                            this.Logger.LogWarning("Sampling rate requested (12kHz) is not supported by WebRTC Audio DSP, switching to the closest supported value: 16kHz.");
+                        }
+                        effectiveSamplingRate = SamplingRate.Sampling16000;
+                        break;
+                    case SamplingRate.Sampling24000:
+                        if (this.Logger.IsWarningEnabled)
+                        {
+                            this.Logger.LogWarning("Sampling rate requested (24kHz) is not supported by WebRTC Audio DSP, switching to the closest supported value: 48kHz.");
+                        }
+                        effectiveSamplingRate = SamplingRate.Sampling48000;
+                        break;
                 }
                 switch (this.FrameDuration)
                 {
@@ -1721,12 +1731,13 @@ namespace Photon.Voice.Unity
                     case OpusCodec.FrameDuration.Frame5ms:
                         if (this.Logger.IsWarningEnabled)
                         {
-                            this.Logger.LogWarning("Frame duration requested ({0}ms) is not supported by WebRTC Audio DSP (it needs to be N x 10ms), switching to the closest supported value: {1}Hz.", (int)this.FrameDuration / 1000, 10);
+                            this.Logger.LogWarning("Frame duration requested ({0}ms) is not supported by WebRTC Audio DSP (it needs to be N x 10ms), switching to the closest supported value: 10ms.", (int)this.FrameDuration / 1000);
                         }
                         this.FrameDuration = OpusCodec.FrameDuration.Frame10ms;
                         break;
                 }
             }
+            this.samplingRate = effectiveSamplingRate;
             VoiceInfo voiceInfo = VoiceInfo.CreateAudioOpus(effectiveSamplingRate, this.inputSource.Channels, this.FrameDuration, this.Bitrate, this.UserData);
             return this.client.CreateLocalVoiceAudioFromSource(voiceInfo, this.inputSource, audioSampleType);
         }
@@ -2048,7 +2059,7 @@ namespace Photon.Voice.Unity
             #endif
         }
         
-        private bool CheckIfMicrophoneIdIsValid(IDeviceEnumerator audioInEnumerator, int id)
+        public static bool CheckIfMicrophoneIdIsValid(IDeviceEnumerator audioInEnumerator, int id)
         {
             if (id == -1) // default
             {
@@ -2069,7 +2080,7 @@ namespace Photon.Voice.Unity
 
         private bool IsValidPhotonMic(int id)
         {
-            return this.CheckIfMicrophoneIdIsValid(this.GetMicrophonesEnumerator(MicType.Photon), id);
+            return CheckIfMicrophoneIdIsValid(this.GetMicrophonesEnumerator(MicType.Photon), id);
         }
 
         #if PHOTON_MICROPHONE_WSA
@@ -2370,7 +2381,7 @@ namespace Photon.Voice.Unity
                     this.Logger.LogDebug("Auto start check failure: recorder not enabled and this is required.");
                 }
             }
-            if (this.recordOnlyWhenJoined && (this.voiceConnection == null || this.voiceConnection.Client == null || !this.voiceConnection.Client.InRoom))
+            if (this.recordOnlyWhenJoined && (ReferenceEquals(null, this.voiceConnection) || !this.voiceConnection || this.voiceConnection.Client == null || !this.voiceConnection.Client.InRoom))
             {
                 canAutoStart = false;
                 if (this.Logger.IsDebugEnabled)
@@ -2378,7 +2389,7 @@ namespace Photon.Voice.Unity
                     this.Logger.LogDebug("Auto start check failure: voice client not joined to a room yet and this is required.");
                 }
             }
-            if (!this.CheckIfThereIsAtLeastOneMic())
+            if (this.SourceType == InputSourceType.Microphone && !this.CheckIfThereIsAtLeastOneMic())
             {
                 canAutoStart = false;
                 if (this.Logger.IsDebugEnabled)

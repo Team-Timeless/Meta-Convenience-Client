@@ -1,5 +1,24 @@
 Photon Voice 2 Change Log
 
+v2.31 (March 22nd, 2022)
+   PUN2: v2.40 (14f52ea) [RT/lib:4.1.6.11]
+   PhotonVoiceApi: revision 6358
+   ADDED: Photon Fusion integration scripts (the old GitHub repo for the integration will be archived).
+   FIXED: CheckIfThereIsAtLeastOneMic should be used only if Recorder.SourceType is Microphone.
+   CHANGED: if SpeakerPrefab fails, try AutoCreateSpeakerIfNotFound if enabled.
+   CHANGED: VoiceConnection.SpeakerPrefab will be accepted if Speaker component is disabled.
+   CHANGED: Recorder.CheckIfMicrophoneIdIsValid is now public static.
+   CHANGED: AudioSource is no longer a required component for the Speaker in PHOTON_VOICE_FMOD_ENABLE context.
+   CHANGED: UnityEngine.Object null ref. & destroy checks.
+   CHANGED: Recorder will always set PhotonMicrophoneDeviceId to -1 if default MicrophoneDevice is set and Photon microphone type is used.
+   CHANGED: Recorder will always override requested sampling rate w/ effective one (if changed).
+   CHANGED: [WebRtcAudioDsp] effective Recorder.SamplingRate choice when requested value is incompatible w/ WebRtcAudioDsp (now 12kHz -> 16kHz, before it was 12kHz -> 48kHz).
+   ADDED: [Editor/WebRtcAudioDsp] in edit mode, warning dialog box shown when requested SamplingRate is incompatible w/ WebRtcAudioDsp.
+   CHANGED: [Editor/WebRtcAudioDsp] handling WebRtcAudioDsp disabled vs. not attached in Recorder custom Editor.
+   CHANGED: [Editor] microphone device selection info dialog box always displayed when dropdown is available.
+   CHANGED: [Editor] minor, AudioChangesHandler script component icon set to Photon Voice icon.
+   CHANGED: minor, AudioChangesHandler open brackets code format to be consistent w/ overall code style guidelines.
+
 v2.30 (March 16th, 2022)
    PUN2: v2.40 (14f52ea) [RT/lib:4.1.6.11]
    PhotonVoiceApi: revision 6358

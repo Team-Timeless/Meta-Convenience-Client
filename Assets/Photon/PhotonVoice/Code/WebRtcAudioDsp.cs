@@ -834,7 +834,7 @@ namespace Photon.Voice.Unity
                 }
                 return false;
             }
-            if (this.audioListener == null)
+            if (ReferenceEquals(null, this.audioListener))
             {
                 AudioOutCapture[] audioOutCaptures = FindObjectsOfType<AudioOutCapture>();
                 if (audioOutCaptures.Length > 1)

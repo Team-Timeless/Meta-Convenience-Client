@@ -16,7 +16,9 @@ using UnityEngine;
 namespace Photon.Voice.Unity
 {
     /// <summary> Component representing remote audio stream in local scene. </summary>
+    #if !PHOTON_VOICE_FMOD_ENABLE
     [RequireComponent(typeof(AudioSource))]
+    #endif
     [AddComponentMenu("Photon Voice/Speaker")]
     [DisallowMultipleComponent]
     public class Speaker : VoiceComponent
