@@ -45,7 +45,15 @@ public class NetworkMng : MonoBehaviourPunCallbacks
      */
     public override void OnJoinedRoom()
     {
+        StartCoroutine(this.CreatePlayer());
         Debug.Log("Joined room");
+    }
+
+    IEnumerator CreatePlayer()
+    {
+        PhotonNetwork.Instantiate("Player", new Vector3(0, 2, 0), Quaternion.identity, 0);
+
+        yield return null;
     }
 
     private void OnGUI()
