@@ -6,6 +6,7 @@ using Photon.Realtime;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]
     private PhotonView photonview = null;
 
     [SerializeField]
@@ -13,14 +14,22 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float camYspeed = 3.0f;
 
-    private float limitMinX = -80.0f;
+    // 카메라, 캐릭터 회전 최소값 최대값
+    [SerializeField]
+    private float limitMinX = -30.0f;
+    [SerializeField]
     private float limitMaxX = 50;
 
+    // 카메라, 캐릭터 회전 각도
     private float eulerAngleX = 0.0f;
     private float eulerAngleY = 0.0f;
 
+    // Player 이동속도, 점프
     private float playerSpeed = 5.0f;
     private float playerJumpForce = 7.0f;
+
+    // Player 물리, 이동 Vec
+    [SerializeField]
     private Rigidbody rigid = null;
     private Vector3 vec = Vector3.zero;
 
@@ -33,28 +42,16 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        photonview = GetComponent<PhotonView>();
-        rigid = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (photonview.IsMine)
         {
-            Camera.main.transform.position = transform.position;
             UpdateRotate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-        }
-
-    }
-
-    void FixedUpdate()
-    {
-        if (photonview.IsMine)
-        {
             PlayerMove(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            PlayerJump();
+            Camera.main.transform.position = transform.position;
         }
     }
 
@@ -87,7 +84,7 @@ public class Player : MonoBehaviour
     }
 
     /**
-     * @brief 사용자 이동
+     * @brief 사용자 이동, 점프
      * @param float moveX 키보드 A, D 입력으로 좌우 이동
      * @param float moveZ 키보드 W, S 입력으로 앞뒤 이동
      */
@@ -99,17 +96,10 @@ public class Player : MonoBehaviour
         vec.Normalize(); // 균일한 이동 위해서 정규화
 
         transform.position += vec * playerSpeed * Time.deltaTime;
-    }
 
-    /**
-     * @brief 사용자 점프
-     */
-    void PlayerJump()
-    {
-        if(Input.GetButtonDown("Jump")) // space 입력으로 점프
+        if (Input.GetButtonDown("Jump")) // space 입력으로 점프
         {
             rigid.AddForce(Vector3.up * playerJumpForce, ForceMode.Impulse);
         }
     }
-
 }
