@@ -44,7 +44,6 @@ public class Player : MonoBehaviour
         if (photonview.IsMine)
         {
             Camera.main.transform.position = transform.position;
-            Camera.main.transform.rotation = Quaternion.Euler(eulerAngleX, eulerAngleY, 0);
             UpdateRotate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         }
 
@@ -71,6 +70,7 @@ public class Player : MonoBehaviour
 
         eulerAngleX = ClampAngle(eulerAngleX, limitMinX, limitMaxX);
         transform.rotation = Quaternion.Euler(eulerAngleX, eulerAngleY, 0);
+        Camera.main.transform.rotation = transform.rotation;
     }
 
     /**
@@ -88,10 +88,11 @@ public class Player : MonoBehaviour
 
     /**
      * @brief 사용자 이동
+     * @param float moveX 키보드 A, D 입력으로 좌우 이동
+     * @param float moveZ 키보드 W, S 입력으로 앞뒤 이동
      */
     void PlayerMove(float moveX, float moveZ)
     {
-
         vec = Vector3.right * moveX + Vector3.forward * moveZ;
 
         vec = Camera.main.transform.TransformDirection(vec); // 카메라가 보고 있는 방향으로 앞 방향 변경
