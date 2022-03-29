@@ -21,7 +21,8 @@ public class Player : MonoBehaviour
 
     private float playerSpeed = 5.0f;
     private float playerJumpForce = 7.0f;
-    private Rigidbody rigid;
+    private Rigidbody rigid = null;
+    private Vector3 vec = Vector3.zero;
 
     private void Awake()
     {
@@ -43,8 +44,8 @@ public class Player : MonoBehaviour
         if (photonview.IsMine)
         {
             Camera.main.transform.position = transform.position;
-            UpdateRotate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
             Camera.main.transform.rotation = Quaternion.Euler(eulerAngleX, eulerAngleY, 0);
+            UpdateRotate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         }
 
     }
@@ -53,7 +54,7 @@ public class Player : MonoBehaviour
     {
         if (photonview.IsMine)
         {
-            PlayerMove();
+            PlayerMove(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             PlayerJump();
         }
     }
@@ -88,12 +89,10 @@ public class Player : MonoBehaviour
     /**
      * @brief 사용자 이동
      */
-    void PlayerMove()
+    void PlayerMove(float moveX, float moveZ)
     {
-        float moveX = Input.GetAxis("Horizontal"); // 키보드 A, D 입력으로 좌우 이동
-        float moveZ = Input.GetAxis("Vertical"); // 키보드 W, S 입력으로 앞뒤 이동
 
-        Vector3 vec = Vector3.right * moveX + Vector3.forward * moveZ;
+        vec = Vector3.right * moveX + Vector3.forward * moveZ;
 
         vec = Camera.main.transform.TransformDirection(vec); // 카메라가 보고 있는 방향으로 앞 방향 변경
         vec.Normalize(); // 균일한 이동 위해서 정규화
