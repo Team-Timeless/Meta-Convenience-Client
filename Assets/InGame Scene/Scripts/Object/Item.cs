@@ -23,7 +23,8 @@ public class Item : Object
 
     public string getInfo
     {
-        get{
+        get
+        {
             return _info;
         }
     }
