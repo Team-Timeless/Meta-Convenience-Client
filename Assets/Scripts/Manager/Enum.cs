@@ -1,7 +1,11 @@
 // 선반 object
 public enum SHELF_OBJECT
 {
-
+    TEST = 0,
+    TEST1,
+    TEST2,
+    TEST3,
+    TEST4
 }
 
 // 음료수

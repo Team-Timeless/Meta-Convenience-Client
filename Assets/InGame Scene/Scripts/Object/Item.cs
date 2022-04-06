@@ -4,10 +4,22 @@ using UnityEngine;
 
 public class Item : Object
 {
+    [SerializeField]
     protected string _desc = "";        // object 설명
+
+    [SerializeField]
     protected string _info = "";        // 영양 정보
+
+    [SerializeField]
+    protected int _price = 0;
+
+    [SerializeField]
     protected bool _isSall = false;     // 팔수 있는지 없는지(재고관리)
+
+    [SerializeField]
     protected float _width = 0.0f;      // 물체의 가로길이
+
+    [SerializeField]
     protected float _height = 0.0f;     // 물체의 세로길이
 
     [SerializeField]
@@ -29,6 +41,14 @@ public class Item : Object
         }
     }
     
+    public int getPrice
+    {
+        get
+        {
+            return _price;
+        }
+    }
+
     public bool getIsSall
     {
         get
