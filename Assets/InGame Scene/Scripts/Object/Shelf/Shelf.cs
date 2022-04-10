@@ -48,6 +48,10 @@ public class Shelf : MonoBehaviour
                     widthcount = Convert.ToInt32(panel.getWidth * 2 / tempItem.getWidth);
                     heightcount = Convert.ToInt32(panel.getHeight * 2 / tempItem.getHeight);
                 }
+                if(!j.Equals(0))
+                {
+                    tempItem.boxcollider.enabled = false;
+                }
                 tempItem.transform.localPosition = new Vector3(panel.getWidth - tempItem.getWidth * i, 0.003f, panel.getHeight - tempItem.getHeight * j);
                 tempItem.transform.SetParent(panel.transform, false);
             }
