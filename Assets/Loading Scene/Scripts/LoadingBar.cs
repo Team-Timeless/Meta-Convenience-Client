@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LoadingBar : MonoBehaviour 
+public class LoadingBar : MonoBehaviour
 {
     public static string nextScene;
 
@@ -24,7 +24,7 @@ public class LoadingBar : MonoBehaviour
     public static void LoadScene(string sceneName)
     {
         nextScene = sceneName;
-        SceneManager.LoadScene("LoadingScene");
+        SceneManager.LoadScene("Loading Scene");
     }
 
     /**
@@ -36,23 +36,20 @@ public class LoadingBar : MonoBehaviour
         op.allowSceneActivation = false;
         float timer = 0.0f;
 
-        while(!op.isDone)
+        while (!op.isDone)
         {
             yield return null;
-            timer += Time.deltaTime;
 
-            if(op.progress < 0.9f)
+            if (op.progress < 0.9f)
             {
-                loadingBar.fillAmount = Mathf.Lerp(loadingBar.fillAmount, op.progress, timer);
-                if (loadingBar.fillAmount >= op.progress)
-                {
-                    timer = 0.0f;
-                }
+                loadingBar.fillAmount = op.progress;
             }
             else
             {
-                loadingBar.fillAmount = Mathf.Lerp(loadingBar.fillAmount, 1.0f, timer);
-                if(loadingBar.fillAmount == 1.0f)
+                NetworkMng.I.ConnectToServer();
+                timer += Time.unscaledDeltaTime;
+                loadingBar.fillAmount = Mathf.Lerp(0.9f, 1.0f, timer);
+                if (loadingBar.fillAmount >= 1.0f)
                 {
                     op.allowSceneActivation = true;
                     yield break;

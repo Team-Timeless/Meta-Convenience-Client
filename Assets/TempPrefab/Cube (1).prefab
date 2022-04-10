@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 974080273044989682}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,3 +118,4 @@ MonoBehaviour:
   _width: 0
   _height: 0
   _itemActive: 0
+  boxcollider: {fileID: 2202806441484547050}

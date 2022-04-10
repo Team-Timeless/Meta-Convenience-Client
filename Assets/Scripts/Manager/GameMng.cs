@@ -8,6 +8,8 @@ public class GameMng : MonoBehaviour
 
     private static GameMng _Instance;
 
+    public UnityEngine.UI.Image holdimg = null;
+
     public static GameMng I
     {
         get
@@ -35,7 +37,6 @@ public class GameMng : MonoBehaviour
             return hit.collider.gameObject;
         else
         {
-            Debug.DrawRay(startTrans.position, startTrans.forward * 15.0f, Color.red);
             return null;
         }
     }
