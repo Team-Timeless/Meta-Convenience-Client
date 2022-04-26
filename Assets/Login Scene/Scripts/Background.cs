@@ -158,19 +158,21 @@ public class Background : MonoBehaviour
      */
     void setIinputField()
     {
-        if (NetworkMng.I.inputfildId.isFocused)
+        void clear(UnityEngine.UI.InputField field)
         {
             sb.Clear();
             keybord.SetActive(true);
             if (input.Count != 0) { input.RemoveAt(0); }
-            input.Add(NetworkMng.I.inputfildId);
+            input.Add(field);
+        }
+
+        if (NetworkMng.I.inputfildId.isFocused)
+        {
+            clear(NetworkMng.I.inputfildId);
         }
         else if (NetworkMng.I.inputfildPwd.isFocused)
         {
-            sb.Clear();
-            keybord.SetActive(true);
-            if (input.Count != 0) { input.RemoveAt(0); }
-            input.Add(NetworkMng.I.inputfildPwd);
+            clear(NetworkMng.I.inputfildId);
         }
     }
 }
