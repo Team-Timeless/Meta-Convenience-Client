@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LitJson;
 
 public class Item : Object
 {
@@ -84,6 +85,31 @@ public class Item : Object
         set
         {
             _itemActive = value;
+        }
+    }
+
+    /**
+     * @brief json(아이템 데이터 파일) 로드 & 아이템 값 초기화
+     * @param int code 각각 아이템 코드
+     */
+    protected void LoadJsonData(int code)
+    {
+        object jsonStr = Resources.Load("itemdata");
+
+        JsonData jsondate = JsonMapper.ToObject(jsonStr.ToString());
+
+        // 나중에 이진탐색 적용
+        for (int i = 0; i < jsondate.Count; i++)
+        {
+            if (int.Parse(jsondate[i]["code"].ToString()) == code)
+            {
+                _name = jsondate[i]["name"].ToString();
+                _desc = jsondate[i]["desc"].ToString();
+                _isSall = bool.Parse(jsondate[i]["isSall"].ToString());
+                _width = float.Parse(jsondate[i]["width"].ToString());
+                _height = float.Parse(jsondate[i]["height"].ToString());
+                break;
+            }
         }
     }
 }

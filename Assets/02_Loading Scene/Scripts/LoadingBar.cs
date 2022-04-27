@@ -46,11 +46,11 @@ public class LoadingBar : MonoBehaviour
             }
             else
             {
-                NetworkMng.I.ConnectToServer();
                 timer += Time.unscaledDeltaTime;
                 loadingBar.fillAmount = Mathf.Lerp(0.9f, 1.0f, timer);
                 if (loadingBar.fillAmount >= 1.0f)
                 {
+                    NetworkMng.I.ConnectToServer();
                     op.allowSceneActivation = true;
                     yield break;
                 }
