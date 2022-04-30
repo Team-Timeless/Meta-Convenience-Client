@@ -26,6 +26,12 @@ public class Item : Object
     [SerializeField]
     protected ITEM_ACTIVE _itemActive;      // 아이템 클릭 상태
 
+    [SerializeField]
+    protected List<string> _tags = new List<string>();
+
+    [SerializeField]
+    protected Vector3 _firstPos = Vector3.zero;
+
     public BoxCollider boxcollider = null;
 
     public string getDesc
@@ -88,6 +94,8 @@ public class Item : Object
         }
     }
 
+    public Vector3 setPos() => this._firstPos = this.transform.localPosition; 
+
     /**
      * @brief json(아이템 데이터 파일) 로드 & 아이템 값 초기화
      * @param int code 각각 아이템 코드
@@ -102,12 +110,16 @@ public class Item : Object
         for (int i = 0; i < jsondate.Count; i++)
         {
             if (int.Parse(jsondate[i]["code"].ToString()) == code)
-            {
+            {    
                 _name = jsondate[i]["name"].ToString();
                 _desc = jsondate[i]["desc"].ToString();
                 _isSall = bool.Parse(jsondate[i]["isSall"].ToString());
                 _width = float.Parse(jsondate[i]["width"].ToString());
                 _height = float.Parse(jsondate[i]["height"].ToString());
+                foreach(var tags in jsondate[i]["tags"])
+                {
+                    _tags.Add(tags.ToString());
+                }
                 break;
             }
         }

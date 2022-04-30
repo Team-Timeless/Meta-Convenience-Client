@@ -14,4 +14,14 @@ public class Shelf_ItemInfo : Item
         LoadJsonData((int)en);
         _itemActive = ITEM_ACTIVE.NONE;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Map"))
+        {
+            this.transform.localPosition = _firstPos;
+            this.transform.rotation = Quaternion.identity;
+            Destroy(this.gameObject.GetComponent<Rigidbody>());     // 나는 모르겠다...
+        }
+    }
 }

@@ -5,7 +5,8 @@
         "desc": "asdfa0000",
         "isSall": "true",
         "width": 0.015,
-        "height": 0.015
+        "height": 0.015,
+        "tags":["test", "test1"]
     },
     {
         "code": 1,
@@ -13,7 +14,8 @@
         "desc": "asdfas1111",
         "isSall": "true",
         "width": 0.006,
-        "height": 0.006
+        "height": 0.006,
+        "tags":["test1", "test2"]
     },
     {
         "code": 2,
@@ -21,7 +23,8 @@
         "desc": "asdf2222",
         "isSall": "true",
         "width": 0.003,
-        "height": 0.003
+        "height": 0.003,
+        "tags":["test2", "test3"]
     },
     {
         "code": 3,
@@ -29,7 +32,8 @@
         "desc": "asdf333",
         "isSall": "true",
         "width": 0.01,
-        "height": 0.01
+        "height": 0.01,
+        "tags":["test3", "test14"]
     },
     {
         "code": 4,
@@ -37,6 +41,7 @@
         "desc": "asdf4444",
         "isSall": "true",
         "width": 0.012,
-        "height": 0.012
+        "height": 0.012,
+        "tags":["test4", "test5"]
     }
 ]
