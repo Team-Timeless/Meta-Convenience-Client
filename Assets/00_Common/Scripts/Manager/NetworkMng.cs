@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.Networking;
 using Photon.Realtime;
 
 public class NetworkMng : MonoBehaviourPunCallbacks
 {
     [SerializeField]
-    UnityEngine.UI.InputField inputfildId = null;
+    public UnityEngine.UI.InputField inputfildId = null;
     [SerializeField]
-    UnityEngine.UI.InputField inputfildPwd = null;
-
-    [SerializeField]
-    private GameObject uigame = null;
+    public UnityEngine.UI.InputField inputfildPwd = null;
 
     public string nickname = "";
 

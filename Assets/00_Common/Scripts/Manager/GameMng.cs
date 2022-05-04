@@ -24,6 +24,7 @@ public class GameMng : MonoBehaviour
 
     void Awake()
     {
+        NetworkMng.I.ConnectToServer();
         _Instance = this;
     }
 

@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
-public class Test : Item
+public class Fridge_ItemInfo : Item
 {
+    // 임시용
+    [SerializeField]
+    FREEZER_OBEJCT en;
+
     private void Awake()
     {
-        _name = "테스트";
-        _desc = "테스트 내용";
-        _isSall = true;
-        _width = 0.006f;
-        _height = 0.006f;
+        LoadJsonData((int)en);
         _itemActive = ITEM_ACTIVE.NONE;
     }
 }

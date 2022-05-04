@@ -138,6 +138,7 @@ public class Player : MonoBehaviour
             {
                 if (item && item.CompareTag("item") && item.itemActive == ITEM_ACTIVE.NONE)
                 {
+                    item.setPos();
                     if (!item.gameObject.GetComponent<Rigidbody>())
                     {
                         item.gameObject.AddComponent<Rigidbody>(); 
