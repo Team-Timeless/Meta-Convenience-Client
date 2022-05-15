@@ -50,7 +50,7 @@ public class LoadingBar : MonoBehaviour
                 loadingBar.fillAmount = Mathf.Lerp(0.9f, 1.0f, timer);
                 if (loadingBar.fillAmount >= 1.0f)
                 {
-                    NetworkMng.I.ConnectToServer();
+                    // NetworkMng.I.ConnectToServer();
                     op.allowSceneActivation = true;
                     yield break;
                 }

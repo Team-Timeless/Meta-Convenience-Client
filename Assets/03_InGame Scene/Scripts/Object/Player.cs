@@ -40,8 +40,8 @@ public class Player : MonoBehaviour
     private bool isTouch = false;
     private float touchTime = 0.0f;
 
+    [SerializeField]
     private Item item = null;
-
 
     private void Awake()
     {
@@ -122,9 +122,12 @@ public class Player : MonoBehaviour
             {
                 item = GameMng.I.getRayCastGameObject(this.transform).GetComponent<Item>();
             }
+            else
+            {
+                item = null;
+            }
             isTouch = true;
             // TODO : UI ÄÑÁÖ±â
-            Debug.Log("click");
         }
 
         if (Input.GetMouseButton(0))
@@ -141,7 +144,7 @@ public class Player : MonoBehaviour
                     item.setPos();
                     if (!item.gameObject.GetComponent<Rigidbody>())
                     {
-                        item.gameObject.AddComponent<Rigidbody>(); 
+                        item.gameObject.AddComponent<Rigidbody>();
                     }
                     item.GetComponent<Item>().itemActive = ITEM_ACTIVE.HOLD;
                 }
@@ -150,13 +153,21 @@ public class Player : MonoBehaviour
                 Debug.Log("hold");
             }
         }
-        if(item && item.itemActive == ITEM_ACTIVE.HOLD)
+        if (item && item.itemActive == ITEM_ACTIVE.HOLD)
         {
             item.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1.0f);
         }
 
         if (Input.GetMouseButtonUp(0))
         {
+            if (item && touchTime < 1f)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                GameMng.I.itemDetails._gameobject.SetActive(true);
+                GameMng.I.itemDetails._itemname = item.getName;
+                GameMng.I.itemDetails._itemcost = item.getPrice.ToString();
+                GameMng.I.itemDetails._itemdetails = item.getDesc;
+            }
             GameMng.I.holdimg.fillAmount = 0f;
             if (item)
                 item.itemActive = ITEM_ACTIVE.NONE;

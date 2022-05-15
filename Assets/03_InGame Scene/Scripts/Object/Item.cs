@@ -110,9 +110,11 @@ public class Item : Object
         for (int i = 0; i < jsondate.Count; i++)
         {
             if (int.Parse(jsondate[i]["code"].ToString()) == code)
-            {    
+            {   
+                _code = int.Parse(jsondate[i]["code"].ToString());
                 _name = jsondate[i]["name"].ToString();
                 _desc = jsondate[i]["desc"].ToString();
+                _price = int.Parse(jsondate[i]["price"].ToString());
                 _isSall = bool.Parse(jsondate[i]["isSall"].ToString());
                 _width = float.Parse(jsondate[i]["width"].ToString());
                 _height = float.Parse(jsondate[i]["height"].ToString());

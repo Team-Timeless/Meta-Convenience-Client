@@ -9,6 +9,8 @@ public class GameMng : MonoBehaviour
     private static GameMng _Instance;
 
     public UnityEngine.UI.Image holdimg = null;
+    
+    public ItemDetails itemDetails = null;
 
     public static GameMng I
     {
