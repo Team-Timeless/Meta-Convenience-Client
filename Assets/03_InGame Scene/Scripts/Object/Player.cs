@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !isTouch)
         {
-            if (GameMng.I.getRayCastGameObject(this.transform))
+            if (GameMng.I.getRayCastGameObject(this.transform) && !GameMng.I.itemDetails.gameObject.active)
             {
                 item = GameMng.I.getRayCastGameObject(this.transform).GetComponent<Item>();
             }
@@ -139,14 +139,16 @@ public class Player : MonoBehaviour
             }
             if (touchTime > 1f)
             {
-                if (item && item.CompareTag("item") && item.itemActive == ITEM_ACTIVE.NONE)
+                if (item && item.CompareTag("item") && item.itemActive.Equals(ITEM_ACTIVE.NONE))
                 {
-                    item.setPos();
                     if (!item.gameObject.GetComponent<Rigidbody>())
                     {
                         item.gameObject.AddComponent<Rigidbody>();
                     }
                     item.GetComponent<Item>().itemActive = ITEM_ACTIVE.HOLD;
+
+                    if(!GameMng.I.basket.ContainsKey(item.name))
+                        GameMng.I.basket.Add(item.name, item);
                 }
                 // TODO : 아이템 생성
                 // 0.5 초간 누르고있을때
@@ -169,8 +171,10 @@ public class Player : MonoBehaviour
                 GameMng.I.itemDetails._itemdetails = item.getDesc;
             }
             GameMng.I.holdimg.fillAmount = 0f;
+
             if (item)
                 item.itemActive = ITEM_ACTIVE.NONE;
+
             isTouch = false;
             touchTime = 0.0f;
         }

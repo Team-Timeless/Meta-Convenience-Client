@@ -19,9 +19,9 @@ public class Background : MonoBehaviour
     [SerializeField]
     private float minAlpha = 0.25f;     // 알파값 최소값
 
-    // ---- 키보드 UI (나중에 vr 예외 처리 하기)
+    // ---- 키보드 부분 (나중에 vr 예외 처리 하기)
     [SerializeField]
-    private StringBuilder sb = new StringBuilder();
+    private StringBuilder inputString = new StringBuilder();
 
     static private bool isShift = false;
 
@@ -95,8 +95,8 @@ public class Background : MonoBehaviour
      */
     public void keyclick(UnityEngine.UI.Button button)
     {
-        sb.Append(button.name);
-        input[0].text = sb.ToString();
+        inputString.Append(button.name);
+        input[0].text = inputString.ToString();
     }
 
     /**
@@ -123,8 +123,8 @@ public class Background : MonoBehaviour
      */
     public void backSpace()
     {
-        if(sb.Length > 0) { sb.Length--; }
-        input[0].text = sb.ToString();
+        if(inputString.Length > 0) { inputString.Length--; }
+        input[0].text = inputString.ToString();
     }
 
     /**
@@ -140,8 +140,8 @@ public class Background : MonoBehaviour
      */
     public void Space()
     {
-        sb.Append(" ");
-        input[0].text = sb.ToString();
+        inputString.Append(" ");
+        input[0].text = inputString.ToString();
     }
 
     /**
@@ -160,7 +160,7 @@ public class Background : MonoBehaviour
     {
         void clear(UnityEngine.UI.InputField field)
         {
-            sb.Clear();
+            inputString.Clear();
             keybord.SetActive(true);
             if (input.Count != 0) { input.RemoveAt(0); }
             input.Add(field);

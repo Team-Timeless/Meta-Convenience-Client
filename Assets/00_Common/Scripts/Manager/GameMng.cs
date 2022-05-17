@@ -12,6 +12,9 @@ public class GameMng : MonoBehaviour
     
     public ItemDetails itemDetails = null;
 
+    public Dictionary<string, Item> basket = new Dictionary<string, Item>();
+
+    public int result = 0;
     public static GameMng I
     {
         get
@@ -28,6 +31,19 @@ public class GameMng : MonoBehaviour
     {
         NetworkMng.I.ConnectToServer();
         _Instance = this;
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Q))     // <! 장바구니 가격 계산
+        {
+            result = 0;
+            foreach(var items in basket)
+            {
+                result += items.Value.getPrice;
+            }
+            Debug.Log(result);
+        }
     }
 
     /**
