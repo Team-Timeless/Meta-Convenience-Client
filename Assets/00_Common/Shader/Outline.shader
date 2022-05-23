@@ -1,124 +1,115 @@
-Shader "Custom/Outline"
-{
-	Properties
-	{
-		_Color("Main Color", Color) = (1,1,1,1)
-		_MainTex("Main Texture", 2D) = "white" {}
-		_Outline("Outline", Float) = 0.1
-		_OutlineColor("Outline Color", Color) = (1,1,1,1)
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Outlined/Custom" {
+	Properties {
+		_Color ("Main Color", Color) = (.5,.5,.5,1)
+		_OutlineColor ("Outline Color", Color) = (0,0,0,1)
+		_Outline ("Outline width", Range (0, 1)) = .1
+		_MainTex ("Base (RGB)", 2D) = "white" { }
 	}
+ 
+CGINCLUDE
+#include "UnityCG.cginc"
+ 
+struct appdata {
+	float4 vertex : POSITION;
+	float3 normal : NORMAL;
+};
+ 
+struct v2f {
+	float4 pos : POSITION;
+	float4 color : COLOR;
+};
+ 
+uniform float _Outline;
+uniform float4 _OutlineColor;
+ 
+v2f vert(appdata v) {
+	// just make a copy of incoming vertex data but scaled according to normal direction
+	v2f o;
 
-	SubShader
-	{
-		Tags { "Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent" }
+	v.vertex *= ( 1 + _Outline);
 
-		// 외곽선 그리기
-		Pass
-		{
+	o.pos = UnityObjectToClipPos(v.vertex);
+ 
+	//float3 norm   = normalize(mul ((float3x3)UNITY_MATRIX_IT_MV, v.normal));
+	//float2 offset = TransformViewToProjection(norm.xy);
+
+	o.color = _OutlineColor;
+	return o;
+}
+ENDCG
+ 
+	SubShader {
+		//Tags {"Queue" = "Geometry+100" }
+CGPROGRAM
+#pragma surface surf Lambert
+ 
+sampler2D _MainTex;
+fixed4 _Color;
+ 
+struct Input {
+	float2 uv_MainTex;
+};
+ 
+void surf (Input IN, inout SurfaceOutput o) {
+	fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
+	o.Albedo = c.rgb;
+	o.Alpha = c.a;
+}
+ENDCG
+ 
+		// note that a vertex shader is specified here but its using the one above
+		Pass {
+			Name "OUTLINE"
+			Tags { "LightMode" = "Always" }
+			Cull Front
+			ZWrite On
+			ColorMask RGB
 			Blend SrcAlpha OneMinusSrcAlpha
-			Cull Front // 뒷면만 그리기
-			ZWrite Off
-
+			//Offset 50,50
+ 
 			CGPROGRAM
-
 			#pragma vertex vert
 			#pragma fragment frag
-
-			half _Outline;
-			half4 _OutlineColor;
-
-			struct vertexInput
-			{
-				float4 vertex: POSITION;
-			};
-
-			struct vertexOutput
-			{
-				float4 pos: SV_POSITION;
-			};
-
-			float4 CreateOutline(float4 vertPos, float Outline)
-			{
-				// 행렬 중에 크기를 조절하는 부분만 값을 넣는다.
-				// 밑의 부가 설명 사진 참고.
-				float4x4 scaleMat;
-				scaleMat[0][0] = 1.0f + Outline;
-				scaleMat[0][1] = 0.0f;
-				scaleMat[0][2] = 0.0f;
-				scaleMat[0][3] = 0.0f;
-				scaleMat[1][0] = 0.0f;
-				scaleMat[1][1] = 1.0f + Outline;
-				scaleMat[1][2] = 0.0f;
-				scaleMat[1][3] = 0.0f;
-				scaleMat[2][0] = 0.0f;
-				scaleMat[2][1] = 0.0f;
-				scaleMat[2][2] = 1.0f + Outline;
-				scaleMat[2][3] = 0.0f;
-				scaleMat[3][0] = 0.0f;
-				scaleMat[3][1] = 0.0f;
-				scaleMat[3][2] = 0.0f;
-				scaleMat[3][3] = 1.0f;
-				
-				return mul(scaleMat, vertPos);
-			}
-
-			vertexOutput vert(vertexInput v)
-			{
-				vertexOutput o;
-
-				o.pos = UnityObjectToClipPos(CreateOutline(v.vertex, _Outline));
-
-				return o;
-			}
-
-			half4 frag(vertexOutput i) : COLOR
-			{
-				return _OutlineColor;
-			}
-
-			ENDCG
-		}
-
-		// 정상적으로 그리기
-		Pass
-		{
-			Blend SrcAlpha OneMinusSrcAlpha
-
-			CGPROGRAM
-
-			#pragma vertex vert
-			#pragma fragment frag
-
-			half4 _Color;
-			sampler2D _MainTex;
-			float4 _MainTex_ST;
-
-			struct vertexInput
-			{
-				float4 vertex: POSITION;
-				float4 texcoord: TEXCOORD0;
-			};
-
-			struct vertexOutput
-			{
-				float4 pos: SV_POSITION;
-				float4 texcoord: TEXCOORD0;
-			};
-
-			vertexOutput vert(vertexInput v)
-			{
-				vertexOutput o;
-				o.pos = UnityObjectToClipPos(v.vertex);
-				o.texcoord.xy = (v.texcoord.xy * _MainTex_ST.xy + _MainTex_ST.zw);
-				return o;
-			}
-
-			half4 frag(vertexOutput i) : COLOR
-			{
-				return tex2D(_MainTex, i.texcoord) * _Color;
-			}
-
+			half4 frag(v2f i) :COLOR { return i.color; }
 			ENDCG
 		}
 	}
+ 
+	SubShader {
+CGPROGRAM
+#pragma surface surf Lambert
+ 
+sampler2D _MainTex;
+fixed4 _Color;
+ 
+struct Input {
+	float2 uv_MainTex;
+};
+ 
+void surf (Input IN, inout SurfaceOutput o) {
+	fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
+	o.Albedo = c.rgb;
+	o.Alpha = c.a;
+}
+ENDCG
+ 
+		Pass {
+			Name "OUTLINE"
+			Tags { "LightMode" = "Always" }
+			Cull Front
+			ZWrite On
+			ColorMask RGB
+			Blend SrcAlpha OneMinusSrcAlpha
+ 
+			CGPROGRAM
+			#pragma vertex vert
+			#pragma exclude_renderers gles xbox360 ps3
+			ENDCG
+			SetTexture [_MainTex] { combine primary }
+		}
+	}
+ 
+	Fallback "Diffuse"
 }

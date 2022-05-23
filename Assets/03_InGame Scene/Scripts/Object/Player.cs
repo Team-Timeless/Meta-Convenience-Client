@@ -40,8 +40,8 @@ public class Player : MonoBehaviour
     private bool isTouch = false;
     private float touchTime = 0.0f;
 
+    [SerializeField]
     private Item item = null;
-
 
     private void Awake()
     {
@@ -55,11 +55,15 @@ public class Player : MonoBehaviour
     {
         if (photonview.IsMine)
         {
-            Debug.DrawRay(transform.position, transform.forward * 15.0f, Color.red);
+            Debug.DrawRay(transform.position, transform.forward * 3.0f, Color.red);     // <! 디버그용
             UpdateRotate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
             PlayerMove(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             Camera.main.transform.position = transform.position;
             ClickEvent();
+            if(Input.GetKeyDown(KeyCode.Escape) && GameMng.I.itemDetails.gameObject.active)     // <! 임시
+            {
+                GameMng.I.itemDetails.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -118,13 +122,16 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !isTouch)
         {
-            if (GameMng.I.getRayCastGameObject(this.transform))
+            if (GameMng.I.getRayCastGameObject(this.transform) && !GameMng.I.itemDetails.gameObject.active)
             {
                 item = GameMng.I.getRayCastGameObject(this.transform).GetComponent<Item>();
             }
+            else
+            {
+                item = null;
+            }
             isTouch = true;
             // TODO : UI 켜주기
-            Debug.Log("click");
         }
 
         if (Input.GetMouseButton(0))
@@ -136,30 +143,42 @@ public class Player : MonoBehaviour
             }
             if (touchTime > 1f)
             {
-                if (item && item.CompareTag("item") && item.itemActive == ITEM_ACTIVE.NONE)
+                if (item && item.itemActive.Equals(ITEM_ACTIVE.NONE))
                 {
-                    item.setPos();
                     if (!item.gameObject.GetComponent<Rigidbody>())
                     {
-                        item.gameObject.AddComponent<Rigidbody>(); 
+                        item.gameObject.AddComponent<Rigidbody>();
                     }
                     item.GetComponent<Item>().itemActive = ITEM_ACTIVE.HOLD;
+
+                    if(!GameMng.I.basket.ContainsKey(item.name))
+                        GameMng.I.basket.Add(item.name, item);
                 }
                 // TODO : 아이템 생성
                 // 0.5 초간 누르고있을때
                 Debug.Log("hold");
             }
         }
-        if(item && item.itemActive == ITEM_ACTIVE.HOLD)
+        if (item && item.itemActive.Equals(ITEM_ACTIVE.HOLD))
         {
             item.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1.0f);
         }
 
         if (Input.GetMouseButtonUp(0))
         {
+            if (item && touchTime < 1f)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                GameMng.I.itemDetails._gameobject.SetActive(true);
+                GameMng.I.itemDetails._itemname = item.getName;
+                GameMng.I.itemDetails._itemcost = item.getPrice.ToString();
+                GameMng.I.itemDetails._itemdetails = item.getDesc;
+            }
             GameMng.I.holdimg.fillAmount = 0f;
+
             if (item)
                 item.itemActive = ITEM_ACTIVE.NONE;
+
             isTouch = false;
             touchTime = 0.0f;
         }

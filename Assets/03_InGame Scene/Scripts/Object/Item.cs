@@ -32,7 +32,8 @@ public class Item : Object
     [SerializeField]
     protected Vector3 _firstPos = Vector3.zero;
 
-    public BoxCollider boxcollider = null;
+    [SerializeField]
+    protected MeshRenderer _renderer = null;
 
     public string getDesc
     {
@@ -94,6 +95,19 @@ public class Item : Object
         }
     }
 
+    public MeshRenderer GetMesh
+    {
+        get
+        {
+            return _renderer;
+        }
+    }
+    public void setOutlineColor(Color color) => this._renderer.material.SetColor("_OutlineColor", color);
+
+    public void setOutlineScale(float scale) => this._renderer.material.SetFloat("_Outline", scale);
+
+    public void OutlineClear() => this._renderer.material.SetFloat("_Outline", 0.0f);
+
     public Vector3 setPos() => this._firstPos = this.transform.localPosition; 
 
     /**
@@ -110,9 +124,11 @@ public class Item : Object
         for (int i = 0; i < jsondate.Count; i++)
         {
             if (int.Parse(jsondate[i]["code"].ToString()) == code)
-            {    
+            {   
+                _code = int.Parse(jsondate[i]["code"].ToString());
                 _name = jsondate[i]["name"].ToString();
                 _desc = jsondate[i]["desc"].ToString();
+                _price = int.Parse(jsondate[i]["price"].ToString());
                 _isSall = bool.Parse(jsondate[i]["isSall"].ToString());
                 _width = float.Parse(jsondate[i]["width"].ToString());
                 _height = float.Parse(jsondate[i]["height"].ToString());

@@ -31,10 +31,6 @@ public class NetworkMng : MonoBehaviourPunCallbacks
     {
         DontDestroyOnLoad(this);
         _Instance = this;
-
-        // 개발용 소스
-        //PhotonNetwork.GameVersion = "1.0";      // 게임 버전
-        //PhotonNetwork.ConnectUsingSettings();   // 서버 연결
     }
 
     /**
@@ -57,16 +53,13 @@ public class NetworkMng : MonoBehaviourPunCallbacks
     {
         if(Application.internetReachability.Equals(NetworkReachability.NotReachable))
         {
-            // 인터넷이 연결 안되어 있을떄
+            // 인터넷이 연결 안되어 있을
             // 로그인 실패 UI 만들어주세요
             Debug.Log("network disconnected");
         }
         else
         {
             // TODO 서버 상태보고 로그인 구현
-            Debug.Log(inputfildId.text);
-            Debug.Log(inputfildPwd.text);
-
             LoadingBar.LoadScene("InGame Scene");
         }
     }

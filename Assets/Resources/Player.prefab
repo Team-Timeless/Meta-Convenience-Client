@@ -195,6 +195,7 @@ MonoBehaviour:
   limitMaxX: 50
   rigid: {fileID: 7208731510669135537}
   nicktext: {fileID: 7937944723088321337}
+  item: {fileID: 0}
 --- !u!1 &7208731512353141572
 GameObject:
   m_ObjectHideFlags: 0
