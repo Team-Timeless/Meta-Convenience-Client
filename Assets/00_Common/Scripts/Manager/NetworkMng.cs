@@ -53,7 +53,7 @@ public class NetworkMng : MonoBehaviourPunCallbacks
     {
         if(Application.internetReachability.Equals(NetworkReachability.NotReachable))
         {
-            // 인터넷이 연결 안되어 있을떄
+            // 인터넷이 연결 안되어 있을
             // 로그인 실패 UI 만들어주세요
             Debug.Log("network disconnected");
         }

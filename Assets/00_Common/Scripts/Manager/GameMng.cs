@@ -52,7 +52,7 @@ public class GameMng : MonoBehaviour
      */
     public GameObject getRayCastGameObject(Transform startTrans)
     {
-        if (Physics.Raycast(startTrans.position, startTrans.forward, out hit, 15.0f))
+        if (Physics.Raycast(startTrans.position, startTrans.forward, out hit, 3.0f))
             return hit.collider.gameObject;
         else
         {

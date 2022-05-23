@@ -115,8 +115,10 @@ MonoBehaviour:
   _info: 
   _price: 0
   _isSall: 0
-  _width: 0.006
-  _height: 0.006
+  _width: 0
+  _height: 0
   _itemActive: 0
-  boxcollider: {fileID: 2202806441484547050}
+  _tags: []
+  _firstPos: {x: 0, y: 0, z: 0}
+  _renderer: {fileID: 1086463667118207162}
   en: 1

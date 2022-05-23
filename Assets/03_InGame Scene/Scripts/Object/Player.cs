@@ -55,11 +55,15 @@ public class Player : MonoBehaviour
     {
         if (photonview.IsMine)
         {
-            Debug.DrawRay(transform.position, transform.forward * 15.0f, Color.red);
+            Debug.DrawRay(transform.position, transform.forward * 3.0f, Color.red);     // <! 디버그용
             UpdateRotate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
             PlayerMove(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             Camera.main.transform.position = transform.position;
             ClickEvent();
+            if(Input.GetKeyDown(KeyCode.Escape) && GameMng.I.itemDetails.gameObject.active)     // <! 임시
+            {
+                GameMng.I.itemDetails.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -139,7 +143,7 @@ public class Player : MonoBehaviour
             }
             if (touchTime > 1f)
             {
-                if (item && item.CompareTag("item") && item.itemActive.Equals(ITEM_ACTIVE.NONE))
+                if (item && item.itemActive.Equals(ITEM_ACTIVE.NONE))
                 {
                     if (!item.gameObject.GetComponent<Rigidbody>())
                     {
@@ -155,7 +159,7 @@ public class Player : MonoBehaviour
                 Debug.Log("hold");
             }
         }
-        if (item && item.itemActive == ITEM_ACTIVE.HOLD)
+        if (item && item.itemActive.Equals(ITEM_ACTIVE.HOLD))
         {
             item.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1.0f);
         }

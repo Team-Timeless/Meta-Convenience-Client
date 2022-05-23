@@ -118,4 +118,7 @@ MonoBehaviour:
   _width: 0.006
   _height: 0.006
   _itemActive: 0
-  boxcollider: {fileID: 2651171542440413821}
+  _tags: []
+  _firstPos: {x: 0, y: 0, z: 0}
+  _renderer: {fileID: 3330288733372697615}
+  en: 0

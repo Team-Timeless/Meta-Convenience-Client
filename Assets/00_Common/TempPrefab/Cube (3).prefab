@@ -120,5 +120,5 @@ MonoBehaviour:
   _itemActive: 0
   _tags: []
   _firstPos: {x: 0, y: 0, z: 0}
-  boxcollider: {fileID: 6417010131111658525}
+  _renderer: {fileID: 7110659539262391309}
   en: 3

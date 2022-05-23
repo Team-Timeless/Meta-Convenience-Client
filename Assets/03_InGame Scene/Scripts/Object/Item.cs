@@ -32,7 +32,8 @@ public class Item : Object
     [SerializeField]
     protected Vector3 _firstPos = Vector3.zero;
 
-    public BoxCollider boxcollider = null;
+    [SerializeField]
+    protected MeshRenderer _renderer = null;
 
     public string getDesc
     {
@@ -93,6 +94,19 @@ public class Item : Object
             _itemActive = value;
         }
     }
+
+    public MeshRenderer GetMesh
+    {
+        get
+        {
+            return _renderer;
+        }
+    }
+    public void setOutlineColor(Color color) => this._renderer.material.SetColor("_OutlineColor", color);
+
+    public void setOutlineScale(float scale) => this._renderer.material.SetFloat("_Outline", scale);
+
+    public void OutlineClear() => this._renderer.material.SetFloat("_Outline", 0.0f);
 
     public Vector3 setPos() => this._firstPos = this.transform.localPosition; 
 
