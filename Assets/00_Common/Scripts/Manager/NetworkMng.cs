@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.Networking;
 using Photon.Realtime;
+using UnityEngine.XR;
 
 public class NetworkMng : MonoBehaviourPunCallbacks
 {
@@ -101,11 +102,29 @@ public class NetworkMng : MonoBehaviourPunCallbacks
         //Debug.Log("Joined room");
     }
 
+    public static bool isPresent()
+    {
+        var xrDisplaySubsystems = new List<XRDisplaySubsystem>();
+        SubsystemManager.GetInstances<XRDisplaySubsystem>(xrDisplaySubsystems);
+        foreach (var xrDisplay in xrDisplaySubsystems)
+        {
+            if (xrDisplay.running)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * @brief player »ý¼º
      */
     IEnumerator CreatePlayer()
     {
+        // VR
+        // PhotonNetwork.Instantiate("PlayerVR", new Vector3(0, 2, 0), Quaternion.identity, 0);
+
+        // Window
         PhotonNetwork.Instantiate("Player", new Vector3(0, 2, 0), Quaternion.identity, 0);
 
         yield return null;
