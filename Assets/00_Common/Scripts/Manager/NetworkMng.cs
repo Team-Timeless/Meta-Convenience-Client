@@ -5,6 +5,7 @@ using Photon.Pun;
 using UnityEngine.Networking;
 using Photon.Realtime;
 using UnityEngine.XR;
+using UnityEngine.XR.Management;
 
 public class NetworkMng : MonoBehaviourPunCallbacks
 {
@@ -15,7 +16,10 @@ public class NetworkMng : MonoBehaviourPunCallbacks
 
     public string nickname = "";
 
+    public bool isVR = true;
+
     private static NetworkMng _Instance;
+
     public static NetworkMng I
     {
         get
@@ -32,6 +36,7 @@ public class NetworkMng : MonoBehaviourPunCallbacks
     {
         DontDestroyOnLoad(this);
         _Instance = this;
+        isVR = XRGeneralSettings.Instance.Manager?.activeLoader;
     }
 
     /**
@@ -52,7 +57,7 @@ public class NetworkMng : MonoBehaviourPunCallbacks
      */
     public void Login()
     {
-        if(Application.internetReachability.Equals(NetworkReachability.NotReachable))
+        if (Application.internetReachability.Equals(NetworkReachability.NotReachable))
         {
             // 인터넷이 연결 안되어 있을
             // 로그인 실패 UI 만들어주세요
@@ -101,31 +106,21 @@ public class NetworkMng : MonoBehaviourPunCallbacks
         StartCoroutine(this.CreatePlayer());
         //Debug.Log("Joined room");
     }
-
-    public static bool isPresent()
-    {
-        var xrDisplaySubsystems = new List<XRDisplaySubsystem>();
-        SubsystemManager.GetInstances<XRDisplaySubsystem>(xrDisplaySubsystems);
-        foreach (var xrDisplay in xrDisplaySubsystems)
-        {
-            if (xrDisplay.running)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     /**
      * @brief player 생성
      */
     IEnumerator CreatePlayer()
     {
         // VR
-        // PhotonNetwork.Instantiate("PlayerVR", new Vector3(0, 2, 0), Quaternion.identity, 0);
-
+        if (isVR)
+        {
+            PhotonNetwork.Instantiate("Player 1", new Vector3(0, 2, 0), Quaternion.identity, 0);
+        }
         // Window
-        PhotonNetwork.Instantiate("Player", new Vector3(0, 2, 0), Quaternion.identity, 0);
+        else
+        {
+            PhotonNetwork.Instantiate("Player", new Vector3(0, 2, 0), Quaternion.identity, 0);
+        }
 
         yield return null;
     }
@@ -133,5 +128,10 @@ public class NetworkMng : MonoBehaviourPunCallbacks
     private void OnGUI()
     {
         GUILayout.Label(PhotonNetwork.NetworkClientState.ToString());
+    }
+
+    private void OnApplicationQuit()
+    {
+        XRGeneralSettings.Instance.Manager.DeinitializeLoader();
     }
 }

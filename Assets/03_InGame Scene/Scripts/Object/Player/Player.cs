@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using Valve.VR;
 
 public class Player : MonoBehaviour
 {
@@ -43,6 +44,15 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Item item = null;
 
+    [SerializeField]
+    private Camera cam = null;
+
+    public SteamVR_Input_Sources right_hand;
+    public SteamVR_Input_Sources left_hand;
+
+    public SteamVR_Action_Vector2 vrInputVec2 = SteamVR_Input.GetAction<SteamVR_Action_Vector2>("Move");
+    public SteamVR_Action_Boolean jump = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("Jump");
+
     private void Awake()
     {
         // Cursor.visible = false;
@@ -56,13 +66,20 @@ public class Player : MonoBehaviour
         if (photonview.IsMine)
         {
             Debug.DrawRay(transform.position, transform.forward * 3.0f, Color.red);     // <! 디버그용
-            UpdateRotate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-            PlayerMove(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            Camera.main.transform.position = transform.position;
-            ClickEvent();
-            if(Input.GetKeyDown(KeyCode.Escape) && GameMng.I.itemDetails.gameObject.active)     // <! 임시
+
+            if (!NetworkMng.I.isVR)
             {
-                GameMng.I.itemDetails.gameObject.SetActive(false);
+                UpdateRotate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+                cam.transform.position = transform.position;
+                ClickEvent();
+                if (Input.GetKeyDown(KeyCode.Escape) && GameMng.I.itemDetails.gameObject.active)     // <! 임시
+                {
+                    GameMng.I.itemDetails.gameObject.SetActive(false);
+                }
+            }
+            else
+            {
+                PlayerMove(vrInputVec2.GetAxis(left_hand).x, vrInputVec2.GetAxis(left_hand).y);
             }
         }
     }
@@ -79,7 +96,7 @@ public class Player : MonoBehaviour
 
         eulerAngleX = ClampAngle(eulerAngleX, limitMinX, limitMaxX);
         transform.rotation = Quaternion.Euler(eulerAngleX, eulerAngleY, 0);
-        Camera.main.transform.rotation = transform.rotation;
+        cam.transform.rotation = transform.rotation;
     }
 
     /**
@@ -104,12 +121,16 @@ public class Player : MonoBehaviour
     {
         vec = Vector3.right * moveX + Vector3.forward * moveZ;
 
-        vec = Camera.main.transform.TransformDirection(vec); // 카메라가 보고 있는 방향으로 앞 방향 변경
+        vec = cam.transform.TransformDirection(vec); // 카메라가 보고 있는 방향으로 앞 방향 변경
         vec.Normalize(); // 균일한 이동 위해서 정규화
 
         transform.position += vec * playerSpeed * Time.deltaTime;
 
         if (Input.GetButtonDown("Jump")) // space 입력으로 점프
+        {
+            rigid.AddForce(Vector3.up * playerJumpForce, ForceMode.Impulse);
+        }
+        else if(jump.GetStateDown(right_hand))
         {
             rigid.AddForce(Vector3.up * playerJumpForce, ForceMode.Impulse);
         }
@@ -151,7 +172,7 @@ public class Player : MonoBehaviour
                     }
                     item.GetComponent<Item>().itemActive = ITEM_ACTIVE.HOLD;
 
-                    if(!GameMng.I.basket.ContainsKey(item.name))
+                    if (!GameMng.I.basket.ContainsKey(item.name))
                         GameMng.I.basket.Add(item.name, item);
                 }
                 // TODO : 아이템 생성

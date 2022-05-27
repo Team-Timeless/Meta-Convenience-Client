@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using Valve.VR;
 
 public class Background : MonoBehaviour
 {
@@ -55,6 +56,7 @@ public class Background : MonoBehaviour
         {
             NetworkMng.I.Login();
         }
+        // if(SteamVR_Input)
     }
 
     /**
@@ -161,7 +163,10 @@ public class Background : MonoBehaviour
         void clear(UnityEngine.UI.InputField field)
         {
             inputString.Clear();
-            keybord.SetActive(true);
+            if(NetworkMng.I.isVR)
+            {
+                keybord.SetActive(true);
+            }
             if (input.Count != 0) { input.RemoveAt(0); }
             input.Add(field);
         }
