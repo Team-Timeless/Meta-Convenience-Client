@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Keybordbtn : MonoBehaviour
 {
-    [SerializeField]
-    private UnityEngine.UI.Text txt = null;
+    [SerializeField] private UnityEngine.UI.Text txt = null;
 
     void Start() 
     {
@@ -15,12 +14,12 @@ public class Keybordbtn : MonoBehaviour
     void Update()
     {
         // 쉬프트 눌렸을때 처리
-        if(Background.Shift)        // 대문자
+        if(Background.Shift)        // <! 대문자 일땨
         {
             gameObject.name = gameObject.name.ToUpper();
             txt.text = gameObject.name;
         }
-        else        // 소문자
+        else        // <! 소문자 일땨
         {
             gameObject.name = gameObject.name.ToLower();
             txt.text = gameObject.name;

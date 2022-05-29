@@ -9,10 +9,8 @@ using UnityEngine.XR.Management;
 
 public class NetworkMng : MonoBehaviourPunCallbacks
 {
-    [SerializeField]
-    public UnityEngine.UI.InputField inputfildId = null;
-    [SerializeField]
-    public UnityEngine.UI.InputField inputfildPwd = null;
+    [SerializeField] public UnityEngine.UI.InputField inputfildId = null;
+    [SerializeField] public UnityEngine.UI.InputField inputfildPwd = null;
 
     public string nickname = "";
 
@@ -114,7 +112,7 @@ public class NetworkMng : MonoBehaviourPunCallbacks
         // VR
         if (isVR)
         {
-            PhotonNetwork.Instantiate("Player 1", new Vector3(0, 2, 0), Quaternion.identity, 0);
+            PhotonNetwork.Instantiate("PlayerVR", new Vector3(0, 2, 0), Quaternion.identity, 0);
         }
         // Window
         else

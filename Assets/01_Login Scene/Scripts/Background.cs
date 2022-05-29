@@ -6,34 +6,26 @@ using Valve.VR;
 
 public class Background : MonoBehaviour
 {
-    [SerializeField]
-    private Sprite[] backGround;
+    [SerializeField] private Sprite[] backGround;
 
-    [SerializeField]
-    private SpriteRenderer spriterenderer = null;
+    [SerializeField] private SpriteRenderer spriterenderer = null;
 
     private int index = 0;
 
-    [SerializeField]
-    private float fadeSpeed = 0.05f;    // fade in/out 속도
+    [SerializeField] private float fadeSpeed = 0.05f;    // fade in/out 속도
 
-    [SerializeField]
-    private float minAlpha = 0.25f;     // 알파값 최소값
+    [SerializeField] private float minAlpha = 0.25f;     // 알파값 최소값
 
-    // ---- 키보드 부분 (나중에 vr 예외 처리 하기)
-    [SerializeField]
-    private StringBuilder inputString = new StringBuilder();
+    // ---- 키보드 부분
+    [SerializeField] private StringBuilder inputString = new StringBuilder();
 
-    static private bool isShift = false;
+    static private bool isShift = false;        // <! shift 가 눌렸는지
 
-    [SerializeField]
-    private GameObject keybord = null;
+    [SerializeField] private GameObject keybord = null;      // <! 키보드
 
-    [SerializeField]
-    private GameObject[] special = new GameObject[2];
+    [SerializeField] private GameObject[] special = new GameObject[2];       // <! 특수 문자 
 
-    [SerializeField]
-    private List<UnityEngine.UI.InputField> input = new List<UnityEngine.UI.InputField>();
+    [SerializeField] private List<UnityEngine.UI.InputField> input = new List<UnityEngine.UI.InputField>();      // <! 아이디 비번 inputfield
 
     public static bool Shift
     {
@@ -47,6 +39,11 @@ public class Background : MonoBehaviour
     {
         spriterenderer.sprite = backGround[0];
         StartCoroutine("FadeIn");
+
+        if(NetworkMng.I.isVR)
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     void Update()

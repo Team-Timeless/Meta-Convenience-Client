@@ -7,19 +7,15 @@ using Valve.VR;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    private PhotonView photonview = null;
+    [SerializeField] private PhotonView photonview = null;
 
-    [SerializeField]
-    private float camXspeed = 5.0f;     // 마우스 감도 나중에 조절가능하게 설정창에 넣기
-    [SerializeField]
-    private float camYspeed = 3.0f;
+    // 마우스 감도 나중에 조절가능하게 설정창에 넣기
+    [SerializeField] private float camXspeed = 5.0f;     
+    [SerializeField] private float camYspeed = 3.0f;
 
     // 카메라, 캐릭터 회전 최소값 최대값
-    [SerializeField]
-    private float limitMinX = -30.0f;
-    [SerializeField]
-    private float limitMaxX = 50;
+    [SerializeField] private float limitMinX = -30.0f;
+    [SerializeField] private float limitMaxX = 50;
 
     // 카메라, 캐릭터 회전 각도
     private float eulerAngleX = 0.0f;
@@ -30,26 +26,24 @@ public class Player : MonoBehaviour
     private float playerJumpForce = 7.0f;
 
     // Player 물리, 이동 Vec
-    [SerializeField]
-    private Rigidbody rigid = null;
+    [SerializeField] private Rigidbody rigid = null;
     private Vector3 vec = Vector3.zero;
 
     // 닉네임 textmesh
-    [SerializeField]
-    private TextMesh nicktext = null;
+    [SerializeField] private TextMesh nicktext = null;
 
     private bool isTouch = false;
     private float touchTime = 0.0f;
 
-    [SerializeField]
-    private Item item = null;
+    [SerializeField] private Item item = null;
 
-    [SerializeField]
-    private Camera cam = null;
+    [SerializeField] private Camera cam = null;     // <! 메인 카메라
 
+    // VR 왼손, 오른손 컨트롤러
     public SteamVR_Input_Sources right_hand;
     public SteamVR_Input_Sources left_hand;
 
+    // VR 컨트롤러 액션
     public SteamVR_Action_Vector2 vrInputVec2 = SteamVR_Input.GetAction<SteamVR_Action_Vector2>("Move");
     public SteamVR_Action_Boolean jump = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("Jump");
 
@@ -66,9 +60,10 @@ public class Player : MonoBehaviour
         if (photonview.IsMine)
         {
             Debug.DrawRay(transform.position, transform.forward * 3.0f, Color.red);     // <! 디버그용
-
+            
             if (!NetworkMng.I.isVR)
             {
+                PlayerMove(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
                 UpdateRotate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
                 cam.transform.position = transform.position;
                 ClickEvent();
@@ -175,9 +170,6 @@ public class Player : MonoBehaviour
                     if (!GameMng.I.basket.ContainsKey(item.name))
                         GameMng.I.basket.Add(item.name, item);
                 }
-                // TODO : 아이템 생성
-                // 0.5 초간 누르고있을때
-                Debug.Log("hold");
             }
         }
         if (item && item.itemActive.Equals(ITEM_ACTIVE.HOLD))
