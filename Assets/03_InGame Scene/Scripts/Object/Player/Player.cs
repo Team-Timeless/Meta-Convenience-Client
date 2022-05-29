@@ -174,7 +174,10 @@ public class Player : MonoBehaviour
         }
         if (item && item.itemActive.Equals(ITEM_ACTIVE.HOLD))
         {
-            item.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1.0f);
+            Vector3 test = cam.transform.TransformDirection(vec);
+            test.Normalize();
+            item.transform.position = cam.transform.position + cam.transform.forward * 1.4f;//new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z + 0.5f);
+            item.transform.rotation = cam.transform.rotation;
         }
 
         if (Input.GetMouseButtonUp(0))

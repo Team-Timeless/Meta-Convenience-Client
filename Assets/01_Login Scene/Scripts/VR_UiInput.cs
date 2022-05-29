@@ -9,7 +9,7 @@ public class VR_UiInput : MonoBehaviour
     public bool selected;
 
     [SerializeField] private UnityEngine.UI.Button btn;
-    // Start is called before the first frame update
+    
     void Start()
     {
         btn = gameObject.GetComponent<UnityEngine.UI.Button>();

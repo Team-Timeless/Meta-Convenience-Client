@@ -34,7 +34,7 @@ public class NetworkMng : MonoBehaviourPunCallbacks
     {
         DontDestroyOnLoad(this);
         _Instance = this;
-        isVR = XRGeneralSettings.Instance.Manager?.activeLoader;
+        // isVR = XRGeneralSettings.Instance.Manager?.activeLoader;
     }
 
     /**
@@ -130,6 +130,6 @@ public class NetworkMng : MonoBehaviourPunCallbacks
 
     private void OnApplicationQuit()
     {
-        XRGeneralSettings.Instance.Manager.DeinitializeLoader();
+        // XRGeneralSettings.Instance.Manager.DeinitializeLoader();
     }
 }

@@ -6,8 +6,7 @@ using System.IO;
 public class Shelf_ItemInfo : Item
 {
     // юс╫ц©К
-    [SerializeField]
-    SHELF_OBJECT en;
+    [SerializeField] SHELF_OBJECT en;
 
     private void Awake()
     {
@@ -17,6 +16,7 @@ public class Shelf_ItemInfo : Item
 
     private void Start()
     {
+        initializeRenderer();
         setPos();
     }
 

@@ -23,7 +23,9 @@ public class Item : Object
 
     [SerializeField] protected Vector3 _firstPos = Vector3.zero;        // <! 아이템 처음 생성 위치
 
-    [SerializeField] protected MeshRenderer _renderer = null;
+    [SerializeField] protected MeshRenderer _renderer = null;           // <! 메쉬 렌더러
+
+    // [SerializeField] protected 
 
     public string getDesc
     {
@@ -92,13 +94,16 @@ public class Item : Object
             return _renderer;
         }
     }
-    public void setOutlineColor(Color color) => this._renderer.material.SetColor("_OutlineColor", color);
 
-    public void setOutlineScale(float scale) => this._renderer.material.SetFloat("_Outline", scale);
+    public void initializeRenderer() => this._renderer?.GetComponent<MeshRenderer>();       // <! 렌더러 초기화
 
-    public void OutlineClear() => this._renderer.material.SetFloat("_Outline", 0.0f);
+    public void setOutlineColor(Color color) => this._renderer.material.SetColor("_OutlineColor", color);       // <! 테두리 색 설정
 
-    public Vector3 setPos() => this._firstPos = this.transform.localPosition; 
+    public void setOutlineScale(float scale) => this._renderer.material.SetFloat("_Outline", scale);        // <! 테두ㄹ리 크키 설정
+
+    public void OutlineClear() => this._renderer.material.SetFloat("_Outline", 0.0f);       // <! 테두리 삭제
+
+    public Vector3 setPos() => this._firstPos = this.transform.localPosition;       // <! 물품 처음 생성 위치
 
     /**
      * @brief json(아이템 데이터 파일) 로드 & 아이템 값 초기화
