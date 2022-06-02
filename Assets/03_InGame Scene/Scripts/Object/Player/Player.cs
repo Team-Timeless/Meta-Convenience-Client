@@ -3,22 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using Valve.VR;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    private PhotonView photonview = null;
+    [SerializeField] private PhotonView photonview = null;
 
-    [SerializeField]
-    private float camXspeed = 5.0f;     // 마우스 감도 나중에 조절가능하게 설정창에 넣기
-    [SerializeField]
-    private float camYspeed = 3.0f;
+    // 마우스 감도 나중에 조절가능하게 설정창에 넣기
+    [SerializeField] private float camXspeed = 5.0f;
+    [SerializeField] private float camYspeed = 3.0f;
 
     // 카메라, 캐릭터 회전 최소값 최대값
-    [SerializeField]
-    private float limitMinX = -30.0f;
-    [SerializeField]
-    private float limitMaxX = 50;
+    [SerializeField] private float limitMinX = -30.0f;
+    [SerializeField] private float limitMaxX = 50;
 
     // 카메라, 캐릭터 회전 각도
     private float eulerAngleX = 0.0f;
@@ -29,19 +26,26 @@ public class Player : MonoBehaviour
     private float playerJumpForce = 7.0f;
 
     // Player 물리, 이동 Vec
-    [SerializeField]
-    private Rigidbody rigid = null;
+    [SerializeField] private Rigidbody rigid = null;
     private Vector3 vec = Vector3.zero;
 
     // 닉네임 textmesh
-    [SerializeField]
-    private TextMesh nicktext = null;
+    [SerializeField] private TextMesh nicktext = null;
 
     private bool isTouch = false;
     private float touchTime = 0.0f;
 
-    [SerializeField]
-    private Item item = null;
+    [SerializeField] private Item item = null;
+
+    [SerializeField] private Camera cam = null;     // <! 메인 카메라
+
+    // VR 왼손, 오른손 컨트롤러
+    public SteamVR_Input_Sources right_hand;
+    public SteamVR_Input_Sources left_hand;
+
+    // VR 컨트롤러 액션
+    public SteamVR_Action_Vector2 vrInputVec2 = SteamVR_Input.GetAction<SteamVR_Action_Vector2>("Move");
+    public SteamVR_Action_Boolean jump = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("Jump");
 
     private void Awake()
     {
@@ -56,13 +60,21 @@ public class Player : MonoBehaviour
         if (photonview.IsMine)
         {
             Debug.DrawRay(transform.position, transform.forward * 3.0f, Color.red);     // <! 디버그용
-            UpdateRotate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-            PlayerMove(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            Camera.main.transform.position = transform.position;
-            ClickEvent();
-            if(Input.GetKeyDown(KeyCode.Escape) && GameMng.I.itemDetails.gameObject.active)     // <! 임시
+            
+            if (!NetworkMng.I.isVR)
             {
-                GameMng.I.itemDetails.gameObject.SetActive(false);
+                PlayerMove(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                UpdateRotate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+                cam.transform.position = transform.position;
+                ClickEvent();
+                if (Input.GetKeyDown(KeyCode.Escape) && GameMng.I.itemDetails.gameObject.active)     // <! 임시
+                {
+                    GameMng.I.itemDetails.gameObject.SetActive(false);
+                }
+            }
+            else
+            {
+                PlayerMove(vrInputVec2.GetAxis(left_hand).x, vrInputVec2.GetAxis(left_hand).y);
             }
         }
     }
@@ -79,7 +91,7 @@ public class Player : MonoBehaviour
 
         eulerAngleX = ClampAngle(eulerAngleX, limitMinX, limitMaxX);
         transform.rotation = Quaternion.Euler(eulerAngleX, eulerAngleY, 0);
-        Camera.main.transform.rotation = transform.rotation;
+        cam.transform.rotation = transform.rotation;
     }
 
     /**
@@ -104,12 +116,16 @@ public class Player : MonoBehaviour
     {
         vec = Vector3.right * moveX + Vector3.forward * moveZ;
 
-        vec = Camera.main.transform.TransformDirection(vec); // 카메라가 보고 있는 방향으로 앞 방향 변경
+        vec = cam.transform.TransformDirection(vec); // 카메라가 보고 있는 방향으로 앞 방향 변경
         vec.Normalize(); // 균일한 이동 위해서 정규화
 
         transform.position += vec * playerSpeed * Time.deltaTime;
 
         if (Input.GetButtonDown("Jump")) // space 입력으로 점프
+        {
+            rigid.AddForce(Vector3.up * playerJumpForce, ForceMode.Impulse);
+        }
+        else if(jump.GetStateDown(right_hand))
         {
             rigid.AddForce(Vector3.up * playerJumpForce, ForceMode.Impulse);
         }
@@ -151,17 +167,17 @@ public class Player : MonoBehaviour
                     }
                     item.GetComponent<Item>().itemActive = ITEM_ACTIVE.HOLD;
 
-                    if(!GameMng.I.basket.ContainsKey(item.name))
+                    if (!GameMng.I.basket.ContainsKey(item.name))
                         GameMng.I.basket.Add(item.name, item);
                 }
-                // TODO : 아이템 생성
-                // 0.5 초간 누르고있을때
-                Debug.Log("hold");
             }
         }
         if (item && item.itemActive.Equals(ITEM_ACTIVE.HOLD))
         {
-            item.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1.0f);
+            Vector3 test = cam.transform.TransformDirection(vec);
+            test.Normalize();
+            item.transform.position = cam.transform.position + cam.transform.forward * 1.4f;//new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z + 0.5f);
+            item.transform.rotation = cam.transform.rotation;
         }
 
         if (Input.GetMouseButtonUp(0))

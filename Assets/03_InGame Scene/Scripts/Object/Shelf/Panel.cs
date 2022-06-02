@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class Panel : MonoBehaviour
 {
-    [SerializeField]
-    private SHELF_OBJECT objectcode;
+    [SerializeField] private SHELF_OBJECT objectcode;       // <! 선반에 올려질 아이템 코드
 
-    [SerializeField]
-    private float width = 0.033f;
-    [SerializeField]
-    private float height = 0.01f;
+    [SerializeField] private float width = 0.033f;      // <! 선반 가로길이
+    [SerializeField] private float height = 0.01f;      // <! 선반 세로길이
 
     public int getCode
     {

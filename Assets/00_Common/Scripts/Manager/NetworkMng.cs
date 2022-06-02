@@ -5,17 +5,27 @@ using Photon.Pun;
 using UnityEngine.Networking;
 using Photon.Realtime;
 using UnityEngine.XR;
+using UnityEngine.XR.Management;
+using System;
 
 public class NetworkMng : MonoBehaviourPunCallbacks
 {
-    [SerializeField]
-    public UnityEngine.UI.InputField inputfildId = null;
-    [SerializeField]
-    public UnityEngine.UI.InputField inputfildPwd = null;
+    public UnityEngine.UI.InputField inputfildId = null;        // <! 로그인할때 값 가져오기위해
+    public UnityEngine.UI.InputField inputfildPwd = null;       // <! 로그인할때 값 가져오기위해
 
-    public string nickname = "";
+    public string nickname = "";        // <! 닉네임
+
+    public bool isVR = true;        // <! vr 구별
+
+    public delegate void InitializeLaserEvent();        // <! laserpointer 이벤트 등록 delegate
+
+    public InitializeLaserEvent leftHandEvent;        // <! 왼손 이벤트 초기화용
+    public InitializeLaserEvent rightHandEvent;       // <! 오른손 이벤트 초기화용
+
+    public Custom_LaserPointer[] pointer = new Custom_LaserPointer[2];      // <! 왼손 오른손 컨트롤러
 
     private static NetworkMng _Instance;
+
     public static NetworkMng I
     {
         get
@@ -32,6 +42,12 @@ public class NetworkMng : MonoBehaviourPunCallbacks
     {
         DontDestroyOnLoad(this);
         _Instance = this;
+        
+        isVR = XRGeneralSettings.Instance.Manager?.activeLoader;
+        Debug.Log("IS VR : " + isVR);
+        
+        RightHandEventAdd(rightHandEvent);
+        LeftHandEventAdd(leftHandEvent);
     }
 
     /**
@@ -47,12 +63,13 @@ public class NetworkMng : MonoBehaviourPunCallbacks
         PhotonNetwork.GameVersion = "1.0";      // 게임 버전
         PhotonNetwork.ConnectUsingSettings();   // 서버 연결
     }
+
     /**
      * @brief 웹통신으로 로그인
      */
     public void Login()
     {
-        if(Application.internetReachability.Equals(NetworkReachability.NotReachable))
+        if (Application.internetReachability.Equals(NetworkReachability.NotReachable))
         {
             // 인터넷이 연결 안되어 있을
             // 로그인 실패 UI 만들어주세요
@@ -101,37 +118,67 @@ public class NetworkMng : MonoBehaviourPunCallbacks
         StartCoroutine(this.CreatePlayer());
         //Debug.Log("Joined room");
     }
-
-    public static bool isPresent()
-    {
-        var xrDisplaySubsystems = new List<XRDisplaySubsystem>();
-        SubsystemManager.GetInstances<XRDisplaySubsystem>(xrDisplaySubsystems);
-        foreach (var xrDisplay in xrDisplaySubsystems)
-        {
-            if (xrDisplay.running)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     /**
      * @brief player 생성
      */
     IEnumerator CreatePlayer()
     {
         // VR
-        // PhotonNetwork.Instantiate("PlayerVR", new Vector3(0, 2, 0), Quaternion.identity, 0);
-
+        if (isVR)
+        {
+            PhotonNetwork.Instantiate("PlayerVR", new Vector3(0, 2, 0), Quaternion.identity, 0);
+        }
         // Window
-        PhotonNetwork.Instantiate("Player", new Vector3(0, 2, 0), Quaternion.identity, 0);
+        else
+        {
+            PhotonNetwork.Instantiate("Player", new Vector3(0, 2, 0), Quaternion.identity, 0);
+        }
 
         yield return null;
     }
 
+    /*
+     *@brief 오른손 컨트롤러 event 델리게이트 추가
+     * @param InitializeLaserEvent func 이벤트 초기화 함수
+     */
+    public void RightHandEventAdd(InitializeLaserEvent func)
+    {
+        this.rightHandEvent += func;
+    }
+
+    /*
+     * @brief 오른손 컨트롤러 event 델리게이트 추가
+     * @param InitializeLaserEvent func 이벤트 초기화 함수
+     */
+    public void LeftHandEventAdd(InitializeLaserEvent func)
+    {
+        this.leftHandEvent += func;
+    }
+
+ /*
+     *@brief 오른손 컨트롤러 event 델리게이트 추가
+     * @param InitializeLaserEvent func 이벤트 초기화 함수
+     */
+    public void RightHandEventRemove(InitializeLaserEvent func)
+    {
+        this.rightHandEvent -= func;
+    }
+
+    /*
+     * @brief 오른손 컨트롤러 event 델리게이트 추가
+     * @param InitializeLaserEvent func 이벤트 초기화 함수
+     */
+    public void LeftHandEventRemove(InitializeLaserEvent func)
+    {
+        this.leftHandEvent -= func;
+    }
     private void OnGUI()
     {
         GUILayout.Label(PhotonNetwork.NetworkClientState.ToString());
+    }
+
+    private void OnApplicationQuit()
+    {
+        XRGeneralSettings.Instance.Manager.DeinitializeLoader();
     }
 }

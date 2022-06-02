@@ -5,35 +5,27 @@ using LitJson;
 
 public class Item : Object
 {
-    [SerializeField]
-    protected string _desc = "";        // object 설명
+    [SerializeField] protected string _desc = "";        // <! object 설명
 
-    [SerializeField]
-    protected string _info = "";        // 영양 정보
+    [SerializeField] protected string _info = "";        // <! 영양 정보
 
-    [SerializeField]
-    protected int _price = 0;
+    [SerializeField] protected int _price = 0;          // <! 상품 가격
 
-    [SerializeField]
-    protected bool _isSall = false;     // 팔수 있는지 없는지(재고관리)
+    [SerializeField] protected bool _isSall = false;     // <! 팔수 있는지 없는지(재고관리)
 
-    [SerializeField]
-    protected float _width = 0.0f;      // 물체의 가로길이 (좌우 간격)
+    [SerializeField] protected float _width = 0.0f;      // <! 물체의 가로길이 (좌우 간격)
 
-    [SerializeField]
-    protected float _height = 0.0f;     // 물체의 세로길이 (앞뒤 간격)
+    [SerializeField] protected float _height = 0.0f;     // <! 물체의 세로길이 (앞뒤 간격)
 
-    [SerializeField]
-    protected ITEM_ACTIVE _itemActive;      // 아이템 클릭 상태
+    [SerializeField] protected ITEM_ACTIVE _itemActive;      // <! 아이템 클릭 상태
 
-    [SerializeField]
-    protected List<string> _tags = new List<string>();
+    [SerializeField] protected List<string> _tags = new List<string>();     // <! 아이템 태그
 
-    [SerializeField]
-    protected Vector3 _firstPos = Vector3.zero;
+    [SerializeField] protected Vector3 _firstPos = Vector3.zero;        // <! 아이템 처음 생성 위치
 
-    [SerializeField]
-    protected MeshRenderer _renderer = null;
+    [SerializeField] protected MeshRenderer _renderer = null;           // <! 메쉬 렌더러
+
+    // [SerializeField] protected 
 
     public string getDesc
     {
@@ -102,13 +94,16 @@ public class Item : Object
             return _renderer;
         }
     }
-    public void setOutlineColor(Color color) => this._renderer.material.SetColor("_OutlineColor", color);
 
-    public void setOutlineScale(float scale) => this._renderer.material.SetFloat("_Outline", scale);
+    public void initializeRenderer() => this._renderer?.GetComponent<MeshRenderer>();       // <! 렌더러 초기화
 
-    public void OutlineClear() => this._renderer.material.SetFloat("_Outline", 0.0f);
+    public void setOutlineColor(Color color) => this._renderer.material.SetColor("_OutlineColor", color);       // <! 테두리 색 설정
 
-    public Vector3 setPos() => this._firstPos = this.transform.localPosition; 
+    public void setOutlineScale(float scale) => this._renderer.material.SetFloat("_Outline", scale);        // <! 테두ㄹ리 크키 설정
+
+    public void OutlineClear() => this._renderer.material.SetFloat("_Outline", 0.0f);       // <! 테두리 삭제
+
+    public Vector3 setPos() => this._firstPos = this.transform.localPosition;       // <! 물품 처음 생성 위치
 
     /**
      * @brief json(아이템 데이터 파일) 로드 & 아이템 값 초기화

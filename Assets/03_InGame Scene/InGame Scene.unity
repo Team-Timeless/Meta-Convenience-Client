@@ -468,6 +468,7 @@ GameObject:
   m_Component:
   - component: {fileID: 93623773}
   - component: {fileID: 93623774}
+  - component: {fileID: 93623775}
   m_Layer: 0
   m_Name: Panel (6)
   m_TagString: Untagged
@@ -507,6 +508,19 @@ MonoBehaviour:
   objectcode: 0
   width: 0.033
   height: 0.01
+--- !u!65 &93623775
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93623772}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.075, y: 0.001, z: 0.03}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &99397329
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,7 +713,7 @@ Transform:
   - {fileID: 520308100}
   - {fileID: 1157186136}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &148034520
 GameObject:
@@ -955,89 +969,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213146409}
   m_Mesh: {fileID: 3861478300804232965, guid: f31c5ad8b97ac2f4db5386b03114ca9d, type: 3}
---- !u!1 &236461650
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 236461654}
-  - component: {fileID: 236461653}
-  - component: {fileID: 236461652}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!81 &236461652
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 236461650}
-  m_Enabled: 1
---- !u!20 &236461653
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 236461650}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &236461654
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 236461650}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &258953821
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,6 +1041,7 @@ GameObject:
   m_Component:
   - component: {fileID: 266707297}
   - component: {fileID: 266707298}
+  - component: {fileID: 266707299}
   m_Layer: 0
   m_Name: Panel (5)
   m_TagString: Untagged
@@ -1149,6 +1081,19 @@ MonoBehaviour:
   objectcode: 0
   width: 0.033
   height: 0.01
+--- !u!65 &266707299
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266707296}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.075, y: 0.001, z: 0.03}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &322270148
 GameObject:
   m_ObjectHideFlags: 0
@@ -2780,7 +2725,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &854998045
 GameObject:
@@ -2933,6 +2878,7 @@ GameObject:
   m_Component:
   - component: {fileID: 985436520}
   - component: {fileID: 985436521}
+  - component: {fileID: 985436522}
   m_Layer: 0
   m_Name: Panel (8)
   m_TagString: Untagged
@@ -2972,6 +2918,19 @@ MonoBehaviour:
   objectcode: 0
   width: 0.033
   height: 0.01
+--- !u!65 &985436522
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985436519}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.075, y: 0.001, z: 0.03}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &986484397
 GameObject:
   m_ObjectHideFlags: 0
@@ -3269,7 +3228,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1063997630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3285,6 +3244,7 @@ MonoBehaviour:
   inputfildId: {fileID: 0}
   inputfildPwd: {fileID: 0}
   nickname: 
+  isVR: 0
 --- !u!4 &1063997631
 Transform:
   m_ObjectHideFlags: 0
@@ -3297,7 +3257,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1070377803
 GameObject:
@@ -3658,6 +3618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1190944783}
   - component: {fileID: 1190944784}
+  - component: {fileID: 1190944785}
   m_Layer: 0
   m_Name: Panel (1)
   m_TagString: Untagged
@@ -3697,6 +3658,19 @@ MonoBehaviour:
   objectcode: 1
   width: 0.033
   height: 0.01
+--- !u!65 &1190944785
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190944782}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.075, y: 0.001, z: 0.03}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1196411411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3857,6 +3831,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1335305506}
   - component: {fileID: 1335305507}
+  - component: {fileID: 1335305508}
   m_Layer: 0
   m_Name: Panel (2)
   m_TagString: Untagged
@@ -3896,6 +3871,19 @@ MonoBehaviour:
   objectcode: 2
   width: 0.033
   height: 0.01
+--- !u!65 &1335305508
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335305505}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.075, y: 0.001, z: 0.03}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1352171930
 GameObject:
   m_ObjectHideFlags: 0
@@ -4028,6 +4016,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1444234980}
   - component: {fileID: 1444234981}
+  - component: {fileID: 1444234982}
   m_Layer: 0
   m_Name: Panel (7)
   m_TagString: Untagged
@@ -4067,6 +4056,19 @@ MonoBehaviour:
   objectcode: 0
   width: 0.033
   height: 0.01
+--- !u!65 &1444234982
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444234979}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.075, y: 0.0001, z: 0.03}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1449901131
 GameObject:
   m_ObjectHideFlags: 0
@@ -4193,7 +4195,7 @@ RectTransform:
   - {fileID: 1945209898}
   - {fileID: 1632899635}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4394,6 +4396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1554809987}
   - component: {fileID: 1554809988}
+  - component: {fileID: 1554809989}
   m_Layer: 0
   m_Name: Panel (4)
   m_TagString: Untagged
@@ -4433,6 +4436,19 @@ MonoBehaviour:
   objectcode: 4
   width: 0.033
   height: 0.01
+--- !u!65 &1554809989
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554809986}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.075, y: 0.001, z: 0.03}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1555307585
 GameObject:
   m_ObjectHideFlags: 0
@@ -4946,6 +4962,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1899541497}
   - component: {fileID: 1899541498}
+  - component: {fileID: 1899541499}
   m_Layer: 0
   m_Name: Panel (3)
   m_TagString: Untagged
@@ -4985,6 +5002,19 @@ MonoBehaviour:
   objectcode: 3
   width: 0.033
   height: 0.01
+--- !u!65 &1899541499
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899541496}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.075, y: 0.001, z: 0.03}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1900817128
 GameObject:
   m_ObjectHideFlags: 0
@@ -5627,6 +5657,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3101264972869802057}
   - component: {fileID: 2324482631966933748}
+  - component: {fileID: 2324482631966933749}
   m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
@@ -5649,6 +5680,19 @@ MonoBehaviour:
   objectcode: 0
   width: 0.033
   height: 0.01
+--- !u!65 &2324482631966933749
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2324482631966933747}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.075, y: 0.001, z: 0.03}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2439638486381121750
 GameObject:
   m_ObjectHideFlags: 0
