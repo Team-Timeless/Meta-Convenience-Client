@@ -6,8 +6,7 @@ using System.IO;
 public class Drink_ItemInfo : Item
 {
     // юс╫ц©К
-    [SerializeField]
-    DRINK_OBJECT en;
+    [SerializeField] DRINK_OBJECT en;
 
     private void Awake()
     {

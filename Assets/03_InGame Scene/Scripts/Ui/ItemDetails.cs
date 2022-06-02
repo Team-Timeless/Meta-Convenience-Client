@@ -5,13 +5,13 @@ using UnityEngine;
 public class ItemDetails : MonoBehaviour
 {
     [SerializeField]
-    private UnityEngine.UI.Text itemname = null;
+    private UnityEngine.UI.Text itemname = null;        // <! 상품 이름
 
     [SerializeField]
-    private UnityEngine.UI.Text itemcost = null;
+    private UnityEngine.UI.Text itemcost = null;        // <! 상품 가격
 
     [SerializeField]
-    private UnityEngine.UI.Text itemdetails = null;
+    private UnityEngine.UI.Text itemdetails = null;     // <! 상품 정보
 
     public GameObject _gameobject
     {
@@ -47,7 +47,10 @@ public class ItemDetails : MonoBehaviour
                 itemdetails.text = value;
         }
     }
-    
+
+    /*
+     * @brief 상품 정보창 닫기 버튼
+     */
     public void BackBtn()
     {
         Cursor.lockState = CursorLockMode.Locked;

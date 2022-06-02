@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] private PhotonView photonview = null;
 
     // 마우스 감도 나중에 조절가능하게 설정창에 넣기
-    [SerializeField] private float camXspeed = 5.0f;     
+    [SerializeField] private float camXspeed = 5.0f;
     [SerializeField] private float camYspeed = 3.0f;
 
     // 카메라, 캐릭터 회전 최소값 최대값

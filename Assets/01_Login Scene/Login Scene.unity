@@ -400,46 +400,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 35190454}
   m_CullTransparentMesh: 1
---- !u!1 &39971426 stripped
+--- !u!1 &44497026
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 159396, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-  m_PrefabInstance: {fileID: 616305003}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &39971428
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 44497027}
+  - component: {fileID: 44497028}
+  m_Layer: 0
+  m_Name: UIControl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &44497027
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44497026}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &44497028
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39971426}
+  m_GameObject: {fileID: 44497026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2f511c1adaa1e94ebe7ca97bbcabd17, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ba5ededcb69012428a9d3f48e21c54a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pose: {fileID: 39971429}
-  interactWithUI:
-    actionPath: /actions/default/in/InteractUI
-    needsReinit: 0
-  active: 1
-  color: {r: 1, g: 0, b: 0, a: 0}
-  thickness: 0.005
-  clickColor: {r: 0, g: 1, b: 0, a: 1}
-  holder: {fileID: 0}
-  pointer: {fileID: 0}
-  addRigidBody: 0
-  reference: {fileID: 0}
---- !u!114 &39971429 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114000010110554832, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-  m_PrefabInstance: {fileID: 616305003}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39971426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a5fb0ca93b55ef4b8d54b512b103341, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  division:
+  - {fileID: 1752758036}
+  - {fileID: 1986247979}
+  keybord: {fileID: 686940051}
+  special:
+  - {fileID: 1846866321}
+  - {fileID: 7890120}
+  input: {fileID: 0}
 --- !u!1 &49153888
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,6 +542,8 @@ GameObject:
   - component: {fileID: 64240266}
   - component: {fileID: 64240265}
   - component: {fileID: 64240264}
+  - component: {fileID: 64240268}
+  - component: {fileID: 64240267}
   m_Layer: 5
   m_Name: '&'
   m_TagString: Untagged
@@ -602,8 +615,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -652,6 +665,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64240262}
   m_CullTransparentMesh: 1
+--- !u!114 &64240267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64240262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &64240268
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64240262}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &68234996
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,6 +704,8 @@ GameObject:
   - component: {fileID: 68235000}
   - component: {fileID: 68234999}
   - component: {fileID: 68234998}
+  - component: {fileID: 68235003}
+  - component: {fileID: 68235002}
   m_Layer: 5
   m_Name: X
   m_TagString: Untagged
@@ -749,8 +790,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -799,6 +840,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68234996}
   m_CullTransparentMesh: 1
+--- !u!114 &68235002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68234996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &68235003
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68234996}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &77894194
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,6 +1295,8 @@ GameObject:
   - component: {fileID: 143629241}
   - component: {fileID: 143629240}
   - component: {fileID: 143629239}
+  - component: {fileID: 143629244}
+  - component: {fileID: 143629243}
   m_Layer: 5
   m_Name: M
   m_TagString: Untagged
@@ -1312,8 +1381,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -1362,6 +1431,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 143629237}
   m_CullTransparentMesh: 1
+--- !u!114 &143629243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143629237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &143629244
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143629237}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &150592718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,6 +1469,8 @@ GameObject:
   - component: {fileID: 150592722}
   - component: {fileID: 150592721}
   - component: {fileID: 150592720}
+  - component: {fileID: 150592724}
+  - component: {fileID: 150592723}
   m_Layer: 5
   m_Name: 8
   m_TagString: Untagged
@@ -1445,8 +1542,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -1495,6 +1592,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150592718}
   m_CullTransparentMesh: 1
+--- !u!114 &150592723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150592718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &150592724
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150592718}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &179062840
 GameObject:
   m_ObjectHideFlags: 0
@@ -1625,6 +1748,8 @@ GameObject:
   - component: {fileID: 216503520}
   - component: {fileID: 216503519}
   - component: {fileID: 216503518}
+  - component: {fileID: 216503522}
+  - component: {fileID: 216503521}
   m_Layer: 5
   m_Name: '%'
   m_TagString: Untagged
@@ -1696,8 +1821,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -1746,6 +1871,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216503516}
   m_CullTransparentMesh: 1
+--- !u!114 &216503521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216503516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &216503522
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216503516}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &222948632
 GameObject:
   m_ObjectHideFlags: 0
@@ -1759,6 +1910,8 @@ GameObject:
   - component: {fileID: 222948636}
   - component: {fileID: 222948635}
   - component: {fileID: 222948634}
+  - component: {fileID: 222948639}
+  - component: {fileID: 222948638}
   m_Layer: 5
   m_Name: D
   m_TagString: Untagged
@@ -1843,8 +1996,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -1893,6 +2046,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 222948632}
   m_CullTransparentMesh: 1
+--- !u!114 &222948638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222948632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &222948639
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222948632}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &224443033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1985,6 +2164,8 @@ GameObject:
   - component: {fileID: 224537718}
   - component: {fileID: 224537717}
   - component: {fileID: 224537716}
+  - component: {fileID: 224537721}
+  - component: {fileID: 224537720}
   m_Layer: 5
   m_Name: P
   m_TagString: Untagged
@@ -2069,8 +2250,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -2119,6 +2300,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 224537714}
   m_CullTransparentMesh: 1
+--- !u!114 &224537720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224537714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &224537721
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224537714}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &236756937
 GameObject:
   m_ObjectHideFlags: 0
@@ -2519,10 +2726,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -2630,6 +2837,8 @@ GameObject:
   - component: {fileID: 281298797}
   - component: {fileID: 281298796}
   - component: {fileID: 281298795}
+  - component: {fileID: 281298799}
+  - component: {fileID: 281298798}
   m_Layer: 5
   m_Name: 9
   m_TagString: Untagged
@@ -2701,8 +2910,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -2751,6 +2960,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281298793}
   m_CullTransparentMesh: 1
+--- !u!114 &281298798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281298793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &281298799
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281298793}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &296522676
 GameObject:
   m_ObjectHideFlags: 0
@@ -2843,6 +3078,8 @@ GameObject:
   - component: {fileID: 307131964}
   - component: {fileID: 307131963}
   - component: {fileID: 307131962}
+  - component: {fileID: 307131967}
+  - component: {fileID: 307131966}
   m_Layer: 5
   m_Name: C
   m_TagString: Untagged
@@ -2927,8 +3164,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -2977,6 +3214,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 307131960}
   m_CullTransparentMesh: 1
+--- !u!114 &307131966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307131960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &307131967
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307131960}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &317780530
 GameObject:
   m_ObjectHideFlags: 0
@@ -2989,6 +3252,8 @@ GameObject:
   - component: {fileID: 317780534}
   - component: {fileID: 317780533}
   - component: {fileID: 317780532}
+  - component: {fileID: 317780536}
+  - component: {fileID: 317780535}
   m_Layer: 5
   m_Name: $
   m_TagString: Untagged
@@ -3060,8 +3325,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -3110,46 +3375,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 317780530}
   m_CullTransparentMesh: 1
---- !u!1 &332376901 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 124034, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-  m_PrefabInstance: {fileID: 616305003}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &332376903
+--- !u!114 &317780535
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 332376901}
+  m_GameObject: {fileID: 317780530}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2f511c1adaa1e94ebe7ca97bbcabd17, type: 3}
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pose: {fileID: 332376904}
-  interactWithUI:
-    actionPath: /actions/default/in/InteractUI
-    needsReinit: 0
-  active: 1
-  color: {r: 1, g: 0, b: 0, a: 0}
-  thickness: 0.005
-  clickColor: {r: 0, g: 1, b: 0, a: 1}
-  holder: {fileID: 0}
-  pointer: {fileID: 0}
-  addRigidBody: 0
-  reference: {fileID: 0}
---- !u!114 &332376904 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114000010876603736, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-  m_PrefabInstance: {fileID: 616305003}
+  btn: {fileID: 0}
+--- !u!65 &317780536
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 332376901}
+  m_GameObject: {fileID: 317780530}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a5fb0ca93b55ef4b8d54b512b103341, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &385341910
 GameObject:
   m_ObjectHideFlags: 0
@@ -3162,6 +3413,8 @@ GameObject:
   - component: {fileID: 385341914}
   - component: {fileID: 385341913}
   - component: {fileID: 385341912}
+  - component: {fileID: 385341916}
+  - component: {fileID: 385341915}
   m_Layer: 5
   m_Name: '?'
   m_TagString: Untagged
@@ -3233,8 +3486,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -3283,6 +3536,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385341910}
   m_CullTransparentMesh: 1
+--- !u!114 &385341915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385341910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &385341916
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385341910}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &387414903
 GameObject:
   m_ObjectHideFlags: 0
@@ -3499,6 +3778,8 @@ GameObject:
   - component: {fileID: 402234202}
   - component: {fileID: 402234201}
   - component: {fileID: 402234200}
+  - component: {fileID: 402234205}
+  - component: {fileID: 402234204}
   m_Layer: 5
   m_Name: R
   m_TagString: Untagged
@@ -3583,8 +3864,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -3633,6 +3914,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402234198}
   m_CullTransparentMesh: 1
+--- !u!114 &402234204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402234198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &402234205
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402234198}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &404056074
 GameObject:
   m_ObjectHideFlags: 0
@@ -3791,6 +4098,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 425516317}
   m_CullTransparentMesh: 1
+--- !u!21 &439479305
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &467443675
 GameObject:
   m_ObjectHideFlags: 0
@@ -3961,6 +4303,8 @@ GameObject:
   - component: {fileID: 506803757}
   - component: {fileID: 506803756}
   - component: {fileID: 506803755}
+  - component: {fileID: 506803759}
+  - component: {fileID: 506803758}
   m_Layer: 5
   m_Name: '*'
   m_TagString: Untagged
@@ -4032,8 +4376,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -4082,6 +4426,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 506803753}
   m_CullTransparentMesh: 1
+--- !u!114 &506803758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506803753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &506803759
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506803753}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &510500356
 GameObject:
   m_ObjectHideFlags: 0
@@ -4213,6 +4583,8 @@ GameObject:
   - component: {fileID: 556630780}
   - component: {fileID: 556630779}
   - component: {fileID: 556630778}
+  - component: {fileID: 556630783}
+  - component: {fileID: 556630782}
   m_Layer: 5
   m_Name: Y
   m_TagString: Untagged
@@ -4297,8 +4669,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -4347,6 +4719,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556630776}
   m_CullTransparentMesh: 1
+--- !u!114 &556630782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556630776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &556630783
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556630776}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &601202215
 GameObject:
   m_ObjectHideFlags: 0
@@ -4514,14 +4912,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 601202215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47cdcf6d68f28b847b9e0a0a1353c222, type: 3}
+  m_Script: {fileID: 11500000, guid: 9198fefbfcf4e7144b0992b839ff36de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointer:
-  - {fileID: 332376903}
-  - {fileID: 39971428}
-  selected: 0
-  btn: {fileID: 0}
+  input: {fileID: 0}
+  uicontrol: {fileID: 44497028}
 --- !u!1 &602020121
 GameObject:
   m_ObjectHideFlags: 0
@@ -4535,6 +4930,8 @@ GameObject:
   - component: {fileID: 602020125}
   - component: {fileID: 602020124}
   - component: {fileID: 602020123}
+  - component: {fileID: 602020128}
+  - component: {fileID: 602020127}
   m_Layer: 5
   m_Name: Z
   m_TagString: Untagged
@@ -4619,8 +5016,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -4669,6 +5066,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 602020121}
   m_CullTransparentMesh: 1
+--- !u!114 &602020127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602020121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &602020128
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602020121}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &615424515
 GameObject:
   m_ObjectHideFlags: 0
@@ -4682,6 +5105,8 @@ GameObject:
   - component: {fileID: 615424519}
   - component: {fileID: 615424518}
   - component: {fileID: 615424517}
+  - component: {fileID: 615424522}
+  - component: {fileID: 615424521}
   m_Layer: 5
   m_Name: B
   m_TagString: Untagged
@@ -4766,8 +5191,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -4816,175 +5241,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615424515}
   m_CullTransparentMesh: 1
---- !u!1001 &616305003
-PrefabInstance:
+--- !u!114 &615424521
+MonoBehaviour:
   m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615424515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &615424522
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615424515}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1986247980}
-    m_Modifications:
-    - target: {fileID: 146900, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_Name
-      value: '[CameraRig]'
-      objectReference: {fileID: 0}
-    - target: {fileID: 146900, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -186
-      objectReference: {fileID: 0}
-    - target: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2348914, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2008448718}
-    - target: {fileID: 3380982, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 869379008}
-    - target: {fileID: 11417306, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: drawInGame
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: vertices.Array.data[0].x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: vertices.Array.data[0].z
-      value: -1.125
-      objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: vertices.Array.data[1].x
-      value: -1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: vertices.Array.data[1].z
-      value: -1.125
-      objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: vertices.Array.data[2].x
-      value: -1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: vertices.Array.data[2].z
-      value: 1.125
-      objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: vertices.Array.data[3].x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: vertices.Array.data[3].z
-      value: 1.125
-      objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: vertices.Array.data[4].x
-      value: 1.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: vertices.Array.data[4].z
-      value: -1.275
-      objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: vertices.Array.data[5].x
-      value: -1.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: vertices.Array.data[5].z
-      value: -1.275
-      objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: vertices.Array.data[6].x
-      value: -1.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: vertices.Array.data[6].z
-      value: 1.275
-      objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: vertices.Array.data[7].x
-      value: 1.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 11489174, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: vertices.Array.data[7].z
-      value: 1.275
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000014254142504, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 20000014031267948, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_ClearFlags
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 20000014031267948, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.5943396
-      objectReference: {fileID: 0}
-    - target: {fileID: 20000014031267948, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.42130205
-      objectReference: {fileID: 0}
-    - target: {fileID: 20000014031267948, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0.31118724
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &616201543 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2847443332754730398, guid: 9922ce8f75cf1994295715557cbbd035, type: 3}
+  m_PrefabInstance: {fileID: 2847443332141682905}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &686940051
 GameObject:
   m_ObjectHideFlags: 0
@@ -5002,7 +5289,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &686940052
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5010,19 +5297,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686940051}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalRotation: {x: 0.29237175, y: 0, z: 0, w: 0.9563048}
+  m_LocalPosition: {x: 0, y: 0, z: -190}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 1913484113}
   - {fileID: 1255380703}
   - {fileID: 1517734711}
   m_Father: {fileID: 276554032}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 34, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -90}
   m_SizeDelta: {x: 1320, y: 770}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &686940053
@@ -5154,6 +5441,8 @@ GameObject:
   - component: {fileID: 707081485}
   - component: {fileID: 707081484}
   - component: {fileID: 707081483}
+  - component: {fileID: 707081487}
+  - component: {fileID: 707081486}
   m_Layer: 5
   m_Name: .com
   m_TagString: Untagged
@@ -5225,8 +5514,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -5275,6 +5564,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707081481}
   m_CullTransparentMesh: 1
+--- !u!114 &707081486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707081481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &707081487
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707081481}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 190, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &713803200
 GameObject:
   m_ObjectHideFlags: 0
@@ -5387,6 +5702,8 @@ GameObject:
   - component: {fileID: 719685126}
   - component: {fileID: 719685125}
   - component: {fileID: 719685124}
+  - component: {fileID: 719685128}
+  - component: {fileID: 719685127}
   m_Layer: 5
   m_Name: ^
   m_TagString: Untagged
@@ -5458,8 +5775,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -5508,6 +5825,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719685122}
   m_CullTransparentMesh: 1
+--- !u!114 &719685127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719685122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &719685128
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719685122}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &727508101
 GameObject:
   m_ObjectHideFlags: 0
@@ -5763,6 +6106,8 @@ GameObject:
   - component: {fileID: 747569285}
   - component: {fileID: 747569284}
   - component: {fileID: 747569283}
+  - component: {fileID: 747569288}
+  - component: {fileID: 747569287}
   m_Layer: 5
   m_Name: O
   m_TagString: Untagged
@@ -5847,8 +6192,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -5897,6 +6242,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 747569281}
   m_CullTransparentMesh: 1
+--- !u!114 &747569287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747569281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &747569288
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747569281}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &761359296
 GameObject:
   m_ObjectHideFlags: 0
@@ -5988,6 +6359,8 @@ GameObject:
   - component: {fileID: 781883065}
   - component: {fileID: 781883064}
   - component: {fileID: 781883063}
+  - component: {fileID: 781883067}
+  - component: {fileID: 781883066}
   m_Layer: 5
   m_Name: Enter
   m_TagString: Untagged
@@ -6059,8 +6432,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: returnBtn
         m_Mode: 1
         m_Arguments:
@@ -6109,6 +6482,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781883061}
   m_CullTransparentMesh: 1
+--- !u!114 &781883066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781883061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &781883067
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781883061}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 190, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &799682553
 GameObject:
   m_ObjectHideFlags: 0
@@ -6279,6 +6678,8 @@ GameObject:
   - component: {fileID: 818969307}
   - component: {fileID: 818969306}
   - component: {fileID: 818969305}
+  - component: {fileID: 818969309}
+  - component: {fileID: 818969308}
   m_Layer: 5
   m_Name: (
   m_TagString: Untagged
@@ -6350,8 +6751,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -6400,11 +6801,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 818969303}
   m_CullTransparentMesh: 1
---- !u!4 &830827526 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 420908, guid: 4d293c8e162f3874b982baadd71153d2, type: 3}
-  m_PrefabInstance: {fileID: 616305003}
+--- !u!114 &818969308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818969303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &818969309
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818969303}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &839273087
 GameObject:
   m_ObjectHideFlags: 0
@@ -6572,14 +6994,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 839273087}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47cdcf6d68f28b847b9e0a0a1353c222, type: 3}
+  m_Script: {fileID: 11500000, guid: 9198fefbfcf4e7144b0992b839ff36de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointer:
-  - {fileID: 332376903}
-  - {fileID: 39971428}
-  selected: 0
-  btn: {fileID: 0}
+  input: {fileID: 0}
+  uicontrol: {fileID: 44497028}
 --- !u!1 &853722775
 GameObject:
   m_ObjectHideFlags: 0
@@ -6593,6 +7012,8 @@ GameObject:
   - component: {fileID: 853722779}
   - component: {fileID: 853722778}
   - component: {fileID: 853722777}
+  - component: {fileID: 853722782}
+  - component: {fileID: 853722781}
   m_Layer: 5
   m_Name: H
   m_TagString: Untagged
@@ -6677,8 +7098,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -6727,6 +7148,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853722775}
   m_CullTransparentMesh: 1
+--- !u!114 &853722781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853722775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &853722782
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853722775}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &864895536
 GameObject:
   m_ObjectHideFlags: 0
@@ -6885,170 +7332,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 869200307}
   m_CullTransparentMesh: 1
---- !u!43 &869379008
-Mesh:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 10
-  m_SubMeshes:
-  - serializedVersion: 2
-    firstByte: 0
-    indexCount: 24
-    topology: 0
-    baseVertex: 0
-    firstVertex: 0
-    vertexCount: 8
-    localAABB:
-      m_Center: {x: 0, y: 0.01, z: 0}
-      m_Extent: {x: 1.65, y: 0, z: 1.275}
-  m_Shapes:
-    vertices: []
-    shapes: []
-    channels: []
-    fullWeights: []
-  m_BindPose: []
-  m_BoneNameHashes: 
-  m_RootBoneNameHash: 0
-  m_BonesAABB: []
-  m_VariableBoneCountWeights:
-    m_Data: 
-  m_MeshCompression: 0
-  m_IsReadable: 1
-  m_KeepVertices: 1
-  m_KeepIndices: 1
-  m_IndexFormat: 0
-  m_IndexBuffer: 000004000100010004000500010005000200020005000600020006000300030006000700030007000000000007000400
-  m_VertexData:
-    serializedVersion: 3
-    m_VertexCount: 8
-    m_Channels:
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 12
-      format: 0
-      dimension: 4
-    - stream: 0
-      offset: 28
-      format: 0
-      dimension: 2
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    m_DataSize: 288
-    _typelessdata: 0000c03f0ad7233c000090bf000000000000803f0000803f0000803f00000000000000000000c0bf0ad7233c000090bf000000000000803f0000803f0000803f0000803f000000000000c0bf0ad7233c0000903f000000000000803f0000803f0000803f00000000000000000000c03f0ad7233c0000903f000000000000803f0000803f0000803f0000803f000000003333d33f0ad7233c3333a3bf000000000000803f0000803f00000000000000000000803f3333d3bf0ad7233c3333a3bf000000000000803f0000803f000000000000803f0000803f3333d3bf0ad7233c3333a33f000000000000803f0000803f00000000000000000000803f3333d33f0ad7233c3333a33f000000000000803f0000803f000000000000803f0000803f
-  m_CompressedMesh:
-    m_Vertices:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UV:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Normals:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Tangents:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Weights:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_NormalSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_TangentSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_FloatColors:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_BoneIndices:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Triangles:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UVInfo: 0
-  m_LocalAABB:
-    m_Center: {x: 0, y: 0.01, z: 0}
-    m_Extent: {x: 1.65, y: 0, z: 1.275}
-  m_MeshUsageFlags: 0
-  m_BakedConvexCollisionMesh: 
-  m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
-  m_MeshOptimizationFlags: 1
-  m_StreamData:
-    serializedVersion: 2
-    offset: 0
-    size: 0
-    path: 
 --- !u!1 &880824437
 GameObject:
   m_ObjectHideFlags: 0
@@ -7226,6 +7509,8 @@ GameObject:
   - component: {fileID: 921501569}
   - component: {fileID: 921501568}
   - component: {fileID: 921501567}
+  - component: {fileID: 921501572}
+  - component: {fileID: 921501571}
   m_Layer: 5
   m_Name: N
   m_TagString: Untagged
@@ -7310,8 +7595,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -7360,6 +7645,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 921501565}
   m_CullTransparentMesh: 1
+--- !u!114 &921501571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921501565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &921501572
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921501565}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &934592911
 GameObject:
   m_ObjectHideFlags: 0
@@ -7451,6 +7762,8 @@ GameObject:
   - component: {fileID: 959902169}
   - component: {fileID: 959902168}
   - component: {fileID: 959902167}
+  - component: {fileID: 959902171}
+  - component: {fileID: 959902170}
   m_Layer: 5
   m_Name: 5
   m_TagString: Untagged
@@ -7522,8 +7835,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -7572,6 +7885,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 959902165}
   m_CullTransparentMesh: 1
+--- !u!114 &959902170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959902165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &959902171
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959902165}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &992875336
 GameObject:
   m_ObjectHideFlags: 0
@@ -8567,6 +8906,9 @@ MonoBehaviour:
   inputfildPwd: {fileID: 1788773305}
   nickname: 
   isVR: 1
+  pointer:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1202929613
 GameObject:
   m_ObjectHideFlags: 0
@@ -8661,7 +9003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0.5}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8670,10 +9012,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 10
     m_FontStyle: 2
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -8702,6 +9044,8 @@ GameObject:
   - component: {fileID: 1251531798}
   - component: {fileID: 1251531797}
   - component: {fileID: 1251531796}
+  - component: {fileID: 1251531800}
+  - component: {fileID: 1251531799}
   m_Layer: 5
   m_Name: Space
   m_TagString: Untagged
@@ -8773,8 +9117,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: Space
         m_Mode: 1
         m_Arguments:
@@ -8823,6 +9167,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251531794}
   m_CullTransparentMesh: 1
+--- !u!114 &1251531799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251531794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1251531800
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251531794}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 520, y: 110, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1255380702
 GameObject:
   m_ObjectHideFlags: 0
@@ -8898,6 +9268,170 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255380702}
   m_CullTransparentMesh: 1
+--- !u!43 &1267935651
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 10
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 24
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 8
+    localAABB:
+      m_Center: {x: 0, y: 0.01, z: 0}
+      m_Extent: {x: 1.65, y: 0, z: 1.275}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_BonesAABB: []
+  m_VariableBoneCountWeights:
+    m_Data: 
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 000004000100010004000500010005000200020005000600020006000300030006000700030007000000000007000400
+  m_VertexData:
+    serializedVersion: 3
+    m_VertexCount: 8
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 28
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 288
+    _typelessdata: 0000c03f0ad7233c000090bf000000000000803f0000803f0000803f00000000000000000000c0bf0ad7233c000090bf000000000000803f0000803f0000803f0000803f000000000000c0bf0ad7233c0000903f000000000000803f0000803f0000803f00000000000000000000c03f0ad7233c0000903f000000000000803f0000803f0000803f0000803f000000003333d33f0ad7233c3333a3bf000000000000803f0000803f00000000000000000000803f3333d3bf0ad7233c3333a3bf000000000000803f0000803f000000000000803f0000803f3333d3bf0ad7233c3333a33f000000000000803f0000803f00000000000000000000803f3333d33f0ad7233c3333a33f000000000000803f0000803f000000000000803f0000803f
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 0, y: 0.01, z: 0}
+    m_Extent: {x: 1.65, y: 0, z: 1.275}
+  m_MeshUsageFlags: 0
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshMetrics[0]: 1
+  m_MeshMetrics[1]: 1
+  m_MeshOptimizationFlags: 1
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
 --- !u!1 &1276687068
 GameObject:
   m_ObjectHideFlags: 0
@@ -8989,6 +9523,8 @@ GameObject:
   - component: {fileID: 1303762600}
   - component: {fileID: 1303762599}
   - component: {fileID: 1303762598}
+  - component: {fileID: 1303762602}
+  - component: {fileID: 1303762601}
   m_Layer: 5
   m_Name: 1
   m_TagString: Untagged
@@ -9060,8 +9596,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -9110,6 +9646,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1303762596}
   m_CullTransparentMesh: 1
+--- !u!114 &1303762601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303762596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1303762602
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303762596}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1305628942
 GameObject:
   m_ObjectHideFlags: 0
@@ -9122,6 +9684,8 @@ GameObject:
   - component: {fileID: 1305628946}
   - component: {fileID: 1305628945}
   - component: {fileID: 1305628944}
+  - component: {fileID: 1305628948}
+  - component: {fileID: 1305628947}
   m_Layer: 5
   m_Name: '#'
   m_TagString: Untagged
@@ -9193,8 +9757,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -9243,6 +9807,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305628942}
   m_CullTransparentMesh: 1
+--- !u!114 &1305628947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305628942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1305628948
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305628942}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1325746592
 GameObject:
   m_ObjectHideFlags: 0
@@ -9338,6 +9928,8 @@ GameObject:
   - component: {fileID: 1335469657}
   - component: {fileID: 1335469656}
   - component: {fileID: 1335469655}
+  - component: {fileID: 1335469659}
+  - component: {fileID: 1335469658}
   m_Layer: 5
   m_Name: 4
   m_TagString: Untagged
@@ -9409,8 +10001,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -9459,6 +10051,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335469653}
   m_CullTransparentMesh: 1
+--- !u!114 &1335469658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335469653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1335469659
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335469653}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1370796713
 GameObject:
   m_ObjectHideFlags: 0
@@ -9471,6 +10089,8 @@ GameObject:
   - component: {fileID: 1370796717}
   - component: {fileID: 1370796716}
   - component: {fileID: 1370796715}
+  - component: {fileID: 1370796719}
+  - component: {fileID: 1370796718}
   m_Layer: 5
   m_Name: 3
   m_TagString: Untagged
@@ -9542,8 +10162,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -9592,6 +10212,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370796713}
   m_CullTransparentMesh: 1
+--- !u!114 &1370796718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370796713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1370796719
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370796713}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1377825109
 GameObject:
   m_ObjectHideFlags: 0
@@ -9605,6 +10251,8 @@ GameObject:
   - component: {fileID: 1377825113}
   - component: {fileID: 1377825112}
   - component: {fileID: 1377825111}
+  - component: {fileID: 1377825116}
+  - component: {fileID: 1377825115}
   m_Layer: 5
   m_Name: V
   m_TagString: Untagged
@@ -9689,8 +10337,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -9739,6 +10387,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377825109}
   m_CullTransparentMesh: 1
+--- !u!114 &1377825115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377825109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1377825116
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377825109}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1386538376
 GameObject:
   m_ObjectHideFlags: 0
@@ -9751,6 +10425,8 @@ GameObject:
   - component: {fileID: 1386538380}
   - component: {fileID: 1386538379}
   - component: {fileID: 1386538378}
+  - component: {fileID: 1386538382}
+  - component: {fileID: 1386538381}
   m_Layer: 5
   m_Name: '@'
   m_TagString: Untagged
@@ -9822,8 +10498,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -9872,6 +10548,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386538376}
   m_CullTransparentMesh: 1
+--- !u!114 &1386538381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386538376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1386538382
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386538376}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1392391466
 GameObject:
   m_ObjectHideFlags: 0
@@ -9885,6 +10587,8 @@ GameObject:
   - component: {fileID: 1392391470}
   - component: {fileID: 1392391469}
   - component: {fileID: 1392391468}
+  - component: {fileID: 1392391473}
+  - component: {fileID: 1392391472}
   m_Layer: 5
   m_Name: S
   m_TagString: Untagged
@@ -9969,8 +10673,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -10019,6 +10723,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392391466}
   m_CullTransparentMesh: 1
+--- !u!114 &1392391472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392391466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1392391473
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392391466}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1394493313
 GameObject:
   m_ObjectHideFlags: 0
@@ -10032,6 +10762,8 @@ GameObject:
   - component: {fileID: 1394493317}
   - component: {fileID: 1394493316}
   - component: {fileID: 1394493315}
+  - component: {fileID: 1394493320}
+  - component: {fileID: 1394493319}
   m_Layer: 5
   m_Name: T
   m_TagString: Untagged
@@ -10116,8 +10848,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -10166,6 +10898,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394493313}
   m_CullTransparentMesh: 1
+--- !u!114 &1394493319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394493313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1394493320
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394493313}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1396304885
 GameObject:
   m_ObjectHideFlags: 0
@@ -10311,11 +11069,6 @@ MonoBehaviour:
   spriterenderer: {fileID: 1408622002}
   fadeSpeed: 0.05
   minAlpha: 0.25
-  keybord: {fileID: 686940051}
-  special:
-  - {fileID: 1846866321}
-  - {fileID: 7890120}
-  input: []
 --- !u!212 &1408622002
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10459,6 +11212,8 @@ GameObject:
   - component: {fileID: 1417182923}
   - component: {fileID: 1417182922}
   - component: {fileID: 1417182921}
+  - component: {fileID: 1417182926}
+  - component: {fileID: 1417182925}
   m_Layer: 5
   m_Name: U
   m_TagString: Untagged
@@ -10543,8 +11298,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -10593,6 +11348,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1417182919}
   m_CullTransparentMesh: 1
+--- !u!114 &1417182925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417182919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1417182926
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417182919}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1440452794
 GameObject:
   m_ObjectHideFlags: 0
@@ -10606,6 +11387,8 @@ GameObject:
   - component: {fileID: 1440452798}
   - component: {fileID: 1440452797}
   - component: {fileID: 1440452796}
+  - component: {fileID: 1440452801}
+  - component: {fileID: 1440452800}
   m_Layer: 5
   m_Name: F
   m_TagString: Untagged
@@ -10690,8 +11473,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -10740,6 +11523,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440452794}
   m_CullTransparentMesh: 1
+--- !u!114 &1440452800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440452794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1440452801
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440452794}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1450687184
 GameObject:
   m_ObjectHideFlags: 0
@@ -10753,6 +11562,8 @@ GameObject:
   - component: {fileID: 1450687188}
   - component: {fileID: 1450687187}
   - component: {fileID: 1450687186}
+  - component: {fileID: 1450687191}
+  - component: {fileID: 1450687190}
   m_Layer: 5
   m_Name: J
   m_TagString: Untagged
@@ -10837,8 +11648,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -10887,6 +11698,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1450687184}
   m_CullTransparentMesh: 1
+--- !u!114 &1450687190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450687184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1450687191
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450687184}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1468393272
 GameObject:
   m_ObjectHideFlags: 0
@@ -11041,11 +11878,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 0
+    m_MaxSize: 83
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 0
@@ -11310,6 +12147,8 @@ GameObject:
   - component: {fileID: 1517734714}
   - component: {fileID: 1517734713}
   - component: {fileID: 1517734712}
+  - component: {fileID: 1517734716}
+  - component: {fileID: 1517734715}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -11331,11 +12170,11 @@ RectTransform:
   m_Father: {fileID: 686940052}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 40, y: -15}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -588, y: 338}
   m_SizeDelta: {x: 64, y: 64}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1517734712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11380,8 +12219,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: backBtn
         m_Mode: 1
         m_Arguments:
@@ -11430,6 +12269,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517734710}
   m_CullTransparentMesh: 1
+--- !u!114 &1517734715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517734710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1517734716
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517734710}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 64, y: 64, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1606915913
 GameObject:
   m_ObjectHideFlags: 0
@@ -11442,6 +12307,8 @@ GameObject:
   - component: {fileID: 1606915917}
   - component: {fileID: 1606915916}
   - component: {fileID: 1606915915}
+  - component: {fileID: 1606915919}
+  - component: {fileID: 1606915918}
   m_Layer: 5
   m_Name: 7
   m_TagString: Untagged
@@ -11513,8 +12380,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -11563,6 +12430,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1606915913}
   m_CullTransparentMesh: 1
+--- !u!114 &1606915918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606915913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1606915919
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606915913}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1608617491
 GameObject:
   m_ObjectHideFlags: 0
@@ -11576,6 +12469,8 @@ GameObject:
   - component: {fileID: 1608617495}
   - component: {fileID: 1608617494}
   - component: {fileID: 1608617493}
+  - component: {fileID: 1608617498}
+  - component: {fileID: 1608617497}
   m_Layer: 5
   m_Name: K
   m_TagString: Untagged
@@ -11660,8 +12555,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -11710,6 +12605,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608617491}
   m_CullTransparentMesh: 1
+--- !u!114 &1608617497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608617491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1608617498
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608617491}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1618214959
 GameObject:
   m_ObjectHideFlags: 0
@@ -11723,6 +12644,8 @@ GameObject:
   - component: {fileID: 1618214963}
   - component: {fileID: 1618214962}
   - component: {fileID: 1618214961}
+  - component: {fileID: 1618214966}
+  - component: {fileID: 1618214965}
   m_Layer: 5
   m_Name: W
   m_TagString: Untagged
@@ -11807,8 +12730,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -11857,6 +12780,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618214959}
   m_CullTransparentMesh: 1
+--- !u!114 &1618214965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618214959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1618214966
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618214959}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1629716105
 GameObject:
   m_ObjectHideFlags: 0
@@ -11949,6 +12898,8 @@ GameObject:
   - component: {fileID: 1660006901}
   - component: {fileID: 1660006900}
   - component: {fileID: 1660006899}
+  - component: {fileID: 1660006904}
+  - component: {fileID: 1660006903}
   m_Layer: 5
   m_Name: L
   m_TagString: Untagged
@@ -12033,8 +12984,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -12083,6 +13034,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660006897}
   m_CullTransparentMesh: 1
+--- !u!114 &1660006903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660006897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1660006904
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660006897}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1661065616
 GameObject:
   m_ObjectHideFlags: 0
@@ -12174,6 +13151,8 @@ GameObject:
   - component: {fileID: 1674103860}
   - component: {fileID: 1674103859}
   - component: {fileID: 1674103858}
+  - component: {fileID: 1674103862}
+  - component: {fileID: 1674103861}
   m_Layer: 5
   m_Name: 6
   m_TagString: Untagged
@@ -12245,8 +13224,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -12295,6 +13274,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674103856}
   m_CullTransparentMesh: 1
+--- !u!114 &1674103861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674103856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1674103862
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674103856}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1676368363
 GameObject:
   m_ObjectHideFlags: 0
@@ -12386,6 +13391,8 @@ GameObject:
   - component: {fileID: 1684054058}
   - component: {fileID: 1684054057}
   - component: {fileID: 1684054056}
+  - component: {fileID: 1684054060}
+  - component: {fileID: 1684054059}
   m_Layer: 5
   m_Name: )
   m_TagString: Untagged
@@ -12457,8 +13464,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -12507,6 +13514,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684054054}
   m_CullTransparentMesh: 1
+--- !u!114 &1684054059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684054054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1684054060
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684054054}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1686477088
 GameObject:
   m_ObjectHideFlags: 0
@@ -12599,6 +13632,8 @@ GameObject:
   - component: {fileID: 1688408521}
   - component: {fileID: 1688408520}
   - component: {fileID: 1688408519}
+  - component: {fileID: 1688408524}
+  - component: {fileID: 1688408523}
   m_Layer: 5
   m_Name: A
   m_TagString: Untagged
@@ -12683,8 +13718,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -12733,6 +13768,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688408517}
   m_CullTransparentMesh: 1
+--- !u!114 &1688408523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688408517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1688408524
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688408517}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1690289293
 GameObject:
   m_ObjectHideFlags: 0
@@ -12745,6 +13806,8 @@ GameObject:
   - component: {fileID: 1690289297}
   - component: {fileID: 1690289296}
   - component: {fileID: 1690289295}
+  - component: {fileID: 1690289299}
+  - component: {fileID: 1690289298}
   m_Layer: 5
   m_Name: '!'
   m_TagString: Untagged
@@ -12816,8 +13879,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -12866,6 +13929,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1690289293}
   m_CullTransparentMesh: 1
+--- !u!114 &1690289298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690289293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1690289299
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690289293}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1695862615
 GameObject:
   m_ObjectHideFlags: 0
@@ -12878,6 +13967,8 @@ GameObject:
   - component: {fileID: 1695862619}
   - component: {fileID: 1695862618}
   - component: {fileID: 1695862617}
+  - component: {fileID: 1695862621}
+  - component: {fileID: 1695862620}
   m_Layer: 5
   m_Name: BackSpace
   m_TagString: Untagged
@@ -12949,8 +14040,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: backSpace
         m_Mode: 1
         m_Arguments:
@@ -12999,6 +14090,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695862615}
   m_CullTransparentMesh: 1
+--- !u!114 &1695862620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695862615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1695862621
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695862615}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 200, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1700855336
 GameObject:
   m_ObjectHideFlags: 0
@@ -13011,6 +14128,8 @@ GameObject:
   - component: {fileID: 1700855340}
   - component: {fileID: 1700855339}
   - component: {fileID: 1700855338}
+  - component: {fileID: 1700855342}
+  - component: {fileID: 1700855341}
   m_Layer: 5
   m_Name: Shift
   m_TagString: Untagged
@@ -13082,8 +14201,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: shiftClick
         m_Mode: 1
         m_Arguments:
@@ -13132,6 +14251,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1700855336}
   m_CullTransparentMesh: 1
+--- !u!114 &1700855341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700855336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1700855342
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700855336}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 200, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1730672292
 GameObject:
   m_ObjectHideFlags: 0
@@ -13658,6 +14803,8 @@ GameObject:
   - component: {fileID: 1793987429}
   - component: {fileID: 1793987428}
   - component: {fileID: 1793987427}
+  - component: {fileID: 1793987432}
+  - component: {fileID: 1793987431}
   m_Layer: 5
   m_Name: I
   m_TagString: Untagged
@@ -13742,8 +14889,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -13792,6 +14939,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793987425}
   m_CullTransparentMesh: 1
+--- !u!114 &1793987431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793987425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1793987432
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793987425}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1811052337
 GameObject:
   m_ObjectHideFlags: 0
@@ -13804,8 +14977,8 @@ GameObject:
   - component: {fileID: 1811052342}
   - component: {fileID: 1811052341}
   - component: {fileID: 1811052340}
-  - component: {fileID: 1811052339}
   - component: {fileID: 1811052343}
+  - component: {fileID: 1811052339}
   m_Layer: 5
   m_Name: SignUpBtn
   m_TagString: Untagged
@@ -13842,13 +15015,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1811052337}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47cdcf6d68f28b847b9e0a0a1353c222, type: 3}
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointer:
-  - {fileID: 332376903}
-  - {fileID: 39971428}
-  selected: 0
   btn: {fileID: 0}
 --- !u!114 &1811052340
 MonoBehaviour:
@@ -14122,6 +15291,8 @@ GameObject:
   - component: {fileID: 1828982741}
   - component: {fileID: 1828982740}
   - component: {fileID: 1828982739}
+  - component: {fileID: 1828982743}
+  - component: {fileID: 1828982742}
   m_Layer: 5
   m_Name: .
   m_TagString: Untagged
@@ -14193,8 +15364,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -14243,6 +15414,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828982737}
   m_CullTransparentMesh: 1
+--- !u!114 &1828982742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828982737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1828982743
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828982737}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1834623047
 GameObject:
   m_ObjectHideFlags: 0
@@ -14367,6 +15564,8 @@ GameObject:
   - component: {fileID: 1853545858}
   - component: {fileID: 1853545857}
   - component: {fileID: 1853545856}
+  - component: {fileID: 1853545861}
+  - component: {fileID: 1853545860}
   m_Layer: 5
   m_Name: E
   m_TagString: Untagged
@@ -14451,8 +15650,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -14501,6 +15700,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853545854}
   m_CullTransparentMesh: 1
+--- !u!114 &1853545860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853545854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1853545861
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853545854}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1872560927
 GameObject:
   m_ObjectHideFlags: 0
@@ -14592,6 +15817,8 @@ GameObject:
   - component: {fileID: 1890463001}
   - component: {fileID: 1890463000}
   - component: {fileID: 1890462999}
+  - component: {fileID: 1890463003}
+  - component: {fileID: 1890463002}
   m_Layer: 5
   m_Name: 2
   m_TagString: Untagged
@@ -14663,8 +15890,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -14713,6 +15940,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1890462997}
   m_CullTransparentMesh: 1
+--- !u!114 &1890463002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890462997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1890463003
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890462997}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1891877154
 GameObject:
   m_ObjectHideFlags: 0
@@ -14726,6 +15979,8 @@ GameObject:
   - component: {fileID: 1891877158}
   - component: {fileID: 1891877157}
   - component: {fileID: 1891877156}
+  - component: {fileID: 1891877161}
+  - component: {fileID: 1891877160}
   m_Layer: 5
   m_Name: Q
   m_TagString: Untagged
@@ -14810,8 +16065,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -14860,6 +16115,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891877154}
   m_CullTransparentMesh: 1
+--- !u!114 &1891877160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891877154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1891877161
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891877154}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1913484112
 GameObject:
   m_ObjectHideFlags: 0
@@ -14913,6 +16194,8 @@ GameObject:
   - component: {fileID: 1913618718}
   - component: {fileID: 1913618717}
   - component: {fileID: 1913618716}
+  - component: {fileID: 1913618720}
+  - component: {fileID: 1913618719}
   m_Layer: 5
   m_Name: 0
   m_TagString: Untagged
@@ -14984,8 +16267,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -15034,6 +16317,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1913618714}
   m_CullTransparentMesh: 1
+--- !u!114 &1913618719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913618714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1913618720
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913618714}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1947589505
 GameObject:
   m_ObjectHideFlags: 0
@@ -15204,6 +16513,8 @@ GameObject:
   - component: {fileID: 1964086081}
   - component: {fileID: 1964086080}
   - component: {fileID: 1964086079}
+  - component: {fileID: 1964086083}
+  - component: {fileID: 1964086082}
   m_Layer: 5
   m_Name: '@'
   m_TagString: Untagged
@@ -15275,8 +16586,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -15325,6 +16636,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1964086077}
   m_CullTransparentMesh: 1
+--- !u!114 &1964086082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964086077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &1964086083
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964086077}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1974550843
 GameObject:
   m_ObjectHideFlags: 0
@@ -15375,7 +16712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0.5}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15384,11 +16721,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 10
     m_FontStyle: 2
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 0
+    m_MaxSize: 56
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -15498,7 +16835,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1986247980
 Transform:
   m_ObjectHideFlags: 0
@@ -15510,7 +16847,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 176}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 830827526}
+  - {fileID: 616201543}
   - {fileID: 276554032}
   - {fileID: 105345612}
   m_Father: {fileID: 0}
@@ -15598,41 +16935,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!21 &2008448718
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Sprites/Default
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - PixelSnap: 0
-    - _EnableExternalAlpha: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &2022665119
 GameObject:
   m_ObjectHideFlags: 0
@@ -15961,8 +17263,8 @@ GameObject:
   - component: {fileID: 2102102672}
   - component: {fileID: 2102102671}
   - component: {fileID: 2102102670}
-  - component: {fileID: 2102102669}
   - component: {fileID: 2102102673}
+  - component: {fileID: 2102102669}
   m_Layer: 5
   m_Name: SignInBtn
   m_TagString: Untagged
@@ -15999,13 +17301,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2102102667}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47cdcf6d68f28b847b9e0a0a1353c222, type: 3}
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointer:
-  - {fileID: 332376903}
-  - {fileID: 39971428}
-  selected: 0
   btn: {fileID: 0}
 --- !u!114 &2102102670
 MonoBehaviour:
@@ -16127,6 +17425,8 @@ GameObject:
   - component: {fileID: 2130490903}
   - component: {fileID: 2130490902}
   - component: {fileID: 2130490901}
+  - component: {fileID: 2130490906}
+  - component: {fileID: 2130490905}
   m_Layer: 5
   m_Name: G
   m_TagString: Untagged
@@ -16211,8 +17511,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1408622001}
-        m_TargetAssemblyTypeName: Background, Assembly-CSharp
+      - m_Target: {fileID: 44497028}
+        m_TargetAssemblyTypeName: UIControl, Assembly-CSharp
         m_MethodName: keyclick
         m_Mode: 2
         m_Arguments:
@@ -16261,6 +17561,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2130490899}
   m_CullTransparentMesh: 1
+--- !u!114 &2130490905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130490899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb93d8886af9944dbf6457540b2343b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
+--- !u!65 &2130490906
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130490899}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 130, y: 130, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2131806121
 GameObject:
   m_ObjectHideFlags: 0
@@ -16340,3 +17666,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2131806121}
   m_CullTransparentMesh: 1
+--- !u!1001 &2847443332141682905
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1986247980}
+    m_Modifications:
+    - target: {fileID: 2847443332752463552, guid: 9922ce8f75cf1994295715557cbbd035, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 439479305}
+    - target: {fileID: 2847443332753495876, guid: 9922ce8f75cf1994295715557cbbd035, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 1267935651}
+    - target: {fileID: 2847443332754455654, guid: 9922ce8f75cf1994295715557cbbd035, type: 3}
+      propertyPath: m_Name
+      value: '[CameraRig]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847443332754730398, guid: 9922ce8f75cf1994295715557cbbd035, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847443332754730398, guid: 9922ce8f75cf1994295715557cbbd035, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847443332754730398, guid: 9922ce8f75cf1994295715557cbbd035, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847443332754730398, guid: 9922ce8f75cf1994295715557cbbd035, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -186
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847443332754730398, guid: 9922ce8f75cf1994295715557cbbd035, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847443332754730398, guid: 9922ce8f75cf1994295715557cbbd035, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847443332754730398, guid: 9922ce8f75cf1994295715557cbbd035, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847443332754730398, guid: 9922ce8f75cf1994295715557cbbd035, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847443332754730398, guid: 9922ce8f75cf1994295715557cbbd035, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847443332754730398, guid: 9922ce8f75cf1994295715557cbbd035, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847443332754730398, guid: 9922ce8f75cf1994295715557cbbd035, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9922ce8f75cf1994295715557cbbd035, type: 3}

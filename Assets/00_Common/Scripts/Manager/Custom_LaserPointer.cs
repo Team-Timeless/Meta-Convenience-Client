@@ -6,10 +6,8 @@ using Valve.VR;
 public class Custom_LaserPointer : MonoBehaviour
 {
     public SteamVR_Behaviour_Pose pose;
-
     //public SteamVR_Action_Boolean interactWithUI = SteamVR_Input.__actions_default_in_InteractUI;
     public SteamVR_Action_Boolean interactWithUI = SteamVR_Input.GetBooleanAction("InteractUI");
-
     public bool active = true;
     public Color color;
     public float thickness = 0.002f;
@@ -21,9 +19,9 @@ public class Custom_LaserPointer : MonoBehaviour
     public event PointerEventHandler PointerOut;
     public event PointerEventHandler PointerClick;
     public float dist = 100f;
-
     Transform previousContact = null;
-
+    private Vector3 dotVec = new Vector3(9999.0f, 9999.0f, 9999.0f);        // <! 레이저 끝 점 미국보내기
+    bool init = false;      // <! 초기화가 되어 있는지
 
     private void Start()
     {
@@ -43,7 +41,8 @@ public class Custom_LaserPointer : MonoBehaviour
 
         pointer = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         pointer.transform.parent = holder.transform;
-        pointer.transform.localPosition = Vector3.zero;
+        pointer.transform.localPosition = dotVec;
+        pointer.transform.localScale = new Vector3(250f, 250f, 0.0001f);
         pointer.transform.localRotation = Quaternion.identity;
 
         SphereCollider spherecollider = pointer.GetComponent<SphereCollider>();
@@ -90,6 +89,21 @@ public class Custom_LaserPointer : MonoBehaviour
         {
             isActive = true;
             this.transform.GetChild(0).gameObject.SetActive(true);
+        }
+
+        if (!init)
+        {
+            if (pose.inputSource.Equals(SteamVR_Input_Sources.LeftHand))
+            {
+                NetworkMng.I.pointer[0] = this;
+                NetworkMng.I.leftHandEvent();
+            }
+            else
+            {
+                NetworkMng.I.pointer[1] = this;
+                NetworkMng.I.rightHandEvent();
+            }
+            init = true;
         }
 
         Ray raycast = new Ray(transform.position, transform.forward);
@@ -146,18 +160,17 @@ public class Custom_LaserPointer : MonoBehaviour
             holder.GetComponent<MeshRenderer>().material.color = color;
         }
 
-        pointer.transform.position = bHit ? hit.point : Vector3.zero;
+        pointer.transform.position = bHit ? hit.point : dotVec;     // <! 포인터가 충돌 되어있을떄 충돌위치(ui 위치)에 놓아주고 아니면 미국
 
         holder.transform.localPosition = new Vector3(0f, 0f, dist / 2f);
     }
-
-    public struct PointerEventArgs
-    {
-        public SteamVR_Input_Sources fromInputSource;
-        public uint flags;
-        public float distance;
-        public Transform target;
-    }
-
-    public delegate void PointerEventHandler(object sender, PointerEventArgs e);
 }
+public struct PointerEventArgs
+{
+    public SteamVR_Input_Sources fromInputSource;
+    public uint flags;
+    public float distance;
+    public Transform target;
+}
+
+public delegate void PointerEventHandler(object sender, PointerEventArgs e);

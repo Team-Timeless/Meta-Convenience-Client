@@ -6,12 +6,10 @@ using UnityEngine.UI;
 
 public class LoadingBar : MonoBehaviour
 {
-    public static string nextScene;
+    public static string nextScene;     // <! ´ÙÀ½ ¾À ÀúÀå
 
-    [SerializeField]
-    Image loadingBar;
+    [SerializeField] Image loadingBar;
 
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(LoadScene());

@@ -7,7 +7,7 @@ using System;
 public class Shelf : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] items;     // 선반위에 올라가는 gameobjct들
+    private GameObject[] items;     // <! 선반위에 올라가는 gameobjct들
 
     //[SerializeField]
     //private List<Panel> panel = new List<Panel>();
@@ -16,8 +16,8 @@ public class Shelf : MonoBehaviour
 
     private Panel tempPanel;
 
-    int widthcount = 0;     // 가로 최대 몇개 (X)
-    int heightcount = 0;    // 세로 최대 몇개 (Z)
+    int widthcount = 0;     // <! 가로 최대 몇개 (X)
+    int heightcount = 0;    // <! 세로 최대 몇개 (Z)
     int count = 0;
 
     private StringBuilder itemsname = new StringBuilder();
@@ -25,7 +25,7 @@ public class Shelf : MonoBehaviour
     {
         for (int i = 0; i < transform.childCount; i++)
         {
-            tempPanel = transform.GetChild(i).GetComponent<Panel>();        // 양날의 검이다 추후에 렉걸리면 바꾸자...
+            tempPanel = transform.GetChild(i).GetComponent<Panel>();        // <! 양날의 검이다 추후에 렉걸리면 바꾸자...
             if (tempPanel != null)
             {
                 CreateItem(tempPanel, (int)tempPanel.getCode);

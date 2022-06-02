@@ -1,20 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class GameMng : MonoBehaviour
 {
-    private RaycastHit hit;
+    private RaycastHit hit;     // <! PC 버전 Raycast
+
+    public UnityEngine.UI.Image holdimg = null;     // <! 좌클릭 유지시 나오는 이미지
+    
+    public ItemDetails itemDetails = null;      // <! 아이템 정보
+
+    public Dictionary<string, Item> basket = new Dictionary<string, Item>();        // <! 장바구니에 들어있는 아이템 리스트
+
+    public int result = 0;      // <! 바구니에 들어있는 가격 측정
 
     private static GameMng _Instance;
 
-    public UnityEngine.UI.Image holdimg = null;
-    
-    public ItemDetails itemDetails = null;
-
-    public Dictionary<string, Item> basket = new Dictionary<string, Item>();
-
-    public int result = 0;
     public static GameMng I
     {
         get
@@ -35,7 +37,7 @@ public class GameMng : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))     // <! 장바구니 가격 계산
+        if(Input.GetKeyDown(KeyCode.Q))     // <! 장바구니 가격 계산 (임시)
         {
             result = 0;
             foreach(var items in basket)

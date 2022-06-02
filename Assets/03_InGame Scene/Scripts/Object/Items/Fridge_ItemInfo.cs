@@ -6,8 +6,7 @@ using System.IO;
 public class Fridge_ItemInfo : Item
 {
     // юс╫ц©К
-    [SerializeField]
-    FREEZER_OBEJCT en;
+    [SerializeField] FREEZER_OBEJCT en;
 
     private void Awake()
     {
