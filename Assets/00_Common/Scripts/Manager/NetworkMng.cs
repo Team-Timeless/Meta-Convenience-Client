@@ -7,6 +7,7 @@ using Photon.Realtime;
 using UnityEngine.XR;
 using UnityEngine.XR.Management;
 using System;
+using Valve.VR;
 
 public class NetworkMng : MonoBehaviourPunCallbacks
 {
@@ -23,6 +24,10 @@ public class NetworkMng : MonoBehaviourPunCallbacks
     public InitializeLaserEvent rightHandEvent;       // <! 오른손 이벤트 초기화용
 
     public Custom_LaserPointer[] pointer = new Custom_LaserPointer[2];      // <! 왼손 오른손 컨트롤러
+
+    public UnityEngine.UI.Text[] failedtxt = new UnityEngine.UI.Text[2];       // <! 로그인 실패 이거나 인터넷 연결이 안되어 있을떄 0 pc 1 vr
+
+    public SteamVR_ActionSet activateActionSetOnAttach;
 
     private static NetworkMng _Instance;
 
@@ -42,14 +47,14 @@ public class NetworkMng : MonoBehaviourPunCallbacks
     {
         DontDestroyOnLoad(this);
         _Instance = this;
-        
+
         isVR = XRGeneralSettings.Instance.Manager?.activeLoader;
         Debug.Log("IS VR : " + isVR);
-        
+
         RightHandEventAdd(rightHandEvent);
         LeftHandEventAdd(leftHandEvent);
     }
-
+    
     /**
      * @brief 회원가입 창으로 이동
      */
@@ -69,10 +74,28 @@ public class NetworkMng : MonoBehaviourPunCallbacks
      */
     public void Login()
     {
+        try
+        {
+            // 로그인
+        }
+        catch
+        {
+
+        }
         if (Application.internetReachability.Equals(NetworkReachability.NotReachable))
         {
             // 인터넷이 연결 안되어 있을
             // 로그인 실패 UI 만들어주세요
+            if (!isVR)
+            {
+                failedtxt[0].gameObject.SetActive(true);
+                failedtxt[0].text = "인터넷 연결이 되어있지 않습니다.";
+            }
+            else
+            {
+                failedtxt[1].gameObject.SetActive(true);
+                failedtxt[1].text = "인터넷 연결이 되어있지 않습니다.";
+            }
             Debug.Log("network disconnected");
         }
         else
@@ -88,7 +111,7 @@ public class NetworkMng : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         //Debug.Log("Joined Lobby");
-        PhotonNetwork.JoinRandomRoom(); // 렌덤 room 들어가는곳
+        PhotonNetwork.JoinRandomRoom();      // 렌덤 room 들어가는곳
     }
 
     /**
@@ -155,8 +178,8 @@ public class NetworkMng : MonoBehaviourPunCallbacks
         this.leftHandEvent += func;
     }
 
- /*
-     *@brief 오른손 컨트롤러 event 델리게이트 추가
+    /*
+     *@brief 오른손 컨트롤러 event 델리게이트 삭제
      * @param InitializeLaserEvent func 이벤트 초기화 함수
      */
     public void RightHandEventRemove(InitializeLaserEvent func)
@@ -165,13 +188,14 @@ public class NetworkMng : MonoBehaviourPunCallbacks
     }
 
     /*
-     * @brief 오른손 컨트롤러 event 델리게이트 추가
+     * @brief 오른손 컨트롤러 event 델리게이트 삭제
      * @param InitializeLaserEvent func 이벤트 초기화 함수
      */
     public void LeftHandEventRemove(InitializeLaserEvent func)
     {
         this.leftHandEvent -= func;
     }
+
     private void OnGUI()
     {
         GUILayout.Label(PhotonNetwork.NetworkClientState.ToString());

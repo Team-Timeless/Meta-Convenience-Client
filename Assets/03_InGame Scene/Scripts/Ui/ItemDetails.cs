@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class ItemDetails : MonoBehaviour
 {
-    [SerializeField]
-    private UnityEngine.UI.Text itemname = null;        // <! 상품 이름
+    [SerializeField] private UnityEngine.UI.Text itemname = null;        // <! 상품 이름
 
-    [SerializeField]
-    private UnityEngine.UI.Text itemcost = null;        // <! 상품 가격
+    [SerializeField] private UnityEngine.UI.Text itemcost = null;        // <! 상품 가격
 
-    [SerializeField]
-    private UnityEngine.UI.Text itemdetails = null;     // <! 상품 정보
+    [SerializeField] private UnityEngine.UI.Text itemdetails = null;     // <! 상품 정보
 
     public GameObject _gameobject
     {

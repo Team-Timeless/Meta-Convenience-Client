@@ -71,6 +71,11 @@ public class VR_UiInput : MonoBehaviour
         }
     }
 
+    public virtual void PointerGarpGrip(object sender, PointerEventArgs e)
+    {
+        
+    }
+
     protected bool get_selected_value()
     {
         return selected;

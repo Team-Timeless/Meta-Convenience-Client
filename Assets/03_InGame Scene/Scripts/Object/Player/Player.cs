@@ -185,10 +185,7 @@ public class Player : MonoBehaviour
             if (item && touchTime < 1f)
             {
                 Cursor.lockState = CursorLockMode.None;
-                GameMng.I.itemDetails._gameobject.SetActive(true);
-                GameMng.I.itemDetails._itemname = item.getName;
-                GameMng.I.itemDetails._itemcost = item.getPrice.ToString();
-                GameMng.I.itemDetails._itemdetails = item.getDesc;
+                GameMng.I.setItemDetails(item);
             }
             GameMng.I.holdimg.fillAmount = 0f;
 
