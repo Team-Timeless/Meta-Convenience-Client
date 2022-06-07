@@ -6,6 +6,7 @@ using System.Text;
 public class ItemBasket : MonoBehaviour
 {
     private StringBuilder itemstr = new StringBuilder();
+   
     [SerializeField] private UnityEngine.UI.Text basketscroll = null;        // <! 상품 이름, 가격 떠있는 스크롤
 
     [SerializeField] private UnityEngine.UI.Text itemcost = null;        // <! 상품 가격
