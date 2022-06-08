@@ -167,12 +167,12 @@ public class Custom_LaserPointer : MonoBehaviour
        
         if (interactWithUI != null && interactWithUI.GetState(pose.inputSource))
         {
-            holder.transform.localScale = new Vector3(thickness * 5f, thickness * 5f, dist);
+            // holder.transform.localScale = new Vector3(thickness * 5f, thickness * 5f, dist);
             holder.GetComponent<MeshRenderer>().material.color = clickColor;
         }
         else
         {
-            holder.transform.localScale = new Vector3(thickness, thickness, dist);
+            // holder.transform.localScale = new Vector3(thickness, thickness, dist);   
             holder.GetComponent<MeshRenderer>().material.color = color;
         }
 

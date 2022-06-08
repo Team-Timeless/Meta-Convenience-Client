@@ -27,8 +27,6 @@ public class NetworkMng : MonoBehaviourPunCallbacks
 
     public UnityEngine.UI.Text[] failedtxt = new UnityEngine.UI.Text[2];       // <! 로그인 실패 이거나 인터넷 연결이 안되어 있을떄 0 pc 1 vr
 
-    public SteamVR_ActionSet activateActionSetOnAttach;
-
     private static NetworkMng _Instance;
 
     public static NetworkMng I
@@ -80,12 +78,11 @@ public class NetworkMng : MonoBehaviourPunCallbacks
         }
         catch
         {
-
+             // 로그인 실패 UI 만들어주세요
         }
         if (Application.internetReachability.Equals(NetworkReachability.NotReachable))
         {
             // 인터넷이 연결 안되어 있을
-            // 로그인 실패 UI 만들어주세요
             if (!isVR)
             {
                 failedtxt[0].gameObject.SetActive(true);

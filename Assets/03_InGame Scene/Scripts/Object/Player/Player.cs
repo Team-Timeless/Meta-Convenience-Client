@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
 
     // Player 이동속도, 점프
     private float playerSpeed = 5.0f;
-    private float playerJumpForce = 7.0f;
+    private float playerJumpForce = 4.0f;
 
     // Player 물리, 이동 Vec
     [SerializeField] private Rigidbody rigid = null;
@@ -39,17 +39,12 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Camera cam = null;     // <! 메인 카메라
 
-    // VR 왼손, 오른손 컨트롤러
-    public SteamVR_Input_Sources right_hand;
-    public SteamVR_Input_Sources left_hand;
-
-    // VR 컨트롤러 액션
-    public SteamVR_Action_Vector2 vrInputVec2 = SteamVR_Input.GetAction<SteamVR_Action_Vector2>("Move");
-    public SteamVR_Action_Boolean jump = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("Jump");
+    [SerializeField] private PlayerVR_input player_input;
 
     private void Awake()
     {
         // Cursor.visible = false;
+        player_input ??= GetComponent<PlayerVR_input>();
         Cursor.lockState = CursorLockMode.Locked;
         if (photonview.IsMine) { nicktext.text = NetworkMng.I.nickname; }
     }
@@ -60,10 +55,10 @@ public class Player : MonoBehaviour
         if (photonview.IsMine)
         {
             Debug.DrawRay(transform.position, transform.forward * 3.0f, Color.red);     // <! 디버그용
-            
-            if (!NetworkMng.I.isVR)
+
+            PlayerMove(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            if (player_input == null)
             {
-                PlayerMove(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
                 UpdateRotate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
                 cam.transform.position = transform.position;
                 ClickEvent();
@@ -74,7 +69,14 @@ public class Player : MonoBehaviour
             }
             else
             {
-                PlayerMove(vrInputVec2.GetAxis(left_hand).x, vrInputVec2.GetAxis(left_hand).y);
+                if (!player_input.isBasket)
+                {
+                    PlayerMove(player_input.vrInputVec2.GetAxis(player_input.left_hand).x, player_input.vrInputVec2.GetAxis(player_input.left_hand).y);
+                }
+                else
+                {
+                    player_input.scroll.value += player_input.vrInputVec2.GetAxis(player_input.left_hand).y;
+                }
             }
         }
     }
@@ -125,8 +127,9 @@ public class Player : MonoBehaviour
         {
             rigid.AddForce(Vector3.up * playerJumpForce, ForceMode.Impulse);
         }
-        else if(jump.GetStateDown(right_hand))
+        else if (player_input.jump.GetStateDown(player_input.right_hand))
         {
+            Debug.Log("Adf");
             rigid.AddForce(Vector3.up * playerJumpForce, ForceMode.Impulse);
         }
     }
