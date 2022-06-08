@@ -24,7 +24,7 @@ public class ItemBasket : MonoBehaviour
             itemstr.Append(item.Value.getName).Append("\t").Append(item.Value.getPrice).Append("\n");
         }
 
-        basketscroll.text = itemstr.ToString();
+        // basketscroll.text = itemstr.ToString();
         itemcost.text = "총 가격 : " + result.ToString();
     }
 

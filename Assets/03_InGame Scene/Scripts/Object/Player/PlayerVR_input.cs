@@ -19,15 +19,27 @@ public class PlayerVR_input : MonoBehaviour
     public bool isBasket = false;
 
     public UnityEngine.UI.Scrollbar scroll;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
+        ControllerClick();
+    }
 
+    void ControllerClick()
+    {
+        if (BasketBtn.GetStateDown(left_hand))
+        {
+            if (!basketUI.activeSelf)
+            {
+                isBasket = true;
+                basketUI.SetActive(true);
+            }
+            else
+            {
+                isBasket = false;
+                basketUI.SetActive(false);
+            }
+        }
     }
 }

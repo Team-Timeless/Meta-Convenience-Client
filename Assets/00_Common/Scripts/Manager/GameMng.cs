@@ -9,7 +9,7 @@ public class GameMng : MonoBehaviour
 
     public UnityEngine.UI.Image holdimg = null;     // <! 좌클릭 유지시 나오는 이미지
 
-    public ItemDetails itemDetails = null;      // <! 아이템 정보
+    public ItemDetails[] itemDetails = new ItemDetails[2];      // <! 아이템 정보
 
     public Dictionary<string, Item> basket = new Dictionary<string, Item>();        // <! 장바구니에 들어있는 아이템 리스트
 
@@ -37,7 +37,7 @@ public class GameMng : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             basketUI.SetActive(true);
         }
@@ -60,11 +60,11 @@ public class GameMng : MonoBehaviour
      * @brief 아이템 설명 ui 체우기
      * @param Item targetitem 클릭한 상품 아이템 스크립트
      */
-    public void setItemDetails(Item targetitem)
+    public void setItemDetails(Item targetitem, int index)
     {
-        itemDetails._gameobject.SetActive(true);
-        itemDetails._itemname = targetitem.getName;
-        itemDetails._itemcost = targetitem.getPrice.ToString();
-        itemDetails._itemdetails = targetitem.getDesc;
+        itemDetails[index].gameObject.SetActive(true);
+        itemDetails[index]._itemname = targetitem.getName;
+        itemDetails[index]._itemcost = targetitem.getPrice.ToString();
+        itemDetails[index]._itemdetails = targetitem.getDesc;
     }
 }

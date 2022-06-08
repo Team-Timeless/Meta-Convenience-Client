@@ -65,7 +65,7 @@ public class VR_Item : VR_UiInput
     {
         if (e.target.name == this.gameObject.name && selected == true && item)
         {
-            GameMng.I.setItemDetails(item);
+            GameMng.I.setItemDetails(item, 1);
         }
     }
 
