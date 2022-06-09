@@ -7,14 +7,18 @@ public class ItemBasket : MonoBehaviour
 {
     private StringBuilder itemstr = new StringBuilder();
    
-    [SerializeField] private UnityEngine.UI.Text basketscroll = null;        // <! 상품 이름, 가격 떠있는 스크롤
+    [SerializeField] private UnityEngine.UI.Text basketContents = null;        // <! 상품 이름, 가격 떠있는 스크롤
 
     [SerializeField] private UnityEngine.UI.Text itemcost = null;        // <! 상품 가격
+    
+    [SerializeField] private GameObject uiActive;
 
     public int result = 0;      // <! 바구니에 들어있는 가격 측정
 
     void Start()
     {
+        GameMng.I.itembasket.Add(this);
+        
         result = 0;
         Cursor.lockState = CursorLockMode.None;
         itemstr.Append("이름").Append("\t").Append("가격").Append("\n"); ;
@@ -27,6 +31,10 @@ public class ItemBasket : MonoBehaviour
         // basketscroll.text = itemstr.ToString();
         itemcost.text = "총 가격 : " + result.ToString();
     }
+
+    public void ActiveUI() => uiActive.SetActive(true);
+    
+    public void UnActiveUI() => uiActive.SetActive(false);
 
     /*
      * @brief 상품 정보창 닫기 버튼

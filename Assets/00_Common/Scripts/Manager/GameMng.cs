@@ -9,11 +9,11 @@ public class GameMng : MonoBehaviour
 
     public UnityEngine.UI.Image holdimg = null;     // <! 좌클릭 유지시 나오는 이미지
 
-    public ItemDetails[] itemDetails = new ItemDetails[2];      // <! 아이템 정보
+    public List<ItemDetails> itemDetails = new List<ItemDetails>();      // <! 아이템 정보
 
     public Dictionary<string, Item> basket = new Dictionary<string, Item>();        // <! 장바구니에 들어있는 아이템 리스트
 
-    public GameObject basketUI;     // <! 장바구니 UI
+    public List<ItemBasket> itembasket = new List<ItemBasket>();     // <! 장바구니 UI
 
     private static GameMng _Instance;
 
@@ -39,7 +39,7 @@ public class GameMng : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            basketUI.SetActive(true);
+            itembasket[0].gameObject.SetActive(true);
         }
     }
     /**

@@ -10,10 +10,13 @@ public class ItemDetails : MonoBehaviour
 
     [SerializeField] private UnityEngine.UI.Text itemdetails = null;     // <! 상품 정보
 
+    [SerializeField] private GameObject uiActive;
+
     private void Start() 
     {
-        // GameMng.I.itemDetails.Add(this);
+        GameMng.I.itemDetails.Add(this);
     }
+    
     public GameObject _gameobject
     {
         get
@@ -48,6 +51,10 @@ public class ItemDetails : MonoBehaviour
                 itemdetails.text = value;
         }
     }
+
+    public void ActiveUI() => uiActive.SetActive(true);
+    
+    public void UnActiveUI() => uiActive.SetActive(false);
 
     /*
      * @brief 상품 정보창 닫기 버튼

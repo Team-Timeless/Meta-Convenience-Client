@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     {
         // Cursor.visible = false;
         player_input ??= GetComponent<PlayerVR_input>();
-        Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.lockState = CursorLockMode.Locked;
         if (photonview.IsMine) { nicktext.text = NetworkMng.I.nickname; }
     }
 
