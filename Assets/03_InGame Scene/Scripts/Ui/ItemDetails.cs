@@ -16,7 +16,7 @@ public class ItemDetails : MonoBehaviour
     {
         GameMng.I.itemDetails.Add(this);
     }
-    
+
     public GameObject _gameobject
     {
         get

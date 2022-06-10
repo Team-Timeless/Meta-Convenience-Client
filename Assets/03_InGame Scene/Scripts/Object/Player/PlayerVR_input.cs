@@ -9,8 +9,6 @@ public class PlayerVR_input : MonoBehaviour
     public SteamVR_Input_Sources right_hand = SteamVR_Input_Sources.RightHand;
     public SteamVR_Input_Sources left_hand = SteamVR_Input_Sources.LeftHand;
 
-    [SerializeField] private GameObject basketUI;
-
     // VR 컨트롤러 액션
     public SteamVR_Action_Vector2 vrInputVec2 = SteamVR_Input.GetAction<SteamVR_Action_Vector2>("Move");
     public SteamVR_Action_Boolean jump = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("Jump");
@@ -30,15 +28,15 @@ public class PlayerVR_input : MonoBehaviour
     {
         if (BasketBtn.GetStateDown(left_hand))
         {
-            if (!basketUI.activeSelf)
+            if (!GameMng.I.itembasket[NetworkMng.I.intIsVR].gameObject.activeSelf)
             {
                 isBasket = true;
-                basketUI.SetActive(true);
+                GameMng.I.itembasket[NetworkMng.I.intIsVR].ActiveUI();
             }
             else
             {
                 isBasket = false;
-                basketUI.SetActive(false);
+                GameMng.I.itembasket[NetworkMng.I.intIsVR].UnActiveUI();
             }
         }
     }

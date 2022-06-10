@@ -21,7 +21,6 @@ public class ItemBasket : MonoBehaviour
         
         result = 0;
         Cursor.lockState = CursorLockMode.None;
-        itemstr.Append("이름").Append("\t").Append("가격").Append("\n"); ;
         foreach (var item in GameMng.I.basket)
         {
             result += item.Value.getPrice;

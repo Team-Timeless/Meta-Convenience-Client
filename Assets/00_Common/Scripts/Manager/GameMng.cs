@@ -60,11 +60,11 @@ public class GameMng : MonoBehaviour
      * @brief 아이템 설명 ui 체우기
      * @param Item targetitem 클릭한 상품 아이템 스크립트
      */
-    public void setItemDetails(Item targetitem, int index)
+    public void setItemDetails(Item targetitem)
     {
-        itemDetails[index].gameObject.SetActive(true);
-        itemDetails[index]._itemname = targetitem.getName;
-        itemDetails[index]._itemcost = targetitem.getPrice.ToString();
-        itemDetails[index]._itemdetails = targetitem.getDesc;
+        itemDetails[NetworkMng.I.intIsVR].ActiveUI();
+        itemDetails[NetworkMng.I.intIsVR]._itemname = targetitem.getName;
+        itemDetails[NetworkMng.I.intIsVR]._itemcost = targetitem.getPrice.ToString();
+        itemDetails[NetworkMng.I.intIsVR]._itemdetails = targetitem.getDesc;
     }
 }

@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
                 ClickEvent();
                 if (Input.GetKeyDown(KeyCode.Escape) && GameMng.I.itemDetails[0].gameObject.activeSelf)     // <! юс╫ц
                 {
-                    GameMng.I.itemDetails[0].gameObject.SetActive(false);
+                    GameMng.I.itemDetails[0].UnActiveUI();
                 }
             }
             else
@@ -185,7 +185,7 @@ public class Player : MonoBehaviour
             if (item && touchTime < 1f)
             {
                 Cursor.lockState = CursorLockMode.None;
-                GameMng.I.setItemDetails(item, 0);
+                GameMng.I.setItemDetails(item);
             }
             GameMng.I.holdimg.fillAmount = 0f;
 
