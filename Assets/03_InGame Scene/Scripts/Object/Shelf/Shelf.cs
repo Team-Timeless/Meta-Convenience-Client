@@ -40,7 +40,6 @@ public class Shelf : MonoBehaviour
      */
     void CreateItem(Panel panel, int code)
     {
-        count = 0;
         for (int i = 0; i <= widthcount; i++)
         {
             for(int j = 0; j <= heightcount; j++)

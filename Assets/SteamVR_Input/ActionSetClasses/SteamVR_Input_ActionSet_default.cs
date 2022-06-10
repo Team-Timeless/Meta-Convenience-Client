@@ -121,6 +121,14 @@ namespace Valve.VR
             }
         }
         
+        public virtual SteamVR_Action_Boolean BasketBtn
+        {
+            get
+            {
+                return SteamVR_Actions.default_BasketBtn;
+            }
+        }
+        
         public virtual SteamVR_Action_Vibration Haptic
         {
             get

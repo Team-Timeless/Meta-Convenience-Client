@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class ItemDetails : MonoBehaviour
 {
-    [SerializeField]
-    private UnityEngine.UI.Text itemname = null;        // <! 상품 이름
+    [SerializeField] private UnityEngine.UI.Text itemname = null;        // <! 상품 이름
 
-    [SerializeField]
-    private UnityEngine.UI.Text itemcost = null;        // <! 상품 가격
+    [SerializeField] private UnityEngine.UI.Text itemcost = null;        // <! 상품 가격
 
-    [SerializeField]
-    private UnityEngine.UI.Text itemdetails = null;     // <! 상품 정보
+    [SerializeField] private UnityEngine.UI.Text itemdetails = null;     // <! 상품 정보
+
+    [SerializeField] private GameObject uiActive;
+
+    private void Start() 
+    {
+        GameMng.I.itemDetails.Add(this);
+    }
 
     public GameObject _gameobject
     {
@@ -47,6 +51,10 @@ public class ItemDetails : MonoBehaviour
                 itemdetails.text = value;
         }
     }
+
+    public void ActiveUI() => uiActive.SetActive(true);
+    
+    public void UnActiveUI() => uiActive.SetActive(false);
 
     /*
      * @brief 상품 정보창 닫기 버튼

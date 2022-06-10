@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
 
     // Player 이동속도, 점프
     private float playerSpeed = 5.0f;
-    private float playerJumpForce = 7.0f;
+    private float playerJumpForce = 4.0f;
 
     // Player 물리, 이동 Vec
     [SerializeField] private Rigidbody rigid = null;
@@ -39,18 +39,13 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Camera cam = null;     // <! 메인 카메라
 
-    // VR 왼손, 오른손 컨트롤러
-    public SteamVR_Input_Sources right_hand;
-    public SteamVR_Input_Sources left_hand;
-
-    // VR 컨트롤러 액션
-    public SteamVR_Action_Vector2 vrInputVec2 = SteamVR_Input.GetAction<SteamVR_Action_Vector2>("Move");
-    public SteamVR_Action_Boolean jump = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("Jump");
+    [SerializeField] private PlayerVR_input player_input;
 
     private void Awake()
     {
         // Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        player_input ??= GetComponent<PlayerVR_input>();
+        // Cursor.lockState = CursorLockMode.Locked;
         if (photonview.IsMine) { nicktext.text = NetworkMng.I.nickname; }
     }
 
@@ -60,21 +55,28 @@ public class Player : MonoBehaviour
         if (photonview.IsMine)
         {
             Debug.DrawRay(transform.position, transform.forward * 3.0f, Color.red);     // <! 디버그용
-            
-            if (!NetworkMng.I.isVR)
+
+            PlayerMove(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            if (player_input.Equals(null))
             {
-                PlayerMove(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
                 UpdateRotate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
                 cam.transform.position = transform.position;
                 ClickEvent();
-                if (Input.GetKeyDown(KeyCode.Escape) && GameMng.I.itemDetails.gameObject.active)     // <! 임시
+                if (Input.GetKeyDown(KeyCode.Escape) && GameMng.I.itemDetails[0].gameObject.activeSelf)     // <! 임시
                 {
-                    GameMng.I.itemDetails.gameObject.SetActive(false);
+                    GameMng.I.itemDetails[0].UnActiveUI();
                 }
             }
             else
             {
-                PlayerMove(vrInputVec2.GetAxis(left_hand).x, vrInputVec2.GetAxis(left_hand).y);
+                if (!player_input.isBasket)
+                {
+                    PlayerMove(player_input.vrInputVec2.GetAxis(player_input.left_hand).x, player_input.vrInputVec2.GetAxis(player_input.left_hand).y);
+                }
+                else
+                {
+                    player_input.scroll.value += player_input.vrInputVec2.GetAxis(player_input.left_hand).y * Time.deltaTime;
+                }
             }
         }
     }
@@ -125,7 +127,7 @@ public class Player : MonoBehaviour
         {
             rigid.AddForce(Vector3.up * playerJumpForce, ForceMode.Impulse);
         }
-        else if(jump.GetStateDown(right_hand))
+        else if (player_input.jump.GetStateDown(player_input.right_hand))
         {
             rigid.AddForce(Vector3.up * playerJumpForce, ForceMode.Impulse);
         }
@@ -136,9 +138,9 @@ public class Player : MonoBehaviour
      */
     void ClickEvent()
     {
-        if (Input.GetMouseButtonDown(0) && !isTouch)
+        if (Input.GetMouseButtonDown(0) && !isTouch)        // <! 한번 클릭 했을 떄
         {
-            if (GameMng.I.getRayCastGameObject(this.transform) && !GameMng.I.itemDetails.gameObject.active)
+            if (GameMng.I.getRayCastGameObject(this.transform) && !GameMng.I.itemDetails[0].gameObject.activeSelf)
             {
                 item = GameMng.I.getRayCastGameObject(this.transform).GetComponent<Item>();
             }
@@ -150,9 +152,9 @@ public class Player : MonoBehaviour
             // TODO : UI 켜주기
         }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))        // <! 클릭 유지
         {
-            if (isTouch)
+            if (isTouch)        // <! 얼마나 눌렸는지 계산
             {
                 touchTime += Time.deltaTime;
                 GameMng.I.holdimg.fillAmount = Mathf.Lerp(0.0f, 1.0f, touchTime);
@@ -165,7 +167,7 @@ public class Player : MonoBehaviour
                     {
                         item.gameObject.AddComponent<Rigidbody>();
                     }
-                    item.GetComponent<Item>().itemActive = ITEM_ACTIVE.HOLD;
+                    item.itemActive = ITEM_ACTIVE.HOLD;
 
                     if (!GameMng.I.basket.ContainsKey(item.name))
                         GameMng.I.basket.Add(item.name, item);
@@ -174,21 +176,16 @@ public class Player : MonoBehaviour
         }
         if (item && item.itemActive.Equals(ITEM_ACTIVE.HOLD))
         {
-            Vector3 test = cam.transform.TransformDirection(vec);
-            test.Normalize();
             item.transform.position = cam.transform.position + cam.transform.forward * 1.4f;//new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z + 0.5f);
             item.transform.rotation = cam.transform.rotation;
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))      // <! 마우스에서 손 때었을 떄
         {
             if (item && touchTime < 1f)
             {
                 Cursor.lockState = CursorLockMode.None;
-                GameMng.I.itemDetails._gameobject.SetActive(true);
-                GameMng.I.itemDetails._itemname = item.getName;
-                GameMng.I.itemDetails._itemcost = item.getPrice.ToString();
-                GameMng.I.itemDetails._itemdetails = item.getDesc;
+                GameMng.I.setItemDetails(item);
             }
             GameMng.I.holdimg.fillAmount = 0f;
 

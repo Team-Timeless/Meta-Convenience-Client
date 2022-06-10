@@ -8,12 +8,12 @@ public class GameMng : MonoBehaviour
     private RaycastHit hit;     // <! PC 버전 Raycast
 
     public UnityEngine.UI.Image holdimg = null;     // <! 좌클릭 유지시 나오는 이미지
-    
-    public ItemDetails itemDetails = null;      // <! 아이템 정보
+
+    public List<ItemDetails> itemDetails = new List<ItemDetails>();      // <! 아이템 정보
 
     public Dictionary<string, Item> basket = new Dictionary<string, Item>();        // <! 장바구니에 들어있는 아이템 리스트
 
-    public int result = 0;      // <! 바구니에 들어있는 가격 측정
+    public List<ItemBasket> itembasket = new List<ItemBasket>();     // <! 장바구니 UI
 
     private static GameMng _Instance;
 
@@ -37,17 +37,11 @@ public class GameMng : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))     // <! 장바구니 가격 계산 (임시)
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            result = 0;
-            foreach(var items in basket)
-            {
-                result += items.Value.getPrice;
-            }
-            Debug.Log(result);
+            itembasket[0].gameObject.SetActive(true);
         }
     }
-
     /**
      * @brief RayCast로 충돌 감지한 Gameobject 리턴
      * @param Transform startTrans Ray 시작 위치 (임시) 나중에 캐릭터 팔 생기면 사라질거 같음
@@ -60,5 +54,17 @@ public class GameMng : MonoBehaviour
         {
             return null;
         }
+    }
+
+    /**
+     * @brief 아이템 설명 ui 체우기
+     * @param Item targetitem 클릭한 상품 아이템 스크립트
+     */
+    public void setItemDetails(Item targetitem)
+    {
+        itemDetails[NetworkMng.I.intIsVR].ActiveUI();
+        itemDetails[NetworkMng.I.intIsVR]._itemname = targetitem.getName;
+        itemDetails[NetworkMng.I.intIsVR]._itemcost = targetitem.getPrice.ToString();
+        itemDetails[NetworkMng.I.intIsVR]._itemdetails = targetitem.getDesc;
     }
 }

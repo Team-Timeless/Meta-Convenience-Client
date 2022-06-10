@@ -8,6 +8,7 @@ public class Custom_LaserPointer : MonoBehaviour
     public SteamVR_Behaviour_Pose pose;
     //public SteamVR_Action_Boolean interactWithUI = SteamVR_Input.__actions_default_in_InteractUI;
     public SteamVR_Action_Boolean interactWithUI = SteamVR_Input.GetBooleanAction("InteractUI");
+     public SteamVR_Action_Boolean holdingitem = SteamVR_Input.GetBooleanAction("GrabGrip");
     public bool active = true;
     public Color color;
     public float thickness = 0.002f;
@@ -18,6 +19,7 @@ public class Custom_LaserPointer : MonoBehaviour
     public event PointerEventHandler PointerIn;
     public event PointerEventHandler PointerOut;
     public event PointerEventHandler PointerClick;
+    public event PointerEventHandler PointerGrip;
     public float dist = 100f;
     Transform previousContact = null;
     private Vector3 dotVec = new Vector3(9999.0f, 9999.0f, 9999.0f);        // <! 레이저 끝 점 미국보내기
@@ -81,7 +83,11 @@ public class Custom_LaserPointer : MonoBehaviour
         if (PointerOut != null)
             PointerOut(this, e);
     }
-
+    public virtual void OnPointerGrip(PointerEventArgs e)
+    {
+        if(PointerGrip != null)
+            PointerGrip(this, e);
+    }
 
     private void Update()
     {
@@ -139,6 +145,16 @@ public class Custom_LaserPointer : MonoBehaviour
             dist = hit.distance;
         }
 
+        if(bHit && holdingitem.GetLastStateDown(pose.inputSource))
+        {
+            PointerEventArgs grapgrip = new PointerEventArgs();
+            grapgrip.fromInputSource = pose.inputSource;
+            grapgrip.distance = hit.distance;
+            grapgrip.flags = 0;
+            grapgrip.target = hit.transform;
+            OnPointerGrip(grapgrip);
+        }
+        
         if (bHit && interactWithUI.GetStateDown(pose.inputSource))       // <! GetStateUp에서 다운으로 바꿈
         {
             PointerEventArgs argsClick = new PointerEventArgs();
@@ -148,15 +164,15 @@ public class Custom_LaserPointer : MonoBehaviour
             argsClick.target = hit.transform;
             OnPointerClick(argsClick);
         }
-
+       
         if (interactWithUI != null && interactWithUI.GetState(pose.inputSource))
         {
-            holder.transform.localScale = new Vector3(thickness * 5f, thickness * 5f, dist);
+            // holder.transform.localScale = new Vector3(thickness * 5f, thickness * 5f, dist);
             holder.GetComponent<MeshRenderer>().material.color = clickColor;
         }
         else
         {
-            holder.transform.localScale = new Vector3(thickness, thickness, dist);
+            // holder.transform.localScale = new Vector3(thickness, thickness, dist);   
             holder.GetComponent<MeshRenderer>().material.color = color;
         }
 

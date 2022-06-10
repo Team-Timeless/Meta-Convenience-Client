@@ -59,6 +59,10 @@
       "requirement": "mandatory"
     },
     {
+      "name": "/actions/default/in/BasketBtn",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },

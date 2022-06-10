@@ -281,14 +281,7 @@ MonoBehaviour:
   nicktext: {fileID: 7937944723088321337}
   item: {fileID: 0}
   cam: {fileID: 7126126431869757060}
-  right_hand: 0
-  left_hand: 0
-  vrInputVec2:
-    actionPath: /actions/default/in/Move
-    needsReinit: 0
-  jump:
-    actionPath: /actions/default/in/Jump
-    needsReinit: 0
+  player_input: {fileID: 0}
 --- !u!1 &7208731512353141572
 GameObject:
   m_ObjectHideFlags: 0

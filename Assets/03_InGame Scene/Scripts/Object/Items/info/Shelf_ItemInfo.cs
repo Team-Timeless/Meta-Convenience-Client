@@ -19,11 +19,21 @@ public class Shelf_ItemInfo : Item
         initializeRenderer();
         setPos();
     }
+    private void Update()
+    {
+        if (_itemActive.Equals(ITEM_ACTIVE.HOLD))
+        {
+            setOutlineColor(Color.cyan);
+            setOutlineScale(0.12f);
+            if(NetworkMng.I.isVR)
+                transform.position = NetworkMng.I.pointer[0].transform.position;
+        }
+    }
 
     private void OnMouseEnter()
     {
-       setOutlineColor(_isSall ? Color.yellow : Color.red);
-       setOutlineScale(0.12f);
+        setOutlineColor(_isSall ? Color.yellow : Color.red);
+        setOutlineScale(0.12f);
     }
 
     private void OnMouseExit()
