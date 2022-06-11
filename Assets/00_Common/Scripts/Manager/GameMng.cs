@@ -35,11 +35,11 @@ public class GameMng : MonoBehaviour
         _Instance = this;
     }
 
-    void Update()
+    void Update()       // <! 임시 테스트용
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && !itembasket[0].getUiActive)
         {
-            itembasket[0].gameObject.SetActive(true);
+            itembasket[0].ActiveUI();
         }
     }
     /**

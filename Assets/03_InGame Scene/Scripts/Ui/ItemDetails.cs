@@ -12,24 +12,16 @@ public class ItemDetails : MonoBehaviour
 
     [SerializeField] private GameObject uiActive;
 
-    private void Start() 
+    private void Start()
     {
         GameMng.I.itemDetails.Add(this);
     }
 
-    public GameObject _gameobject
-    {
-        get
-        {
-            return this.gameObject;
-        }
-    }
-    
     public string _itemname
     {
         set
         {
-            if(itemname != null)
+            if (itemname != null)
                 itemname.text = value;
         }
     }
@@ -37,23 +29,31 @@ public class ItemDetails : MonoBehaviour
     public string _itemcost
     {
         set
-        { 
-            if(itemcost != null)
+        {
+            if (itemcost != null)
                 itemcost.text = value;
         }
     }
-    
+
     public string _itemdetails
     {
         set
-        { 
-            if(itemdetails != null)
+        {
+            if (itemdetails != null)
                 itemdetails.text = value;
         }
     }
 
+    public bool getUiActive
+    {
+        get
+        {
+            return uiActive.activeSelf;
+        }
+    }
+
     public void ActiveUI() => uiActive.SetActive(true);
-    
+
     public void UnActiveUI() => uiActive.SetActive(false);
 
     /*
@@ -62,6 +62,6 @@ public class ItemDetails : MonoBehaviour
     public void BackBtn()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        gameObject.SetActive(false);
+        UnActiveUI();
     }
 }

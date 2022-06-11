@@ -6,21 +6,35 @@ using System.Text;
 public class ItemBasket : MonoBehaviour
 {
     private StringBuilder itemstr = new StringBuilder();
-   
+
     [SerializeField] private UnityEngine.UI.Text basketContents = null;        // <! 상품 이름, 가격 떠있는 스크롤
 
     [SerializeField] private UnityEngine.UI.Text itemcost = null;        // <! 상품 가격
-    
+
     [SerializeField] private GameObject uiActive;
 
     public int result = 0;      // <! 바구니에 들어있는 가격 측정
 
+    public bool getUiActive
+    {
+        get
+        {
+            return uiActive.activeSelf;
+        }
+    }
+
     void Start()
     {
         GameMng.I.itembasket.Add(this);
-        
+
         result = 0;
+    }
+
+    public void ActiveUI()
+    {
         Cursor.lockState = CursorLockMode.None;
+        uiActive.SetActive(true);
+
         foreach (var item in GameMng.I.basket)
         {
             result += item.Value.getPrice;
@@ -31,16 +45,17 @@ public class ItemBasket : MonoBehaviour
         itemcost.text = "총 가격 : " + result.ToString();
     }
 
-    public void ActiveUI() => uiActive.SetActive(true);
-    
-    public void UnActiveUI() => uiActive.SetActive(false);
-
-    /*
-     * @brief 상품 정보창 닫기 버튼
+    /**
+     * @brief 상품 정보창 닫기
      */
-    public void BackBtn()
+    public void UnActiveUI() 
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        gameObject.SetActive(false);
+        // Cursor.lockState = CursorLockMode.Locked;
+        uiActive.SetActive(false);
+    }
+
+    public void sibal()
+    {
+        Debug.Log("sibal wrkxsp");
     }
 }

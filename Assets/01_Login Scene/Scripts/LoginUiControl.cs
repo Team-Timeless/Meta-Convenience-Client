@@ -29,10 +29,10 @@ public class LoginUiControl : MonoBehaviour
     void Start()
     {
         keybord.transform.position = new Vector3(9999.0f, 9999.0f, 9999.0f);
-        // if (!NetworkMng.I.isVR)
-        //     division[0].SetActive(true);
-        // else
-        //     division[1].SetActive(true);
+        if (!NetworkMng.I.isVR)
+            division[0].SetActive(true);
+        else
+            division[1].SetActive(true);
     }
 
     void Update()

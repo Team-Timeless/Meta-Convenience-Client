@@ -279,6 +279,7 @@ MonoBehaviour:
   limitMaxX: 50
   rigid: {fileID: 7208731510669135537}
   nicktext: {fileID: 7937944723088321337}
+  isTouch: 0
   item: {fileID: 0}
   cam: {fileID: 7126126431869757060}
   player_input: {fileID: 0}
