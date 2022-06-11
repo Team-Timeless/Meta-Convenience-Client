@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     // 닉네임 textmesh
     [SerializeField] private TextMesh nicktext = null;
 
-    private bool isTouch = false;
+    [SerializeField] private bool isTouch = false;
     private float touchTime = 0.0f;
 
     [SerializeField] private Item item = null;
@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
             Debug.DrawRay(transform.position, transform.forward * 3.0f, Color.red);     // <! 디버그용
 
             PlayerMove(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            if (player_input.Equals(null))
+            if (!player_input)
             {
                 UpdateRotate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
                 cam.transform.position = transform.position;
@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
         {
             rigid.AddForce(Vector3.up * playerJumpForce, ForceMode.Impulse);
         }
-        else if (player_input.jump.GetStateDown(player_input.right_hand))
+        else if (player_input && player_input.jump.GetStateDown(player_input.right_hand))
         {
             rigid.AddForce(Vector3.up * playerJumpForce, ForceMode.Impulse);
         }
@@ -140,7 +140,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !isTouch)        // <! 한번 클릭 했을 떄
         {
-            if (GameMng.I.getRayCastGameObject(this.transform) && !GameMng.I.itemDetails[0].gameObject.activeSelf)
+            if (GameMng.I.getRayCastGameObject(this.transform) && !GameMng.I.itemDetails[NetworkMng.I.intIsVR].getUiActive)
             {
                 item = GameMng.I.getRayCastGameObject(this.transform).GetComponent<Item>();
             }
