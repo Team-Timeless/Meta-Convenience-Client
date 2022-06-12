@@ -53,9 +53,4 @@ public class ItemBasket : MonoBehaviour
         // Cursor.lockState = CursorLockMode.Locked;
         uiActive.SetActive(false);
     }
-
-    public void sibal()
-    {
-        Debug.Log("sibal wrkxsp");
-    }
 }

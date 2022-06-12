@@ -28,7 +28,7 @@ public class PlayerVR_input : MonoBehaviour
     {
         if (BasketBtn.GetStateDown(left_hand))
         {
-            if (!GameMng.I.itembasket[NetworkMng.I.intIsVR].gameObject.activeSelf)
+            if (!GameMng.I.itembasket[NetworkMng.I.intIsVR].getUiActive)
             {
                 isBasket = true;
                 GameMng.I.itembasket[NetworkMng.I.intIsVR].ActiveUI();

@@ -8,7 +8,7 @@ public class Custom_LaserPointer : MonoBehaviour
     public SteamVR_Behaviour_Pose pose;
     //public SteamVR_Action_Boolean interactWithUI = SteamVR_Input.__actions_default_in_InteractUI;
     public SteamVR_Action_Boolean interactWithUI = SteamVR_Input.GetBooleanAction("InteractUI");
-     public SteamVR_Action_Boolean holdingitem = SteamVR_Input.GetBooleanAction("GrabGrip");
+    public SteamVR_Action_Boolean holdingitem = SteamVR_Input.GetBooleanAction("GrabGrip");
     public bool active = true;
     public Color color;
     public float thickness = 0.002f;
@@ -20,7 +20,6 @@ public class Custom_LaserPointer : MonoBehaviour
     public event PointerEventHandler PointerOut;
     public event PointerEventHandler PointerClick;
     public event PointerEventHandler PointerGrip;
-    public float dist = 100f;
     Transform previousContact = null;
     private Vector3 dotVec = new Vector3(9999.0f, 9999.0f, 9999.0f);        // <! 레이저 끝 점 미국보내기
     bool init = false;      // <! 초기화가 되어 있는지
@@ -44,7 +43,7 @@ public class Custom_LaserPointer : MonoBehaviour
         pointer = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         pointer.transform.parent = holder.transform;
         pointer.transform.localPosition = dotVec;
-        pointer.transform.localScale = new Vector3(250f, 250f, 0.0001f);
+        pointer.transform.localScale = new Vector3(50f, 50f, 0.0001f);
         pointer.transform.localRotation = Quaternion.identity;
 
         SphereCollider spherecollider = pointer.GetComponent<SphereCollider>();
@@ -96,6 +95,8 @@ public class Custom_LaserPointer : MonoBehaviour
             isActive = true;
             this.transform.GetChild(0).gameObject.SetActive(true);
         }
+
+        float dist = 100f;
 
         if (!init)
         {
@@ -167,12 +168,12 @@ public class Custom_LaserPointer : MonoBehaviour
        
         if (interactWithUI != null && interactWithUI.GetState(pose.inputSource))
         {
-            // holder.transform.localScale = new Vector3(thickness * 5f, thickness * 5f, dist);
+            holder.transform.localScale = new Vector3(thickness, thickness, dist);
             holder.GetComponent<MeshRenderer>().material.color = clickColor;
         }
         else
         {
-            // holder.transform.localScale = new Vector3(thickness, thickness, dist);   
+            holder.transform.localScale = new Vector3(thickness, thickness, dist);
             holder.GetComponent<MeshRenderer>().material.color = color;
         }
 
