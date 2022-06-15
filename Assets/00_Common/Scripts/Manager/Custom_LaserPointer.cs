@@ -20,9 +20,12 @@ public class Custom_LaserPointer : MonoBehaviour
     public event PointerEventHandler PointerOut;
     public event PointerEventHandler PointerClick;
     public event PointerEventHandler PointerGrip;
+    [SerializeField] private float customdist = 100.0f;
     Transform previousContact = null;
     private Vector3 dotVec = new Vector3(9999.0f, 9999.0f, 9999.0f);        // <! 레이저 끝 점 미국보내기
     bool init = false;      // <! 초기화가 되어 있는지
+
+    public bool isGrip = false;
 
     private void Start()
     {
@@ -82,6 +85,7 @@ public class Custom_LaserPointer : MonoBehaviour
         if (PointerOut != null)
             PointerOut(this, e);
     }
+    
     public virtual void OnPointerGrip(PointerEventArgs e)
     {
         if(PointerGrip != null)
@@ -96,7 +100,7 @@ public class Custom_LaserPointer : MonoBehaviour
             this.transform.GetChild(0).gameObject.SetActive(true);
         }
 
-        float dist = 100f;
+        float dist = customdist;
 
         if (!init)
         {
@@ -146,7 +150,7 @@ public class Custom_LaserPointer : MonoBehaviour
             dist = hit.distance;
         }
 
-        if(bHit && holdingitem.GetLastStateDown(pose.inputSource))
+        if(bHit && holdingitem.GetStateDown(pose.inputSource))
         {
             PointerEventArgs grapgrip = new PointerEventArgs();
             grapgrip.fromInputSource = pose.inputSource;
@@ -154,6 +158,11 @@ public class Custom_LaserPointer : MonoBehaviour
             grapgrip.flags = 0;
             grapgrip.target = hit.transform;
             OnPointerGrip(grapgrip);
+            isGrip = true;
+        }
+        if(isGrip && holdingitem.GetStateUp(pose.inputSource))
+        {
+            isGrip = false;
         }
         
         if (bHit && interactWithUI.GetStateDown(pose.inputSource))       // <! GetStateUp에서 다운으로 바꿈
@@ -164,6 +173,10 @@ public class Custom_LaserPointer : MonoBehaviour
             argsClick.flags = 0;
             argsClick.target = hit.transform;
             OnPointerClick(argsClick);
+        }
+        else if(!bHit && interactWithUI.GetStateDown(pose.inputSource) && GameMng.I.itemDetails[NetworkMng.I.intIsVR].getUiActive && GameMng.I)
+        {
+            GameMng.I.itemDetails[NetworkMng.I.intIsVR].UnActiveUI();
         }
        
         if (interactWithUI != null && interactWithUI.GetState(pose.inputSource))
@@ -177,7 +190,7 @@ public class Custom_LaserPointer : MonoBehaviour
             holder.GetComponent<MeshRenderer>().material.color = color;
         }
 
-        pointer.transform.position = bHit ? hit.point : dotVec;     // <! 포인터가 충돌 되어있을떄 충돌위치(ui 위치)에 놓아주고 아니면 미국
+        pointer.transform.position = bHit ? hit.point : dotVec;     // <! 포인터가 충돌 되어있을떄 충돌위치(ui 위치)에 놓아주고 아니면 미국 보내기
 
         holder.transform.localPosition = new Vector3(0f, 0f, dist / 2f);
     }

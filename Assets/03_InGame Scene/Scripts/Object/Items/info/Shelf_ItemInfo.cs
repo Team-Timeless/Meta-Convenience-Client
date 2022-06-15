@@ -25,8 +25,13 @@ public class Shelf_ItemInfo : Item
         {
             setOutlineColor(Color.cyan);
             setOutlineScale(0.12f);
-            if(NetworkMng.I.isVR)
-                transform.position = NetworkMng.I.pointer[0].transform.position;
+            if (NetworkMng.I.pointer[1].isGrip)
+                transform.position = NetworkMng.I.pointer[1].transform.position;
+            else
+            {
+                itemActive = ITEM_ACTIVE.NONE;
+                setOutlineScale(0f);
+            }
         }
     }
 
@@ -45,7 +50,7 @@ public class Shelf_ItemInfo : Item
         if (collision.gameObject.CompareTag("Map") && _itemActive.Equals(ITEM_ACTIVE.NONE))
         {
             this.transform.localPosition = _firstPos;
-            this.transform.rotation = Quaternion.identity;
+            this.transform.localRotation = Quaternion.identity;
             Destroy(this.gameObject.GetComponent<Rigidbody>());     // 나는 모르겠다...
             if (GameMng.I.basket.ContainsKey(this.gameObject.name))
                 GameMng.I.basket.Remove(this.gameObject.name);

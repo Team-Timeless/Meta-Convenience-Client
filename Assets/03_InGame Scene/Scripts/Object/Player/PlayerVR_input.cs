@@ -16,7 +16,7 @@ public class PlayerVR_input : MonoBehaviour
 
     public bool isBasket = false;
 
-    public UnityEngine.UI.Scrollbar scroll;
+    public UnityEngine.UI.Scrollbar scroll;     // <! 장바구니 스크롤 컨트롤러로 이용하기 위해
 
     // Update is called once per frame
     void Update()
@@ -24,6 +24,9 @@ public class PlayerVR_input : MonoBehaviour
         ControllerClick();
     }
 
+    /**
+     * @brief vr컨트롤러 버튼 클릭
+     */
     void ControllerClick()
     {
         if (BasketBtn.GetStateDown(left_hand))

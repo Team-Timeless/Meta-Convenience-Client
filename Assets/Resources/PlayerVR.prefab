@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1613651731185440564
 RectTransform:
   m_ObjectHideFlags: 0
@@ -768,7 +768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2075822344023514502
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2282,6 +2282,8 @@ MonoBehaviour:
   clickColor: {r: 0, g: 1, b: 0, a: 1}
   holder: {fileID: 0}
   pointer: {fileID: 0}
+  customdist: 100
+  isGrip: 0
 --- !u!1 &3026244038156156109
 GameObject:
   m_ObjectHideFlags: 0
@@ -2453,7 +2455,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3026244038156468679}
   - component: {fileID: 2912248465323068481}
-  - component: {fileID: 3599938647025457283}
   m_Layer: 0
   m_Name: Controller (left)
   m_TagString: Untagged
@@ -2510,31 +2511,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   broadcastDeviceChanges: 1
---- !u!114 &3599938647025457283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3026244038156297627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2a33597a6482a54daadf48d2a38be67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pose: {fileID: 0}
-  interactWithUI:
-    actionPath: /actions/default/in/InteractUI
-    needsReinit: 0
-  holdingitem:
-    actionPath: /actions/default/in/GrabGrip
-    needsReinit: 0
-  active: 1
-  color: {r: 0, g: 0, b: 0, a: 0}
-  thickness: 0.002
-  clickColor: {r: 0, g: 1, b: 0, a: 1}
-  holder: {fileID: 0}
-  pointer: {fileID: 0}
 --- !u!1 &3502577685804787588
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,15 +5,15 @@ using System.Text;
 
 public class ItemBasket : MonoBehaviour
 {
-    private StringBuilder itemstr = new StringBuilder();
+    private StringBuilder itemstr = new StringBuilder();        // <! 임시
 
     [SerializeField] private UnityEngine.UI.Text basketContents = null;        // <! 상품 이름, 가격 떠있는 스크롤
 
     [SerializeField] private UnityEngine.UI.Text itemcost = null;        // <! 상품 가격
 
-    [SerializeField] private GameObject uiActive;
+    [SerializeField] private GameObject uiActive;       // <! 장바구니 UI
 
-    public int result = 0;      // <! 바구니에 들어있는 가격 측정
+    public int result = 0;      // <!  장바구니에 들어있는 가격 측정
 
     public bool getUiActive
     {

@@ -10,7 +10,7 @@ public class ItemDetails : MonoBehaviour
 
     [SerializeField] private UnityEngine.UI.Text itemdetails = null;     // <! 상품 정보
 
-    [SerializeField] private GameObject uiActive;
+    [SerializeField] private GameObject uiActive;       // <! 아이템 정보 UI
 
     private void Start()
     {

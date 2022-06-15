@@ -45,7 +45,7 @@ public class VR_Item : VR_UiInput
     {
         if (e.target.name == this.gameObject.name && selected == true && item)
         {
-            item.transform.parent = NetworkMng.I.pointer[1].pose.transform;     // <! 오른손 컨트롤러 위치
+            // item.transform.parent = NetworkMng.I.pointer[1].pose.transform;     // <! 오른손 컨트롤러 위치
 
             if (item.itemActive.Equals(ITEM_ACTIVE.NONE))
             {
@@ -74,7 +74,6 @@ public class VR_Item : VR_UiInput
         if (e.target.name == this.gameObject.name && selected == true && item)
         {
             selected = false;
-                item.itemActive = ITEM_ACTIVE.NONE;
             item.setOutlineScale(0f);
         }
     }

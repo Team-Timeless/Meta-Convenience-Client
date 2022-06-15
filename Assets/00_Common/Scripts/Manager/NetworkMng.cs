@@ -54,7 +54,7 @@ public class NetworkMng : MonoBehaviourPunCallbacks
         DontDestroyOnLoad(this);
         _Instance = this;
 
-        isVR = XRGeneralSettings.Instance.Manager?.activeLoader;
+        isVR = XRGeneralSettings.Instance.Manager.activeLoader;
         Debug.Log("IS VR : " + isVR);
 
         RightHandEventAdd(rightHandEvent);
