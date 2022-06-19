@@ -25,13 +25,17 @@ public class Shelf_ItemInfo : Item
         {
             setOutlineColor(Color.cyan);
             setOutlineScale(0.12f);
-            if (NetworkMng.I.pointer[1].isGrip)
-                transform.position = NetworkMng.I.pointer[1].transform.position;
-            else
+            if (NetworkMng.I.isVR)
             {
-                itemActive = ITEM_ACTIVE.NONE;
-                setOutlineScale(0f);
+                if (NetworkMng.I.pointer[1].isGrip)
+                    transform.position = NetworkMng.I.pointer[1].transform.position;
+                else
+                {
+                    itemActive = ITEM_ACTIVE.NONE;
+                    setOutlineScale(0f);
+                }
             }
+
         }
     }
 
