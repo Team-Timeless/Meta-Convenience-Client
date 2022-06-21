@@ -4136,7 +4136,7 @@ MonoBehaviour:
     actionPath: /actions/default/in/BasketBtn
     needsReinit: 0
   isBasket: 0
-  scroll: {fileID: 0}
+  scroll: {fileID: 820931900845249925}
 --- !u!1 &7208731512353141572
 GameObject:
   m_ObjectHideFlags: 0
