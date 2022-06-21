@@ -62,9 +62,12 @@ public class GameMng : MonoBehaviour
      */
     public void setItemDetails(Item targetitem)
     {
-        itemDetails[NetworkMng.I.intIsVR].ActiveUI();
-        itemDetails[NetworkMng.I.intIsVR]._itemname = targetitem.getName;
-        itemDetails[NetworkMng.I.intIsVR]._itemcost = targetitem.getPrice.ToString();
-        itemDetails[NetworkMng.I.intIsVR]._itemdetails = targetitem.getDesc;
+        if (!itembasket[NetworkMng.I.intIsVR].getUiActive)
+        {
+            itemDetails[NetworkMng.I.intIsVR].ActiveUI();
+            itemDetails[NetworkMng.I.intIsVR]._itemname = targetitem.getName;
+            itemDetails[NetworkMng.I.intIsVR]._itemcost = targetitem.getPrice.ToString();
+            itemDetails[NetworkMng.I.intIsVR]._itemdetails = targetitem.getDesc;
+        }
     }
 }
