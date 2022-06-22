@@ -49,6 +49,14 @@ public class Player : MonoBehaviour
         if (photonview.IsMine) { nicktext.text = NetworkMng.I.nickname; }
     }
 
+    void Start()
+    {
+        if (photonview.IsMine)
+        {
+            cam.gameObject.SetActive(true);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -138,7 +146,7 @@ public class Player : MonoBehaviour
      */
     void ClickEvent()
     {
-        if (Input.GetMouseButtonDown(0) && !isTouch)        // <! 한번 클릭 했을 떄
+        if (Input.GetMouseButtonDown(0) && !isTouch)        // <! 한번 클릭 했을 
         {
             if (GameMng.I.getRayCastGameObject(this.transform) && !GameMng.I.itemDetails[NetworkMng.I.intIsVR].getUiActive)
             {
@@ -176,11 +184,11 @@ public class Player : MonoBehaviour
         }
         if (item && item.itemActive.Equals(ITEM_ACTIVE.HOLD))
         {
-            item.transform.position = cam.transform.position + cam.transform.forward * 1.4f;//new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z + 0.5f);
-            item.transform.rotation = cam.transform.rotation;
+            item.transform.position = transform.position + transform.forward * 1.4f;//new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z + 0.5f);
+            item.transform.rotation = transform.rotation;
         }
 
-        if (Input.GetMouseButtonUp(0))      // <! 마우스에서 손 때었을 떄
+        if (Input.GetMouseButtonUp(0))      // <! 마우스에서 손 때었을 
         {
             if (item && touchTime < 1f)
             {
