@@ -1828,7 +1828,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3022290380320031023
 Transform:
   m_ObjectHideFlags: 0
@@ -4088,7 +4088,7 @@ MonoBehaviour:
   speakerInUse: {fileID: 7208731512353141574}
   AutoCreateRecorderIfNotFound: 0
   UsePrimaryRecorder: 1
-  SetupDebugSpeaker: 0
+  SetupDebugSpeaker: 1
 --- !u!114 &7116870734581329600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4112,6 +4112,7 @@ MonoBehaviour:
   item: {fileID: 0}
   cam: {fileID: 3006272612568721781}
   player_input: {fileID: 0}
+  voiceView: {fileID: 7208731510669135536}
 --- !u!114 &1347738188939606990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4136,7 +4137,7 @@ MonoBehaviour:
     actionPath: /actions/default/in/BasketBtn
     needsReinit: 0
   isBasket: 0
-  scroll: {fileID: 0}
+  scroll: {fileID: 820931900845249925}
 --- !u!1 &7208731512353141572
 GameObject:
   m_ObjectHideFlags: 0

@@ -70,6 +70,7 @@ public class ItemBasket : MonoBehaviour
                     textGroupList.Add(temp);
                     temp.transform.parent = content;
                     temp.transform.localScale = new Vector3(1.0f, 1.0f, 0.0f);
+                    temp.transform.localRotation = Quaternion.identity;
                     temp.setName = item.Key;
                     temp.setCount = item.Value.ToString();
                     temp.setPrice = (itemlist[i].getPrice * item.Value).ToString();
