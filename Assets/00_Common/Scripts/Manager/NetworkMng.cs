@@ -31,10 +31,7 @@ public class NetworkMng : MonoBehaviourPunCallbacks
 
     public int intIsVR
     {
-        get
-        {
-            return isVR ? 1 : 0;
-        }
+        get { return isVR ? 1 : 0; }
     }
 
     public static NetworkMng I

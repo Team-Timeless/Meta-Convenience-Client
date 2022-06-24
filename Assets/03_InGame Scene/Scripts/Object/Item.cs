@@ -29,70 +29,43 @@ public class Item : Object
 
     public string getDesc
     {
-        get
-        {
-            return _desc;
-        }
+        get { return _desc; }
     }
 
     public string getInfo
     {
-        get
-        {
-            return _info;
-        }
+        get { return _info; }
     }
-    
+
     public int getPrice
     {
-        get
-        {
-            return _price;
-        }
+        get { return _price; }
     }
 
     public bool getIsSall
     {
-        get
-        {
-            return _isSall;
-        }
+        get { return _isSall; }
     }
 
     public float getWidth
     {
-        get
-        {
-            return _width;
-        }
+        get { return _width; }
     }
-    
+
     public float getHeight
     {
-        get
-        {
-            return _height;
-        }
+        get { return _height; }
     }
 
     public ITEM_ACTIVE itemActive
     {
-        get
-        {
-            return _itemActive;
-        }
-        set
-        {
-            _itemActive = value;
-        }
+        get { return _itemActive; }
+        set { _itemActive = value; }
     }
 
     public MeshRenderer GetMesh
     {
-        get
-        {
-            return _renderer;
-        }
+        get { return _renderer; }
     }
 
     public void initializeRenderer() => this._renderer?.GetComponent<MeshRenderer>();       // <! 렌더러 초기화
@@ -119,7 +92,7 @@ public class Item : Object
         for (int i = 0; i < jsondate.Count; i++)
         {
             if (int.Parse(jsondate[i]["code"].ToString()) == code)
-            {   
+            {
                 _code = int.Parse(jsondate[i]["code"].ToString());
                 _name = jsondate[i]["name"].ToString();
                 _desc = jsondate[i]["desc"].ToString();
@@ -127,7 +100,7 @@ public class Item : Object
                 _isSall = bool.Parse(jsondate[i]["isSall"].ToString());
                 _width = float.Parse(jsondate[i]["width"].ToString());
                 _height = float.Parse(jsondate[i]["height"].ToString());
-                foreach(var tags in jsondate[i]["tags"])
+                foreach (var tags in jsondate[i]["tags"])
                 {
                     _tags.Add(tags.ToString());
                 }

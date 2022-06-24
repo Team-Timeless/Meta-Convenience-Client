@@ -8,9 +8,6 @@ public class LoadingUiControl : MonoBehaviour
 
     void Start()
     {
-        if (!NetworkMng.I.isVR)
-            division[0].SetActive(true);
-        else
-            division[1].SetActive(true);
+        division[NetworkMng.I.intIsVR].SetActive(true);
     }
 }

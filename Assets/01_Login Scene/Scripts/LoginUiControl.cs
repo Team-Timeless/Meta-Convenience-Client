@@ -20,24 +20,18 @@ public class LoginUiControl : MonoBehaviour
 
     public static bool Shift
     {
-        get
-        {
-            return isShift;
-        }
+        get { return isShift; }
     }
 
     void Start()
     {
         keybord.transform.position = new Vector3(9999.0f, 9999.0f, 9999.0f);
-        if (!NetworkMng.I.isVR)
-            division[0].SetActive(true);
-        else
-            division[1].SetActive(true);
+        division[NetworkMng.I.intIsVR].SetActive(true);
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             LoadingBar.LoadScene("InGame Scene");
         }

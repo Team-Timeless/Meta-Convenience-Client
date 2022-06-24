@@ -25,10 +25,7 @@ public class ItemBasket : MonoBehaviour
 
     public bool getUiActive
     {
-        get
-        {
-            return uiActive.activeSelf;
-        }
+        get { return uiActive.activeSelf; }
     }
 
     void Start()

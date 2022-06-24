@@ -33,7 +33,7 @@ public class VR_Item : VR_UiInput
 
     public override void PointerInside(object sender, PointerEventArgs e)
     {
-        if (e.target.name == this.gameObject.name && selected == false && item)
+        if (e.target.name == this.gameObject.name && !selected && item)
         {
             selected = true;
             item.setOutlineScale(0.12f);
@@ -43,7 +43,7 @@ public class VR_Item : VR_UiInput
 
     public override void PointerGarpGrip(object sender, PointerEventArgs e)
     {
-        if (e.target.name == this.gameObject.name && selected == true && item)
+        if (e.target.name == this.gameObject.name && selected && item)
         {
             // item.transform.parent = NetworkMng.I.pointer[1].pose.transform;     // <! 오른손 컨트롤러 위치
 
@@ -63,7 +63,7 @@ public class VR_Item : VR_UiInput
 
     public override void PointerClick(object sender, PointerEventArgs e)
     {
-        if (e.target.name == this.gameObject.name && selected == true && item)
+        if (e.target.name == this.gameObject.name && selected && item)
         {
             GameMng.I.setItemDetails(item);
         }
@@ -71,7 +71,7 @@ public class VR_Item : VR_UiInput
 
     public override void PointerOutside(object sender, PointerEventArgs e)
     {
-        if (e.target.name == this.gameObject.name && selected == true && item)
+        if (e.target.name == this.gameObject.name && selected && item)
         {
             selected = false;
             item.setOutlineScale(0f);
