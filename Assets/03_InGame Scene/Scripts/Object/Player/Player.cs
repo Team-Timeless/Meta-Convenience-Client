@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
             if (player_input == null)
             {
                 UpdateRotate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-                cam.transform.position = transform.position;
+                // cam.transform.position = transform.position;
                 ClickEvent();
                 if (Input.GetKeyDown(KeyCode.Escape) && GameMng.I.itemDetails[0].gameObject.activeSelf)     // <! юс╫ц
                 {

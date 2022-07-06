@@ -1,14 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.Networking;
 using Photon.Realtime;
-using UnityEngine.XR;
 using UnityEngine.XR.Management;
-using System;
-using Valve.VR;
-
 public class NetworkMng : MonoBehaviourPunCallbacks
 {
     public UnityEngine.UI.InputField inputfildId = null;        // <! 로그인할때 값 가져오기위해
@@ -77,14 +72,14 @@ public class NetworkMng : MonoBehaviourPunCallbacks
      */
     public void Login()
     {
-        try
-        {
-            // 로그인
-        }
-        catch
-        {
-            // 로그인 실패 UI 만들어주세요
-        }
+        // try
+        // {
+        //     // 로그인
+        // }
+        // catch
+        // {
+        //     // 로그인 실패 UI 만들어주세요
+        // }
         if (Application.internetReachability.Equals(NetworkReachability.NotReachable))
         {
             // 인터넷이 연결 안되어 있을
@@ -144,12 +139,12 @@ public class NetworkMng : MonoBehaviourPunCallbacks
         // VR
         if (isVR)
         {
-            PhotonNetwork.Instantiate("PlayerVR", new Vector3(0, 2, 0), Quaternion.identity, 0);
+            PhotonNetwork.Instantiate("PlayerVR_1", new Vector3(0, 2, 0), Quaternion.identity, 0);
         }
         // Window
         else
         {
-            PhotonNetwork.Instantiate("Player", new Vector3(0, 2, 0), Quaternion.identity, 0);
+            PhotonNetwork.Instantiate("Player_1", new Vector3(0, 2, 0), Quaternion.identity, 0);
         }
 
         yield return null;
