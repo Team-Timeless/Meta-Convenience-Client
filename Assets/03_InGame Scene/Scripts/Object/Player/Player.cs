@@ -65,10 +65,10 @@ public class Player : MonoBehaviour
             Debug.DrawRay(transform.position, transform.forward * 3.0f, Color.red);     // <! 디버그용
 
             PlayerMove(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            if (!player_input)
+            if (player_input == null)
             {
                 UpdateRotate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-                cam.transform.position = transform.position;
+                // cam.transform.position = transform.position;
                 ClickEvent();
                 if (Input.GetKeyDown(KeyCode.Escape) && GameMng.I.itemDetails[0].gameObject.activeSelf)     // <! 임시
                 {
@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
         {
             rigid.AddForce(Vector3.up * playerJumpForce, ForceMode.Impulse);
         }
-        else if (player_input && player_input.jump.GetStateDown(player_input.right_hand))
+        else if (player_input != null && player_input.jump.GetStateDown(player_input.right_hand))
         {
             rigid.AddForce(Vector3.up * playerJumpForce, ForceMode.Impulse);
         }
@@ -169,7 +169,7 @@ public class Player : MonoBehaviour
             }
             if (touchTime > 1f)
             {
-                if (item && item.itemActive.Equals(ITEM_ACTIVE.NONE))
+                if (item != null && item.itemActive.Equals(ITEM_ACTIVE.NONE))
                 {
                     if (!item.gameObject.GetComponent<Rigidbody>())
                     {
@@ -182,7 +182,8 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        if (item && item.itemActive.Equals(ITEM_ACTIVE.HOLD))
+        
+        if (item != null && item.itemActive.Equals(ITEM_ACTIVE.HOLD))
         {
             item.transform.position = transform.position + transform.forward * 1.4f;//new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z + 0.5f);
             item.transform.rotation = transform.rotation;
@@ -190,14 +191,14 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))      // <! 마우스에서 손 때었을 
         {
-            if (item && touchTime < 1f)
+            if (item != null && touchTime < 1f)
             {
                 Cursor.lockState = CursorLockMode.None;
                 GameMng.I.setItemDetails(item);
             }
             GameMng.I.holdimg.fillAmount = 0f;
 
-            if (item)
+            if (item != null)
                 item.itemActive = ITEM_ACTIVE.NONE;
 
             isTouch = false;

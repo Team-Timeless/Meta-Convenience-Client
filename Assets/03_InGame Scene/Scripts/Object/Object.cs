@@ -12,17 +12,11 @@ public class Object : MonoBehaviour
     
     public int getCode
     {
-        get
-        {
-            return _code;
-        }
+        get { return _code; }
     }
 
     public string getName
     {
-        get
-        {
-            return _name;
-        }
+        get { return _name; }
     }
 }

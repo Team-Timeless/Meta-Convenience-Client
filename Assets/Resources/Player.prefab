@@ -286,7 +286,6 @@ MonoBehaviour:
   item: {fileID: 0}
   cam: {fileID: 6138450326223882991}
   player_input: {fileID: 0}
-  voiceView: {fileID: 0}
 --- !u!1 &7208731512353141572
 GameObject:
   m_ObjectHideFlags: 0

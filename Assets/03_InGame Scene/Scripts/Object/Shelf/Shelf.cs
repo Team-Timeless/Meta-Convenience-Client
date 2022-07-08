@@ -9,18 +9,16 @@ public class Shelf : MonoBehaviour
     [SerializeField]
     private GameObject[] items;     // <! 선반위에 올라가는 gameobjct들
 
-    //[SerializeField]
-    //private List<Panel> panel = new List<Panel>();
-
     private Item tempItem;
 
     private Panel tempPanel;
 
-    int widthcount = 0;     // <! 가로 최대 몇개 (X)
-    int heightcount = 0;    // <! 세로 최대 몇개 (Z)
-    int count = 0;
+    private int widthcount = 0;     // <! 가로 최대 몇개 (X)
+    private int heightcount = 0;    // <! 세로 최대 몇개 (Z)
+    private int count = 0;
 
     private StringBuilder itemsname = new StringBuilder();
+
     void Awake()
     {
         for (int i = 0; i < transform.childCount; i++)
@@ -35,7 +33,7 @@ public class Shelf : MonoBehaviour
 
     /**
      * @brief 물품 생성
-     * @param Panel panel 선반 스크립트
+     * @param Panel panel 선반 스크립트\
      * @param int code 아이템 코드
      */
     void CreateItem(Panel panel, int code)

@@ -11,23 +11,14 @@ public class Panel : MonoBehaviour
 
     public int getCode
     {
-        get
-        {
-            return (int)objectcode;
-        }
+        get { return (int)objectcode; }
     }
     public float getWidth
     {
-        get
-        {
-            return width;
-        }
+        get { return width; }
     }
     public float getHeight
-    {
-        get
-        {
-            return height;
-        }
+    { 
+        get {  return height; }
     }
 }

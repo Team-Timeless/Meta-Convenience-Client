@@ -48,7 +48,7 @@ public class VR_UiInput : MonoBehaviour
     public virtual void PointerInside(object sender, PointerEventArgs e)
     {
         Debug.Log("Adfdfdafsdfasdfasdfasdfsd");
-        if (e.target.name == this.gameObject.name && selected == false)
+        if (e.target.name == this.gameObject.name && !selected)
         {
             selected = true;
             Debug.Log("pointer is inside this object : " + e.target.name);
@@ -56,7 +56,7 @@ public class VR_UiInput : MonoBehaviour
     }
     public virtual void PointerOutside(object sender, PointerEventArgs e)
     {
-        if (e.target.name == this.gameObject.name && selected == true)
+        if (e.target.name == this.gameObject.name && selected)
         {
             selected = false;
             Debug.Log("pointer is outside this object : " + e.target.name);
@@ -65,7 +65,7 @@ public class VR_UiInput : MonoBehaviour
 
     public virtual void PointerClick(object sender, PointerEventArgs e)
     {
-        if (e.target.name == this.gameObject.name && selected == true)
+        if (e.target.name == this.gameObject.name && selected)
         {
             Debug.Log("pointer is click this object : " + e.target.name);
         }

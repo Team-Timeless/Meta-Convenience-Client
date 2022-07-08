@@ -14,12 +14,12 @@ public class Keybordbtn : MonoBehaviour
     void Update()
     {
         // 쉬프트 눌렸을때 처리
-        if(LoginUiControl.Shift)        // <! 대문자 일땨
+        if(LoginUiControl.Shift)        // <! 대문자 일때
         {
             gameObject.name = gameObject.name.ToUpper();
             txt.text = gameObject.name;
         }
-        else        // <! 소문자 일땨
+        else        // <! 소문자 일때
         {
             gameObject.name = gameObject.name.ToLower();
             txt.text = gameObject.name;

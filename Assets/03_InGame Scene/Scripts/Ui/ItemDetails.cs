@@ -29,7 +29,7 @@ public class ItemDetails : MonoBehaviour
     public string _itemcost
     {
         set
-        {
+        {   
             if (itemcost != null)
                 itemcost.text = value;
         }
@@ -46,10 +46,7 @@ public class ItemDetails : MonoBehaviour
 
     public bool getUiActive
     {
-        get
-        {
-            return uiActive.activeSelf;
-        }
+        get { return uiActive.activeSelf; }
     }
 
     public void ActiveUI() => uiActive.SetActive(true);

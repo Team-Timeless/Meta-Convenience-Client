@@ -4112,7 +4112,6 @@ MonoBehaviour:
   item: {fileID: 0}
   cam: {fileID: 3006272612568721781}
   player_input: {fileID: 0}
-  voiceView: {fileID: 7208731510669135536}
 --- !u!114 &1347738188939606990
 MonoBehaviour:
   m_ObjectHideFlags: 0
