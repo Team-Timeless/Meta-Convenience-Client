@@ -1967,7 +1967,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3026244038156412187}
   - component: {fileID: 2912248466693755849}
-  - component: {fileID: 6234547376995359132}
+  - component: {fileID: 299416947988504793}
   m_Layer: 0
   m_Name: Controller (right)
   m_TagString: Untagged
@@ -2025,7 +2025,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   broadcastDeviceChanges: 1
---- !u!114 &6234547376995359132
+--- !u!114 &299416947988504793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2045,7 +2045,7 @@ MonoBehaviour:
     actionPath: /actions/default/in/GrabGrip
     needsReinit: 0
   active: 1
-  color: {r: 0, g: 0, b: 0, a: 0}
+  color: {r: 0, g: 0.34083176, b: 1, a: 1}
   thickness: 0.002
   clickColor: {r: 0, g: 1, b: 0, a: 1}
   holder: {fileID: 0}

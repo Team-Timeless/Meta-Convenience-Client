@@ -5,25 +5,25 @@ using LitJson;
 
 public class Item : Object
 {
-    [SerializeField] protected string _desc = "";        // <! object ¼³¸í
+    [SerializeField] protected string _desc = "";        // <! object ì„¤ëª…
 
-    [SerializeField] protected string _info = "";        // <! ¿µ¾ç Á¤º¸
+    [SerializeField] protected string _info = "";        // <! ì˜ì–‘ ì •ë³´
 
-    [SerializeField] protected int _price = 0;          // <! »óÇ° °¡°Ý
+    [SerializeField] protected int _price = 0;          // <! ìƒí’ˆ ê°€ê²©
 
-    [SerializeField] protected bool _isSall = false;     // <! ÆÈ¼ö ÀÖ´ÂÁö ¾ø´ÂÁö(Àç°í°ü¸®)
+    [SerializeField] protected bool _isSall = false;     // <! íŒ”ìˆ˜ ìžˆëŠ”ì§€ ì—†ëŠ”ì§€(ìž¬ê³ ê´€ë¦¬)
 
-    [SerializeField] protected float _width = 0.0f;      // <! ¹°Ã¼ÀÇ °¡·Î±æÀÌ (ÁÂ¿ì °£°Ý)
+    [SerializeField] protected float _width = 0.0f;      // <! ë¬¼ì²´ì˜ ê°€ë¡œê¸¸ì´ (ì¢Œìš° ê°„ê²©)
 
-    [SerializeField] protected float _height = 0.0f;     // <! ¹°Ã¼ÀÇ ¼¼·Î±æÀÌ (¾ÕµÚ °£°Ý)
+    [SerializeField] protected float _height = 0.0f;     // <! ë¬¼ì²´ì˜ ì„¸ë¡œê¸¸ì´ (ì•žë’¤ ê°„ê²©)
 
-    [SerializeField] protected ITEM_ACTIVE _itemActive;      // <! ¾ÆÀÌÅÛ Å¬¸¯ »óÅÂ
+    [SerializeField] protected ITEM_ACTIVE _itemActive;      // <! ì•„ì´í…œ í´ë¦­ ìƒíƒœ
 
-    [SerializeField] protected List<string> _tags = new List<string>();     // <! ¾ÆÀÌÅÛ ÅÂ±×
+    [SerializeField] protected List<string> _tags = new List<string>();     // <! ì•„ì´í…œ íƒœê·¸
 
-    [SerializeField] protected Vector3 _firstPos = Vector3.zero;        // <! ¾ÆÀÌÅÛ Ã³À½ »ý¼º À§Ä¡
+    [SerializeField] protected Vector3 _firstPos = Vector3.zero;        // <! ì•„ì´í…œ ì²˜ìŒ ìƒì„± ìœ„ì¹˜
 
-    [SerializeField] protected MeshRenderer _renderer = null;           // <! ¸Þ½¬ ·»´õ·¯
+    [SerializeField] protected MeshRenderer _renderer = null;           // <! ë©”ì‰¬ ë Œë”ëŸ¬
 
     // [SerializeField] protected 
 
@@ -68,19 +68,19 @@ public class Item : Object
         get { return _renderer; }
     }
 
-    public void initializeRenderer() => this._renderer?.GetComponent<MeshRenderer>();       // <! ·»´õ·¯ ÃÊ±âÈ­
+    public void initializeRenderer() => this._renderer?.GetComponent<MeshRenderer>();       // <! ë Œë”ëŸ¬ ì´ˆê¸°í™”
 
-    public void setOutlineColor(Color color) => this._renderer.material.SetColor("_OutlineColor", color);       // <! Å×µÎ¸® »ö ¼³Á¤
+    public void setOutlineColor(Color color) => this._renderer.material.SetColor("_OutlineColor", color);       // <! í…Œë‘ë¦¬ ìƒ‰ ì„¤ì •
 
-    public void setOutlineScale(float scale) => this._renderer.material.SetFloat("_Outline", scale);        // <! Å×µÎ¤©¸® Å©Å° ¼³Á¤
+    public void setOutlineScale(float scale) => this._renderer.material.SetFloat("_Outline", scale);        // <! í…Œë‘ë¦¬ í¬í‚¤ ì„¤ì •
 
-    public void OutlineClear() => this._renderer.material.SetFloat("_Outline", 0.0f);       // <! Å×µÎ¸® »èÁ¦
+    public void OutlineClear() => this._renderer.material.SetFloat("_Outline", 0.0f);       // <! í…Œë‘ë¦¬ ì‚­ì œ
 
-    public Vector3 setPos() => this._firstPos = this.transform.localPosition;       // <! ¹°Ç° Ã³À½ »ý¼º À§Ä¡
+    public Vector3 setPos() => this._firstPos = this.transform.localPosition;       // <! ë¬¼í’ˆ ì²˜ìŒ ìƒì„± ìœ„ì¹˜
 
     /**
-     * @brief json(¾ÆÀÌÅÛ µ¥ÀÌÅÍ ÆÄÀÏ) ·Îµå & ¾ÆÀÌÅÛ °ª ÃÊ±âÈ­
-     * @param int code °¢°¢ ¾ÆÀÌÅÛ ÄÚµå
+     * @brief json(ì•„ì´í…œ ë°ì´í„° íŒŒì¼) ë¡œë“œ & ì•„ì´í…œ ê°’ ì´ˆê¸°í™”
+     * @param int code ê°ê° ì•„ì´í…œ ì½”ë“œ
      */
     protected void LoadJsonData(int code)
     {
@@ -88,7 +88,7 @@ public class Item : Object
 
         JsonData jsondate = JsonMapper.ToObject(jsonStr.ToString());
 
-        // ³ªÁß¿¡ ÀÌÁøÅ½»ö Àû¿ë
+        // ë‚˜ì¤‘ì— ì´ì§„íƒìƒ‰ ì ìš©
         for (int i = 0; i < jsondate.Count; i++)
         {
             if (int.Parse(jsondate[i]["code"].ToString()) == code)

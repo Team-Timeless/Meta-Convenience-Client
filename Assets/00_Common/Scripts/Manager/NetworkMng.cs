@@ -6,23 +6,23 @@ using Photon.Realtime;
 using UnityEngine.XR.Management;
 public class NetworkMng : MonoBehaviourPunCallbacks
 {
-    public UnityEngine.UI.InputField inputfildId = null;        // <! ·Î±×ÀÎÇÒ¶§ °ª °¡Á®¿À±âÀ§ÇØ
-    public UnityEngine.UI.InputField inputfildPwd = null;       // <! ·Î±×ÀÎÇÒ¶§ °ª °¡Á®¿À±âÀ§ÇØ
+    public UnityEngine.UI.InputField inputfildId = null;        // <! ë¡œê·¸ì¸í• ë•Œ ê°’ ê°€ì ¸ì˜¤ê¸°ìœ„í•´
+    public UnityEngine.UI.InputField inputfildPwd = null;       // <! ë¡œê·¸ì¸í• ë•Œ ê°’ ê°€ì ¸ì˜¤ê¸°ìœ„í•´
 
-    public string nickname = "";        // <! ´Ð³×ÀÓ
+    public string nickname = "";        // <! ë‹‰ë„¤ìž„
 
-    public delegate void InitializeLaserEvent();        // <! laserpointer ÀÌº¥Æ® µî·Ï delegate
+    public delegate void InitializeLaserEvent();        // <! laserpointer ì´ë²¤íŠ¸ ë“±ë¡ delegate
 
-    public InitializeLaserEvent leftHandEvent;        // <! ¿Þ¼Õ ÀÌº¥Æ® ÃÊ±âÈ­¿ë
-    public InitializeLaserEvent rightHandEvent;       // <! ¿À¸¥¼Õ ÀÌº¥Æ® ÃÊ±âÈ­¿ë
+    public InitializeLaserEvent leftHandEvent;        // <! ì™¼ì† ì´ë²¤íŠ¸ ì´ˆê¸°í™”ìš©
+    public InitializeLaserEvent rightHandEvent;       // <! ì˜¤ë¥¸ì† ì´ë²¤íŠ¸ ì´ˆê¸°í™”ìš©
 
-    public Custom_LaserPointer[] pointer = new Custom_LaserPointer[2];      // <! ¿Þ¼Õ ¿À¸¥¼Õ ÄÁÆ®·Ñ·¯
+    public Custom_LaserPointer[] pointer = new Custom_LaserPointer[2];      // <! ì™¼ì† ì˜¤ë¥¸ì† ì»¨íŠ¸ë¡¤ëŸ¬
 
-    public UnityEngine.UI.Text[] failedtxt = new UnityEngine.UI.Text[2];       // <! ·Î±×ÀÎ ½ÇÆÐ ÀÌ°Å³ª ÀÎÅÍ³Ý ¿¬°áÀÌ ¾ÈµÇ¾î ÀÖÀ»‹š 0 pc 1 vr
+    public UnityEngine.UI.Text[] failedtxt = new UnityEngine.UI.Text[2];       // <! ë¡œê·¸ì¸ ì‹¤íŒ¨ ì´ê±°ë‚˜ ì¸í„°ë„· ì—°ê²°ì´ ì•ˆë˜ì–´ ìžˆì„ë–„ 0 pc 1 vr
 
     private static NetworkMng _Instance;
 
-    public bool isVR = true;        // <! vr ±¸º°
+    public bool isVR = true;        // <! vr êµ¬ë³„
 
     public int intIsVR
     {
@@ -54,7 +54,7 @@ public class NetworkMng : MonoBehaviourPunCallbacks
     }
 
     /**
-     * @brief È¸¿ø°¡ÀÔ Ã¢À¸·Î ÀÌµ¿
+     * @brief íšŒì›ê°€ìž… ì°½ìœ¼ë¡œ ì´ë™
      */
     public void SignUp()
     {
@@ -63,60 +63,60 @@ public class NetworkMng : MonoBehaviourPunCallbacks
 
     public void ConnectToServer()
     {
-        PhotonNetwork.GameVersion = "1.0";      // °ÔÀÓ ¹öÀü
-        PhotonNetwork.ConnectUsingSettings();   // ¼­¹ö ¿¬°á
+        PhotonNetwork.GameVersion = "1.0";      // ê²Œìž„ ë²„ì „
+        PhotonNetwork.ConnectUsingSettings();   // ì„œë²„ ì—°ê²°
     }
 
     /**
-     * @brief À¥Åë½ÅÀ¸·Î ·Î±×ÀÎ
+     * @brief ì›¹í†µì‹ ìœ¼ë¡œ ë¡œê·¸ì¸
      */
     public void Login()
     {
         // try
         // {
-        //     // ·Î±×ÀÎ
+        //     // ë¡œê·¸ì¸
         // }
         // catch
         // {
-        //     // ·Î±×ÀÎ ½ÇÆÐ UI ¸¸µé¾îÁÖ¼¼¿ä
+        //     // ë¡œê·¸ì¸ ì‹¤íŒ¨ UI ë§Œë“¤ì–´ì£¼ì„¸ìš”
         // }
         if (Application.internetReachability.Equals(NetworkReachability.NotReachable))
         {
-            // ÀÎÅÍ³ÝÀÌ ¿¬°á ¾ÈµÇ¾î ÀÖÀ»
+            // ì¸í„°ë„·ì´ ì—°ê²° ì•ˆë˜ì–´ ìžˆì„
             failedtxt[intIsVR].gameObject.SetActive(true);
-            failedtxt[intIsVR].text = "ÀÎÅÍ³Ý ¿¬°áÀÌ µÇ¾îÀÖÁö ¾Ê½À´Ï´Ù.";
+            failedtxt[intIsVR].text = "ì¸í„°ë„· ì—°ê²°ì´ ë˜ì–´ìžˆì§€ ì•ŠìŠµë‹ˆë‹¤.";
 
             Debug.Log("network disconnected");
         }
         else
         {
-            // TODO ¼­¹ö »óÅÂº¸°í ·Î±×ÀÎ ±¸Çö
+            // TODO ì„œë²„ ìƒíƒœë³´ê³  ë¡œê·¸ì¸ êµ¬í˜„
             LoadingBar.LoadScene("InGame Scene");
         }
     }
 
     /**
-     * @brief Master±ÇÇÑÀ¸·Î ¼­¹ö ¿¬°á callback ÇÔ¼ö
+     * @brief Masterê¶Œí•œìœ¼ë¡œ ì„œë²„ ì—°ê²° callback í•¨ìˆ˜
      */
     public override void OnConnectedToMaster()
     {
         //Debug.Log("Joined Lobby");
-        PhotonNetwork.JoinRandomRoom();      // ·»´ý room µé¾î°¡´Â°÷
+        PhotonNetwork.JoinRandomRoom();      // ë Œë¤ room ë“¤ì–´ê°€ëŠ”ê³³
     }
 
     /**
-     * @brief ·£´ý ¹æ µé¾î°¡±â ½ÇÆÐ ÇßÀ»¶§ callback ÇÔ¼ö
-     * @param short returnCode ¿¡·¯ ÄÚµå
-     * @param string message ¿¡·¯ ¸Þ½ÃÁö
+     * @brief ëžœë¤ ë°© ë“¤ì–´ê°€ê¸° ì‹¤íŒ¨ í–ˆì„ë•Œ callback í•¨ìˆ˜
+     * @param short returnCode ì—ëŸ¬ ì½”ë“œ
+     * @param string message ì—ëŸ¬ ë©”ì‹œì§€
      */
     public override void OnJoinRandomFailed(short retrunCode, string message)
     {
         //Debug.Log("no room");
-        PhotonNetwork.CreateRoom("myroom");     // ¹æ »ý¼º
+        PhotonNetwork.CreateRoom("myroom");     // ë°© ìƒì„±
     }
 
     /**
-     * @brief ¹æ »ý¼º µÇ¾úÀ»¶§ callbackÇÔ¼ö
+     * @brief ë°© ìƒì„± ë˜ì—ˆì„ë•Œ callbackí•¨ìˆ˜
      */
     public override void OnCreatedRoom()
     {
@@ -124,7 +124,7 @@ public class NetworkMng : MonoBehaviourPunCallbacks
     }
 
     /**
-     * @brief ¹æ µé¾î°£°Å ¼º°ø ÇßÀ»¶§ callback ÇÔ¼ö
+     * @brief ë°© ë“¤ì–´ê°„ê±° ì„±ê³µ í–ˆì„ë•Œ callback í•¨ìˆ˜
      */
     public override void OnJoinedRoom()
     {
@@ -132,7 +132,7 @@ public class NetworkMng : MonoBehaviourPunCallbacks
         //Debug.Log("Joined room");
     }
     /**
-     * @brief player »ý¼º
+     * @brief player ìƒì„±
      */
     IEnumerator CreatePlayer()
     {
@@ -151,26 +151,26 @@ public class NetworkMng : MonoBehaviourPunCallbacks
     }
 
     /**
-     * @brief ¿À¸¥¼Õ ÄÁÆ®·Ñ·¯ event µ¨¸®°ÔÀÌÆ® Ãß°¡
-     * @param InitializeLaserEvent func ÀÌº¥Æ® ÃÊ±âÈ­ ÇÔ¼ö
+     * @brief ì˜¤ë¥¸ì† ì»¨íŠ¸ë¡¤ëŸ¬ event ë¸ë¦¬ê²Œì´íŠ¸ ì¶”ê°€
+     * @param InitializeLaserEvent func ì´ë²¤íŠ¸ ì´ˆê¸°í™” í•¨ìˆ˜
      */
     public void RightHandEventAdd(InitializeLaserEvent func) => this.rightHandEvent += func;
 
     /**
-     * @brief ¿À¸¥¼Õ ÄÁÆ®·Ñ·¯ event µ¨¸®°ÔÀÌÆ® Ãß°¡
-     * @param InitializeLaserEvent func ÀÌº¥Æ® ÃÊ±âÈ­ ÇÔ¼ö
+     * @brief ì˜¤ë¥¸ì† ì»¨íŠ¸ë¡¤ëŸ¬ event ë¸ë¦¬ê²Œì´íŠ¸ ì¶”ê°€
+     * @param InitializeLaserEvent func ì´ë²¤íŠ¸ ì´ˆê¸°í™” í•¨ìˆ˜
      */
     public void LeftHandEventAdd(InitializeLaserEvent func) => this.leftHandEvent += func;
 
     /**
-     * @brief ¿À¸¥¼Õ ÄÁÆ®·Ñ·¯ event µ¨¸®°ÔÀÌÆ® »èÁ¦
-     * @param InitializeLaserEvent func ÀÌº¥Æ® ÃÊ±âÈ­ ÇÔ¼ö
+     * @brief ì˜¤ë¥¸ì† ì»¨íŠ¸ë¡¤ëŸ¬ event ë¸ë¦¬ê²Œì´íŠ¸ ì‚­ì œ
+     * @param InitializeLaserEvent func ì´ë²¤íŠ¸ ì´ˆê¸°í™” í•¨ìˆ˜
      */
     public void RightHandEventRemove(InitializeLaserEvent func) => this.rightHandEvent -= func;
 
     /**
-     * @brief ¿À¸¥¼Õ ÄÁÆ®·Ñ·¯ event µ¨¸®°ÔÀÌÆ® »èÁ¦
-     * @param InitializeLaserEvent func ÀÌº¥Æ® ÃÊ±âÈ­ ÇÔ¼ö
+     * @brief ì˜¤ë¥¸ì† ì»¨íŠ¸ë¡¤ëŸ¬ event ë¸ë¦¬ê²Œì´íŠ¸ ì‚­ì œ
+     * @param InitializeLaserEvent func ì´ë²¤íŠ¸ ì´ˆê¸°í™” í•¨ìˆ˜
      */
     public void LeftHandEventRemove(InitializeLaserEvent func) => this.leftHandEvent -= func;
 
